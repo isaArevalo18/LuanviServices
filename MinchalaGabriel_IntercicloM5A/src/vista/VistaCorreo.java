@@ -44,10 +44,10 @@ public class VistaCorreo extends javax.swing.JFrame {
         lbl_mensajearchivo = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        item_salir = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        item_enviar = new javax.swing.JMenuItem();
+        item_recibir = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -81,33 +81,36 @@ public class VistaCorreo extends javax.swing.JFrame {
         pl_enviarcorreoLayout.setHorizontalGroup(
             pl_enviarcorreoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pl_enviarcorreoLayout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(pl_enviarcorreoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(pl_enviarcorreoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pl_enviarcorreoLayout.createSequentialGroup()
-                        .addComponent(btn_archivo, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(280, 280, 280)
-                        .addComponent(btn_enviar, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pl_enviarcorreoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jScrollPane1)
-                        .addGroup(pl_enviarcorreoLayout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addGroup(pl_enviarcorreoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(pl_enviarcorreoLayout.createSequentialGroup()
+                                .addComponent(btn_archivo, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(280, 280, 280)
+                                .addComponent(btn_enviar, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(pl_enviarcorreoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(pl_enviarcorreoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jScrollPane1)
                                 .addGroup(pl_enviarcorreoLayout.createSequentialGroup()
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addGroup(pl_enviarcorreoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(txt_destinatario)
-                                        .addComponent(txt_remitente, javax.swing.GroupLayout.DEFAULT_SIZE, 445, Short.MAX_VALUE)
-                                        .addComponent(txt_destinatariocopia)))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pl_enviarcorreoLayout.createSequentialGroup()
-                                    .addGap(14, 14, 14)
-                                    .addComponent(txt_asunto, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
-            .addGroup(pl_enviarcorreoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lbl_mensajearchivo, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(pl_enviarcorreoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(pl_enviarcorreoLayout.createSequentialGroup()
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addGroup(pl_enviarcorreoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(txt_destinatario)
+                                                .addComponent(txt_remitente, javax.swing.GroupLayout.DEFAULT_SIZE, 445, Short.MAX_VALUE)
+                                                .addComponent(txt_destinatariocopia)))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pl_enviarcorreoLayout.createSequentialGroup()
+                                            .addGap(14, 14, 14)
+                                            .addComponent(txt_asunto, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                    .addGroup(pl_enviarcorreoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lbl_mensajearchivo, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
         pl_enviarcorreoLayout.setVerticalGroup(
             pl_enviarcorreoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -143,9 +146,7 @@ public class VistaCorreo extends javax.swing.JFrame {
         pl_fondo.setLayout(pl_fondoLayout);
         pl_fondoLayout.setHorizontalGroup(
             pl_fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pl_fondoLayout.createSequentialGroup()
-                .addComponent(pl_enviarcorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 66, Short.MAX_VALUE))
+            .addComponent(pl_enviarcorreo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         pl_fondoLayout.setVerticalGroup(
             pl_fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -154,18 +155,18 @@ public class VistaCorreo extends javax.swing.JFrame {
 
         jMenu1.setText("Archivo");
 
-        jMenuItem1.setText("Salir");
-        jMenu1.add(jMenuItem1);
+        item_salir.setText("Salir");
+        jMenu1.add(item_salir);
 
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Editar");
 
-        jMenuItem2.setText("Enviar");
-        jMenu2.add(jMenuItem2);
+        item_enviar.setText("Enviar");
+        jMenu2.add(item_enviar);
 
-        jMenuItem3.setText("Recibir");
-        jMenu2.add(jMenuItem3);
+        item_recibir.setText("Recibir");
+        jMenu2.add(item_recibir);
 
         jMenuBar1.add(jMenu2);
 
@@ -221,26 +222,26 @@ public class VistaCorreo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_archivo;
-    private javax.swing.JButton btn_enviar;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    public javax.swing.JButton btn_archivo;
+    public javax.swing.JButton btn_enviar;
+    public javax.swing.JMenuItem item_enviar;
+    public javax.swing.JMenuItem item_recibir;
+    public javax.swing.JMenuItem item_salir;
+    public javax.swing.JLabel jLabel1;
+    public javax.swing.JLabel jLabel2;
+    public javax.swing.JLabel jLabel3;
+    public javax.swing.JLabel jLabel4;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lbl_mensajearchivo;
-    private javax.swing.JPanel pl_enviarcorreo;
+    public javax.swing.JLabel lbl_mensajearchivo;
+    public javax.swing.JPanel pl_enviarcorreo;
     private javax.swing.JPanel pl_fondo;
-    private javax.swing.JTextField txt_asunto;
-    private javax.swing.JTextField txt_destinatario;
-    private javax.swing.JTextField txt_destinatariocopia;
-    private javax.swing.JTextArea txt_mensaje;
-    private javax.swing.JTextField txt_remitente;
+    public javax.swing.JTextField txt_asunto;
+    public javax.swing.JTextField txt_destinatario;
+    public javax.swing.JTextField txt_destinatariocopia;
+    public javax.swing.JTextArea txt_mensaje;
+    public javax.swing.JTextField txt_remitente;
     // End of variables declaration//GEN-END:variables
 }
