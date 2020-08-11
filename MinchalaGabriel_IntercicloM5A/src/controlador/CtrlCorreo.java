@@ -1,5 +1,6 @@
 package controlador;
 
+/*Importamos los paquetes que nos van a ser utiles en el desarrollo*/
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
@@ -32,14 +33,16 @@ import javax.swing.JOptionPane;
 import modelo.Correo;
 import utils.config;
 import vista.VistaCorreo;
-/*Importamos los paquetes que vamos nos va ser util en el desarrollo*/
+
 public class CtrlCorreo implements ActionListener {
 
     private Correo modelo;/*paquete modelo*/
     private VistaCorreo vista;/*paquete vista*/
-    private File Archivo; /* Este file ayudara para adjuntar archivos a un correo*/
+    private File Archivo;
 
-    /*
+    /* Este file ayudara para adjuntar archivos a un correo*/
+
+ /*
     Este constructor conecta la vista con el modelo, mediante el controlador
      */
     public CtrlCorreo(Correo modelo, VistaCorreo vista) {
@@ -86,7 +89,6 @@ public class CtrlCorreo implements ActionListener {
             } catch (IOException ex) {
                 Logger.getLogger(CtrlCorreo.class.getName()).log(Level.SEVERE, null, ex);
             }
-
         }
         if (e.getSource() == this.vista.item_salir) {
             this.vista.dispose();
@@ -97,7 +99,6 @@ public class CtrlCorreo implements ActionListener {
         if (e.getSource() == this.vista.btn_archivo) {
             CargarArchivo();
         }
-
     }
     // En este metodo cargamos toda la informacion que ira en nuestro mensaje
 
@@ -118,6 +119,7 @@ public class CtrlCorreo implements ActionListener {
         Address Direcciones[] = null;
         Address DireccionesCC[] = null;
         CrearMensaje();
+        //Mandamos los parametros establecidos en e metodo "ConfigurarCorreo" del paquete "utils"
         Session session = Session.getDefaultInstance(config.ConfigurarCorreo(), null);
         MimeMultipart mensaje = new MimeMultipart();
         MimeMessage mm = new MimeMessage(session); //Realizamos el siguiente objeto para enviar el mensaje 
@@ -127,7 +129,6 @@ public class CtrlCorreo implements ActionListener {
         try {
             //Agregamos el asunto de nuestro correo
             mm.setSubject(modelo.getAsunto());
-
             if (!this.modelo.getDestinatario().equals("")) {
                 //Creamos un vector en caso de tener varios destinatarios para el mensaje
                 String[] listaDestinatarios = modelo.getDestinatario().split(";");
@@ -138,7 +139,6 @@ public class CtrlCorreo implements ActionListener {
                     System.out.println(listaDestinatarios[i]);
                 }
             }
-
             if (!this.modelo.getDestinatarioCC().equals("")) {
                 //Repetimos el mismo proceso para los mensajes cc
                 String[] listaDestinatariosCC = modelo.getDestinatarioCC().split(";");
@@ -148,7 +148,6 @@ public class CtrlCorreo implements ActionListener {
                     System.out.println(listaDestinatariosCC[i]);
                 }
             }
-
             //En el siguiente bloque de condicion verificamos si es un correo con un archivo o si es un correo de solo texto
             if (modelo.getArchivo() != null) {
                 //Añadimos el texto al mensaje para ser enviado
@@ -172,7 +171,6 @@ public class CtrlCorreo implements ActionListener {
                 //Proceso para enviar un mensaje de solo texto
                 //Cargamos la direccion de nuestro correo 
                 mm.setFrom(new InternetAddress(modelo.getRemitente()));
-
                 mm.setText(modelo.getMensaje());
             }
             /*
@@ -201,7 +199,6 @@ public class CtrlCorreo implements ActionListener {
             transferencia.connect(modelo.getRemitente(), this.vista.txt_contraseña.getText()); //Correo de quien envia el mensaje y la contraseña del correo
             transferencia.sendMessage(mm, mm.getAllRecipients()); //añadimos todas las direcciones a enviar el mensaje y se realiza el envio
             //transferencia.close(); //cerramos conexion
-
             JOptionPane.showMessageDialog(null, "MENSAJE ENVIADO");
         } catch (MessagingException e) {
             JOptionPane.showMessageDialog(null, "Error al enviar el mensaje" + e);
@@ -210,28 +207,28 @@ public class CtrlCorreo implements ActionListener {
     }
 
     private File CargarArchivo() {
-
-        JFileChooser chooser = new JFileChooser(); /*nos va permitir mostrar la ventana de selecion de un archivo*/
+        JFileChooser chooser = new JFileChooser();
+        /*nos va permitir mostrar la ventana de selecion de un archivo*/
         int n = chooser.showOpenDialog(null);
-         /*Si el usuario le da en aceptar*/
+        /*Si el usuario le da en aceptar*/
         if (JFileChooser.APPROVE_OPTION == n) {
-             /*Nos devolvera la ruta del archivo que seleccionamos*/
+            /*Nos devolvera la ruta del archivo que seleccionamos*/
             String rutaarchivo = chooser.getSelectedFile().getAbsolutePath();
             this.Archivo = new File(rutaarchivo);
-             /*Mostrara el numero de archivos que han sido cargados*/
+            /*Mostrara el numero de archivos que han sido cargados*/
             this.vista.lbl_mensajearchivo.setText("(1)" + Archivo.getName());
         }
-         /*Devuelve el archivo*/
+        /*Devuelve el archivo*/
         return Archivo;
     }
 
     private void ListarCorreo() throws NoSuchProviderException, MessagingException, IOException {
-        String listadocorreos="";
+        String listadocorreos = "";
         String correo = JOptionPane.showInputDialog(null, "Ingrese su direccion de correo");
         String contraseña = JOptionPane.showInputDialog(null, "Ingrese su contraseña");
 
-        if (correo.equals("")||contraseña.equals("")) {
-           JOptionPane.showMessageDialog(null,"Ingrese el correo y contraseña");
+        if (correo.equals("") || contraseña.equals("")) {
+            JOptionPane.showMessageDialog(null, "Ingrese el correo y contraseña");
         } else {
             Multipart mp = null;
             BodyPart bp = null;
@@ -266,22 +263,18 @@ public class CtrlCorreo implements ActionListener {
                         mp = (Multipart) m.getContent();
                         /*con getBodyPart obtendremos cada parte*/
                         bp = mp.getBodyPart(0);
-
                     }
                     /*Nos va a dar un listado con los correos que hayamos recibido*/
-                    listadocorreos=listadocorreos+"\n"+"De: " + InternetAddress.toString(m.getRecipients(Message.RecipientType.TO))+"\n"+
-                             "CC Para: " + InternetAddress.toString(m.getRecipients(Message.RecipientType.CC))+"\n"+
-                             "Fecha: " + m.getSentDate()+"\n"+
-                             "Asunto: " + m.getSubject()+"\n";
-                   
-
+                    listadocorreos = listadocorreos + "\n" + "De: " + InternetAddress.toString(m.getRecipients(Message.RecipientType.TO)) + "\n"
+                            + "CC Para: " + InternetAddress.toString(m.getRecipients(Message.RecipientType.CC)) + "\n"
+                            + "Fecha: " + m.getSentDate() + "\n"
+                            + "Asunto: " + m.getSubject() + "\n";
                 } catch (MessagingException ex) {
                     Logger.getLogger(CtrlCorreo.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
             /*Mnadamos a mostrar los correos recibidos*/
-             this.vista.txt_bandeja.setText(listadocorreos+"\n");
-            
+            this.vista.txt_bandeja.setText(listadocorreos + "\n");
         }
 
     }

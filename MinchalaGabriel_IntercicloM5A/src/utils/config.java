@@ -25,17 +25,15 @@ public class config {
 
     public static Properties ConfigurarLectura() {
         Properties prop = new Properties();
-
-// Deshabilitamos TLS
+        // Deshabilitamos TLS
         prop.setProperty("mail.pop3.starttls.enable", "false");
-
-// Hay que usar SSL
+        // Hay que usar SSL
         prop.setProperty("mail.pop3.socketFactory.class", "javax.net.ssl.SSLSocketFactory");/*Nombre de la clase que nos proporciona 
         java para obtener sockets SSL*/
         prop.setProperty("mail.pop3.socketFactory.fallback", "false");/*gmail solo admite SSL, por lo
         que esta propiedad la colocamos en false*/
 
-// Puerto 995 para conectarse.
+        // Puerto 995 para conectarse.
         prop.setProperty("mail.pop3.port", "995");/*Puerto de Conexion*/
         prop.setProperty("mail.pop3.socketFactory.port", "995");/*Socket Alternativo*/
         prop.setProperty("https.proxyHost", "myProxy");

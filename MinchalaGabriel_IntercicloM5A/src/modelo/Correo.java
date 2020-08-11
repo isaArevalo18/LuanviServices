@@ -1,18 +1,16 @@
-
 package modelo;
 
 import java.io.File;
 
 public class Correo {
-    
-   private String remitente;
-   private String destinatario;
-   private String contraseña;
-   private String destinatarioCC;
-   private String asunto;
-   private String mensaje;
-   private File archivo;
- 
+
+    private String remitente;
+    private String destinatario;
+    private String contraseña;
+    private String destinatarioCC;
+    private String asunto;
+    private String mensaje;
+    private File archivo;
 
     public Correo() {
     }
@@ -73,15 +71,9 @@ public class Correo {
         this.archivo = archivo;
     }
 
-
-    
     @Override
     public String toString() {
         return "Correo{" + "remitente=" + remitente + ", destinatario=" + destinatario + ", contrase\u00f1a=" + contraseña + ", destinatarioCC=" + destinatarioCC + ", asunto=" + asunto + ", mensaje=" + mensaje + '}';
     }
-   
-   
-   
-   
-   
+
 }
