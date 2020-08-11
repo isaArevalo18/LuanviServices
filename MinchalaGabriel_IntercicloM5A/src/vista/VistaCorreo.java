@@ -28,6 +28,10 @@ public class VistaCorreo extends javax.swing.JFrame {
     private void initComponents() {
 
         pl_fondo = new javax.swing.JPanel();
+        pl_bandeja = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txt_bandeja = new javax.swing.JTextArea();
+        jLabel6 = new javax.swing.JLabel();
         pl_enviarcorreo = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -42,6 +46,8 @@ public class VistaCorreo extends javax.swing.JFrame {
         btn_archivo = new javax.swing.JButton();
         btn_enviar = new javax.swing.JButton();
         lbl_mensajearchivo = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        txt_contraseña = new javax.swing.JPasswordField();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         item_salir = new javax.swing.JMenuItem();
@@ -51,106 +57,84 @@ public class VistaCorreo extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        pl_bandeja.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txt_bandeja.setColumns(20);
+        txt_bandeja.setRows(5);
+        jScrollPane2.setViewportView(txt_bandeja);
+
+        pl_bandeja.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 59, 500, 349));
+
+        jLabel6.setText("Bandeja de Entrada");
+        pl_bandeja.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 34, -1, -1));
+
+        pl_enviarcorreo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel1.setText("De:");
+        pl_enviarcorreo.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 28, 47, 22));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel2.setText("CC:");
+        pl_enviarcorreo.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 89, 47, 27));
+        pl_enviarcorreo.add(txt_destinatario, new org.netbeans.lib.awtextra.AbsoluteConstraints(76, 60, 445, -1));
+        pl_enviarcorreo.add(txt_remitente, new org.netbeans.lib.awtextra.AbsoluteConstraints(76, 30, 228, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel3.setText("Para:");
+        pl_enviarcorreo.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 56, 47, 27));
+        pl_enviarcorreo.add(txt_destinatariocopia, new org.netbeans.lib.awtextra.AbsoluteConstraints(76, 93, 445, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel4.setText("Asunto: ");
+        pl_enviarcorreo.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 122, -1, 27));
+        pl_enviarcorreo.add(txt_asunto, new org.netbeans.lib.awtextra.AbsoluteConstraints(86, 126, 435, -1));
 
         txt_mensaje.setColumns(20);
         txt_mensaje.setRows(5);
         jScrollPane1.setViewportView(txt_mensaje);
 
+        pl_enviarcorreo.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 160, 496, 189));
+
         btn_archivo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btn_archivo.setText("Adjuntar Archivo...");
+        pl_enviarcorreo.add(btn_archivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 367, 144, -1));
 
         btn_enviar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btn_enviar.setText("Enviar");
+        pl_enviarcorreo.add(btn_enviar, new org.netbeans.lib.awtextra.AbsoluteConstraints(452, 367, 69, -1));
 
         lbl_mensajearchivo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lbl_mensajearchivo.setText("(0) archivos adjuntos");
+        pl_enviarcorreo.add(lbl_mensajearchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 408, 254, -1));
 
-        javax.swing.GroupLayout pl_enviarcorreoLayout = new javax.swing.GroupLayout(pl_enviarcorreo);
-        pl_enviarcorreo.setLayout(pl_enviarcorreoLayout);
-        pl_enviarcorreoLayout.setHorizontalGroup(
-            pl_enviarcorreoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pl_enviarcorreoLayout.createSequentialGroup()
-                .addGroup(pl_enviarcorreoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pl_enviarcorreoLayout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addGroup(pl_enviarcorreoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(pl_enviarcorreoLayout.createSequentialGroup()
-                                .addComponent(btn_archivo, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(280, 280, 280)
-                                .addComponent(btn_enviar, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(pl_enviarcorreoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jScrollPane1)
-                                .addGroup(pl_enviarcorreoLayout.createSequentialGroup()
-                                    .addGroup(pl_enviarcorreoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(pl_enviarcorreoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(pl_enviarcorreoLayout.createSequentialGroup()
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addGroup(pl_enviarcorreoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                .addComponent(txt_destinatario)
-                                                .addComponent(txt_remitente, javax.swing.GroupLayout.DEFAULT_SIZE, 445, Short.MAX_VALUE)
-                                                .addComponent(txt_destinatariocopia)))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pl_enviarcorreoLayout.createSequentialGroup()
-                                            .addGap(14, 14, 14)
-                                            .addComponent(txt_asunto, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
-                    .addGroup(pl_enviarcorreoLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lbl_mensajearchivo, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(66, Short.MAX_VALUE))
-        );
-        pl_enviarcorreoLayout.setVerticalGroup(
-            pl_enviarcorreoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pl_enviarcorreoLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(pl_enviarcorreoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_remitente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pl_enviarcorreoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_destinatario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pl_enviarcorreoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_destinatariocopia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pl_enviarcorreoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_asunto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(pl_enviarcorreoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_archivo)
-                    .addComponent(btn_enviar))
-                .addGap(18, 18, 18)
-                .addComponent(lbl_mensajearchivo)
-                .addContainerGap(12, Short.MAX_VALUE))
-        );
+        jLabel5.setText("Contraseña");
+        pl_enviarcorreo.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(314, 33, -1, -1));
+        pl_enviarcorreo.add(txt_contraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(374, 30, 147, -1));
 
         javax.swing.GroupLayout pl_fondoLayout = new javax.swing.GroupLayout(pl_fondo);
         pl_fondo.setLayout(pl_fondoLayout);
         pl_fondoLayout.setHorizontalGroup(
             pl_fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pl_enviarcorreo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(pl_fondoLayout.createSequentialGroup()
+                .addComponent(pl_enviarcorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 561, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 8, Short.MAX_VALUE))
+            .addGroup(pl_fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pl_fondoLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(pl_bandeja, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         pl_fondoLayout.setVerticalGroup(
             pl_fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pl_enviarcorreo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(pl_fondoLayout.createSequentialGroup()
+                .addComponent(pl_enviarcorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 39, Short.MAX_VALUE))
+            .addGroup(pl_fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pl_fondoLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(pl_bandeja, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         jMenu1.setText("Archivo");
@@ -227,18 +211,24 @@ public class VistaCorreo extends javax.swing.JFrame {
     public javax.swing.JMenuItem item_enviar;
     public javax.swing.JMenuItem item_recibir;
     public javax.swing.JMenuItem item_salir;
-    public javax.swing.JLabel jLabel1;
-    public javax.swing.JLabel jLabel2;
-    public javax.swing.JLabel jLabel3;
-    public javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     public javax.swing.JLabel lbl_mensajearchivo;
+    public javax.swing.JPanel pl_bandeja;
     public javax.swing.JPanel pl_enviarcorreo;
     private javax.swing.JPanel pl_fondo;
     public javax.swing.JTextField txt_asunto;
+    public javax.swing.JTextArea txt_bandeja;
+    public javax.swing.JPasswordField txt_contraseña;
     public javax.swing.JTextField txt_destinatario;
     public javax.swing.JTextField txt_destinatariocopia;
     public javax.swing.JTextArea txt_mensaje;
