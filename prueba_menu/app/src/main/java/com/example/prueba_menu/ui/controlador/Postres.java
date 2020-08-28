@@ -3,12 +3,21 @@ package com.example.prueba_menu.ui.controlador;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+
+import com.example.prueba_menu.ModeloPostres;
 import com.example.prueba_menu.R;
+
+import com.example.prueba_menu.RecyclerViewPostresAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -26,6 +35,8 @@ public class Postres extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    private RecyclerView recyclerViewPostres;
+    private RecyclerViewPostresAdapter recyclerViewPostresAdapter;
     public Postres() {
         // Required empty public constructor
     }
@@ -61,6 +72,22 @@ public class Postres extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_postres, container, false);
+        View v=inflater.inflate(R.layout.fragment_postres, container, false);
+        recyclerViewPostres=(RecyclerView)v.findViewById(R.id.recycler_postres);
+        LinearLayoutManager llm=new LinearLayoutManager(getActivity());
+        recyclerViewPostres.setLayoutManager(llm);
+        recyclerViewPostresAdapter=new RecyclerViewPostresAdapter(obtenerPostres());
+        recyclerViewPostres.setAdapter(recyclerViewPostresAdapter);
+        return v;
+
+    }
+
+    public List<ModeloPostres> obtenerPostres(){
+        List<ModeloPostres>postres=new ArrayList<>();
+        postres.add(new ModeloPostres(R.drawable.rosca));
+        postres.add(new ModeloPostres(R.drawable.jugo_natural));
+        postres.add(new ModeloPostres(R.drawable.pastel_fresa));
+
+        return postres;
     }
 }
