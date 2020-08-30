@@ -15,7 +15,4 @@ public class Bebidas {
         return imgBebida;
     }
 
-    public void setImgBebida(int imgBebida) {
-        this.imgBebida = imgBebida;
-    }
 }

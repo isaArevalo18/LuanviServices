@@ -11,7 +11,7 @@ public class Postres {
         this.imgPostre = imgPostre;
     }
 
-    public int getImgBebida() {
+    public int getImgPostre() {
         return imgPostre;
     }
 

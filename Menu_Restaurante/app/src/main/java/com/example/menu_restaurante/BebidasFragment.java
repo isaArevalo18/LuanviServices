@@ -4,12 +4,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -43,14 +40,6 @@ public class BebidasFragment extends Fragment {
         List<Bebidas>bebidas=new ArrayList<>();
         bebidas.add(new Bebidas(R.drawable.cafe));
         bebidas.add(new Bebidas(R.drawable.coctel_jordano));
-        bebidas.add(new Bebidas(R.drawable.camarones));
-       bebidas.add(new Bebidas(R.drawable.flan_celestial));
-       bebidas.add(new Bebidas(R.drawable.cupcakes_festival));
-        bebidas.add(new Bebidas(R.drawable.cafe));
-        bebidas.add(new Bebidas(R.drawable.coctel_jordano));
-        bebidas.add(new Bebidas(R.drawable.camarones));
-        bebidas.add(new Bebidas(R.drawable.flan_celestial));
-        bebidas.add(new Bebidas(R.drawable.cupcakes_festival));
         return bebidas;
     }
 }

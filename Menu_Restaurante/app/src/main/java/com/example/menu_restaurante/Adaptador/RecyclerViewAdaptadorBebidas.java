@@ -20,7 +20,7 @@ public class RecyclerViewAdaptadorBebidas extends RecyclerView.Adapter<RecyclerV
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            imgBebida=(ImageView)itemView.findViewById(R.id.img_bebida);
+            imgBebida=(ImageView)itemView.findViewById(R.id.img_item);
         }
     }
 
@@ -32,7 +32,7 @@ public class RecyclerViewAdaptadorBebidas extends RecyclerView.Adapter<RecyclerV
 
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-       View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.item_bebidas,parent,false);
+       View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.item_cardview,parent,false);
        ViewHolder viewHolder=new ViewHolder(view);
         return viewHolder;
     }

@@ -1,18 +1,18 @@
 package com.example.menu_restaurante.Modelo;
 
-public class Bebidas {
-    private int imgBebida;
+public class Platillos {
+    private int imgPlatillo;
 
-    public Bebidas() {
+    public Platillos() {
 
     }
 
-    public Bebidas(int imgBebida) {
-        this.imgBebida = imgBebida;
+    public Platillos(int imgPlatillo) {
+        this.imgPlatillo = imgPlatillo;
     }
 
-    public int getImgBebida() {
-        return imgBebida;
+    public int getImgPlatillo() {
+        return imgPlatillo;
     }
 
 }
