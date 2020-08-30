@@ -40,6 +40,9 @@ public class BebidasFragment extends Fragment {
         List<Bebidas>bebidas=new ArrayList<>();
         bebidas.add(new Bebidas(R.drawable.cafe));
         bebidas.add(new Bebidas(R.drawable.coctel_jordano));
+        bebidas.add(new Bebidas(R.drawable.coctel));
+        bebidas.add(new Bebidas(R.drawable.jugo_natural));
+        bebidas.add(new Bebidas(R.drawable.vino_tinto));
         return bebidas;
     }
 }

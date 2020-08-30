@@ -42,6 +42,10 @@ public class PostresFragment extends Fragment {
         List<Postres>postres=new ArrayList<>();
         postres.add(new Postres(R.drawable.flan_celestial));
         postres.add(new Postres(R.drawable.cupcakes_festival));
+        postres.add(new Postres(R.drawable.muffin_amoroso));
+        postres.add(new Postres(R.drawable.pastel_fresa));
+        postres.add(new Postres(R.drawable.postre_vainilla));
+        postres.add(new Postres(R.drawable.rosca));
         return postres;
     }
 }

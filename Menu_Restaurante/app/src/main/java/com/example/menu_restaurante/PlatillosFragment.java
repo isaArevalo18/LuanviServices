@@ -41,6 +41,9 @@ public class PlatillosFragment extends Fragment {
     public List<Platillos> obtenerplatillos(){
         List<Platillos>platillos=new ArrayList<>();
         platillos.add(new Platillos(R.drawable.camarones));
+        platillos.add(new Platillos(R.drawable.lomo_cerdo));
+        platillos.add(new Platillos(R.drawable.sandwich));
+        platillos.add(new Platillos(R.drawable.sushi));
         return platillos;
     }
 }
