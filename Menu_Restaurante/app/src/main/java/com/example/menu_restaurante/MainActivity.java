@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -49,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private String Sesion_tipo = "null";
 
+    public TextView correo, usuario;
 
     private AppBarConfiguration mAppBarConfiguration;
 
@@ -78,19 +80,23 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
+        View headerView = navigationView.getHeaderView(0);
+        correo = headerView.findViewById(R.id.txt_correo);
+        usuario = headerView.findViewById(R.id.txt_usuario);
 
         //////////////////GOOGLE//////////////
         mAuth = FirebaseAuth.getInstance();
         Sesion_tipo = getIntent().getStringExtra("sesion");
         Toast.makeText(this,"metodo : "+Sesion_tipo,Toast.LENGTH_SHORT).show();
 
-
-
         //////////////////CORREO//////////////
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
                 .build();
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+
+        cargar_datos_usuario();
+
     }
 
     public void cerarSecion(View v)
@@ -131,6 +137,9 @@ public class MainActivity extends AppCompatActivity {
             String personEmail = acct.getEmail();
 
             //aqui seteas los datos a los campos que te pedi
+
+            usuario.setText(personName);
+            correo.setText(personEmail);
         }
         if (mAuth.getCurrentUser() != null )
         {
@@ -140,6 +149,12 @@ public class MainActivity extends AppCompatActivity {
 
             //aqui seteas los datos a los campos que te pedi
 
+            if (name.isEmpty()){
+                usuario.setText(name_message);
+            }else{
+                usuario.setText(name);
+            }
+            correo.setText(email_user);
         }
 
     }

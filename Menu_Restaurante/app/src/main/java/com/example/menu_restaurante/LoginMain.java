@@ -113,7 +113,6 @@ public class LoginMain extends AppCompatActivity {
 
             @Override
             public void onSuccess(LoginResult loginResult) {
-
                 Toast.makeText(LoginMain.this,"listo",Toast.LENGTH_LONG).show();
             }
 

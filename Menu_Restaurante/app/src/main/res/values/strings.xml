@@ -25,4 +25,6 @@
     <string name="todo">TODO</string>
     <string name="Stringnombreplatillo">Platillo</string>
     <string name="Stringprecioplatillo">Precio</string>
+
+    <string name="btn_agg_carrito">Añadir al carrito</string>
 </resources>

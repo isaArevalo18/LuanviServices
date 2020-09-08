@@ -53,5 +53,19 @@
             android:text="TextView"
             android:textSize="20sp" />
 
+
+
     </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_agregar_carrito"
+        android:layout_width="335dp"
+        android:layout_height="49dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="37dp"
+        android:layout_marginEnd="39dp"
+        android:layout_marginBottom="65dp"
+        android:background="@drawable/btn_rounded_registrarse"
+        android:text="@string/btn_agg_carrito" />
 </RelativeLayout>
