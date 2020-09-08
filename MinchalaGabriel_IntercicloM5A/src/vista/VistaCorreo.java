@@ -48,16 +48,30 @@ public class VistaCorreo extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        pl_bandeja.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
         txt_bandeja.setColumns(20);
         txt_bandeja.setRows(5);
         jScrollPane2.setViewportView(txt_bandeja);
 
-        pl_bandeja.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 59, 500, 349));
-
         jLabel6.setText("Bandeja de Entrada");
-        pl_bandeja.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 34, -1, -1));
+
+        javax.swing.GroupLayout pl_bandejaLayout = new javax.swing.GroupLayout(pl_bandeja);
+        pl_bandeja.setLayout(pl_bandejaLayout);
+        pl_bandejaLayout.setHorizontalGroup(
+            pl_bandejaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pl_bandejaLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(pl_bandejaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
+        pl_bandejaLayout.setVerticalGroup(
+            pl_bandejaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pl_bandejaLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(jLabel6)
+                .addGap(12, 12, 12)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         pl_enviarcorreo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -113,7 +127,7 @@ public class VistaCorreo extends javax.swing.JFrame {
             .addGroup(pl_fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pl_fondoLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(pl_bandeja, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pl_bandeja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
         pl_fondoLayout.setVerticalGroup(
@@ -124,7 +138,7 @@ public class VistaCorreo extends javax.swing.JFrame {
             .addGroup(pl_fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pl_fondoLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(pl_bandeja, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pl_bandeja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
@@ -202,10 +216,10 @@ public class VistaCorreo extends javax.swing.JFrame {
     public javax.swing.JMenuItem item_enviar;
     public javax.swing.JMenuItem item_recibir;
     public javax.swing.JMenuItem item_salir;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    public javax.swing.JLabel jLabel1;
+    public javax.swing.JLabel jLabel2;
+    public javax.swing.JLabel jLabel3;
+    public javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JMenu jMenu1;
