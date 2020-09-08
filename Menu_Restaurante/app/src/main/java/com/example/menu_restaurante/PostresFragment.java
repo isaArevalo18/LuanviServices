@@ -1,5 +1,6 @@
 package com.example.menu_restaurante;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,13 +36,28 @@ public class PostresFragment extends Fragment {
         recyclerViewPostres.setLayoutManager(new LinearLayoutManager(getActivity()));
         adaptadorPostres=new RecyclerViewAdaptadorPostres(obtenerpostres());
         recyclerViewPostres.setAdapter(adaptadorPostres);
+        adaptadorPostres.setOnClicKListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getActivity(),DetalleProducto.class);
+                intent.putExtra("imagen",obtenerpostres().get(recyclerViewPostres.getChildAdapterPosition(view)).getImgPostre());
+                intent.putExtra("nombre",obtenerpostres().get(recyclerViewPostres.getChildAdapterPosition(view)).getNombre());
+                intent.putExtra("precio",obtenerpostres().get(recyclerViewPostres.getChildAdapterPosition(view)).getPrecio());
+                intent.putExtra("descripcion",obtenerpostres().get(recyclerViewPostres.getChildAdapterPosition(view)).getDescripcion());
+                startActivity(intent);
+            }
+        });
         return root;
     }
 
     public List<Postres> obtenerpostres(){
         List<Postres>postres=new ArrayList<>();
-        postres.add(new Postres(R.drawable.flan_celestial));
-        postres.add(new Postres(R.drawable.cupcakes_festival));
+        postres.add(new Postres(R.drawable.flan_celestial,"Flan Celestial ","1.50","Flan de Vainilla acompañado de chocolate derretido"));
+        postres.add(new Postres(R.drawable.cupcakes_festival,"Cupcakes Festival","2.00","Cupcake de chocolate con grajeas y crema de coco"));
+        postres.add(new Postres(R.drawable.muffin_amoroso,"Mufin Amoroso","3.50","Mufin acompañado de crema sabor a vainilla"));
+        postres.add(new Postres(R.drawable.pastel_fresa,"Pastel de Fresa","5.50","Pastel de fresas silvestres con crema de vainilla y cereza"));
+        postres.add(new Postres(R.drawable.postre_vainilla,"Postre de Vainilla","200","Postre de vainilla acompañado con fresa y crema de manzana"));
+        postres.add(new Postres(R.drawable.rosca,"Rosca","2.50","Rosca de chocolate acompañada de una tasa de cafe"));
         return postres;
     }
 }

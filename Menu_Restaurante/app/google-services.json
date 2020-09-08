@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1085215360980",
+    "firebase_url": "https://menu-restaurante-7280d.firebaseio.com",
+    "project_id": "menu-restaurante-7280d",
+    "storage_bucket": "menu-restaurante-7280d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1085215360980:android:c574e86ea898160cd63841",
+        "android_client_info": {
+          "package_name": "com.example.menu_restaurante"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1085215360980-ntqc2js4p6sujm69dpc23onn2vjfo59i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCBeyy0yHAP0XsY3U9eobj0Tg4U4s3G13Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1085215360980-ntqc2js4p6sujm69dpc23onn2vjfo59i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

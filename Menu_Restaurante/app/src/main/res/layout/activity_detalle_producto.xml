@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/img_item"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    tools:context=".DetalleProducto">
+
+    <LinearLayout
+        android:layout_width="409dp"
+        android:layout_height="424dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="150dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.608">
+
+        <TextView
+            android:id="@+id/tv_nombreproducto"
+            android:layout_width="match_parent"
+            android:layout_height="43dp"
+            android:background="#4E5054"
+            android:gravity="center_vertical"
+            android:text="TextView"
+            android:textSize="22sp" />
+
+        <ImageView
+            android:id="@+id/img_fotoproducto"
+            android:layout_width="match_parent"
+            android:layout_height="231dp"
+            app:srcCompat="@drawable/cafe" />
+
+        <TextView
+            android:id="@+id/tv_precioproducto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#4E5054"
+            android:backgroundTint="#4E5054"
+            android:gravity="center"
+            android:text="TextView"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tv_descripcionproducto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#4E5054"
+            android:gravity="center"
+            android:text="TextView"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+</RelativeLayout>
