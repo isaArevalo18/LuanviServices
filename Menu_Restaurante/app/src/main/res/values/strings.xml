@@ -25,6 +25,8 @@
     <string name="todo">TODO</string>
     <string name="Stringnombreplatillo">Platillo</string>
     <string name="Stringprecioplatillo">Precio</string>
-
+    <string name="StringcarritoTitulo">Carrito Pedido</string>
+    <string name="StringGenerarCompra">Generar Pedido</string>
+    <string name="StringGenerarTotal">Total: $0</string>
     <string name="btn_agg_carrito">Añadir al carrito</string>
 </resources>

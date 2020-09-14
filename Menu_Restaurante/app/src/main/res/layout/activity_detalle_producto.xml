@@ -67,5 +67,6 @@
         android:layout_marginEnd="39dp"
         android:layout_marginBottom="65dp"
         android:background="@drawable/btn_rounded_registrarse"
+        android:onClick="AñadirCarrito"
         android:text="@string/btn_agg_carrito" />
 </RelativeLayout>
