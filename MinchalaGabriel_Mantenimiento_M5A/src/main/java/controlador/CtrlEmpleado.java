@@ -19,7 +19,7 @@ import javax.swing.table.TableModel;
 import modelo.Empleado;
 import vista.VistaMantenimiento;
 
-public class CtrlEmpleado implements ActionListener{
+public class CtrlEmpleado implements ActionListener {
 
     private Empleado modelo;
     private VistaMantenimiento vista;
@@ -35,7 +35,7 @@ public class CtrlEmpleado implements ActionListener{
         vista.btn_actualizar.addActionListener(this);
         vista.btn_borrar.addActionListener(this);
         vista.btn_nuevo.addActionListener(this);
-      
+        vista.btn_editar_registro.addActionListener(this);
     }
 
     public CtrlEmpleado() {
@@ -50,16 +50,22 @@ public class CtrlEmpleado implements ActionListener{
             vista.dispose();
         }
         if (e.getSource() == vista.btn_guardar) {
-            LimpiarTabla();
-            Add();
-            Listar(vista.tbl_empleado);
+            Save();
         }
         if (e.getSource() == vista.btn_nuevo) {
             LimpiarFormulario();
         }
+
+        if (e.getSource() == vista.btn_editar_registro) {
+            obtenerRegistro();
+        }
         if (e.getSource() == vista.btn_actualizar) {
             Update();
             LimpiarFormulario();
+        }
+
+        if (e.getSource() == vista.btn_borrar) {
+            Delete();
         }
     }
 
@@ -69,10 +75,10 @@ public class CtrlEmpleado implements ActionListener{
         vista.setLocationRelativeTo(null);
         vista.setResizable(false);
         vista.setVisible(true);
-        
+
     }
 
-    public void Add() {
+    public void Save() {
         long id = Long.parseLong(vista.txt_codempleado.getText());
         LocalDate fecha = LocalDate.parse(vista.txt_fech_naci.getText());
         modelo = new Empleado(id, vista.txt_apellido.getText(), vista.txt_nombre.getText(), fecha);
@@ -84,7 +90,8 @@ public class CtrlEmpleado implements ActionListener{
             em.persist(modelo);
             em.getTransaction().commit();
             em.close();
-
+            LimpiarTabla();
+            Listar(vista.tbl_empleado);
             JOptionPane.showMessageDialog(null, "Registro Guardado con Exito");
         } catch (Exception e) {
             System.out.println(e);
@@ -127,6 +134,8 @@ public class CtrlEmpleado implements ActionListener{
             modelo.setFechaNacimiento(fecha);
             em.getTransaction().commit();
             em.close();
+            LimpiarTabla();
+            Listar(vista.tbl_empleado);
             JOptionPane.showMessageDialog(null, "Registro Actualizado con Exito");
             vista.txt_codempleado.setEnabled(true);
         } catch (Exception e) {
@@ -135,11 +144,11 @@ public class CtrlEmpleado implements ActionListener{
 
     public void Delete() {
         int fila = vista.tbl_empleado.getSelectedRow();
-        int id = (int) vista.tbl_empleado.getValueAt(fila, 0);
         try {
             if (fila == -1) {
                 JOptionPane.showMessageDialog(null, "Seleccione un Registro de la tabla porfavor");
             } else {
+                Long id = Long.parseLong(vista.tbl_empleado.getValueAt(fila, 0).toString());
                 modelo = new Empleado();
                 EntityManager em = emf.createEntityManager();
                 modelo = em.find(Empleado.class, id);
@@ -147,6 +156,8 @@ public class CtrlEmpleado implements ActionListener{
                 em.remove(modelo);
                 em.getTransaction().commit();
                 em.close();
+                LimpiarTabla();
+                Listar(vista.tbl_empleado);
                 JOptionPane.showMessageDialog(null, "Registro Eliminado con Exito");
 
             }
@@ -154,10 +165,8 @@ public class CtrlEmpleado implements ActionListener{
         }
     }
 
-    public void obtenerRegistro(int fila) {
-
-       
-  
+    public void obtenerRegistro() {
+        int fila = vista.tbl_empleado.getSelectedRow();
         if (fila == -1) {
             JOptionPane.showMessageDialog(null, "Seleccione, un registro de la tabla por favor..");
         } else {
@@ -166,7 +175,6 @@ public class CtrlEmpleado implements ActionListener{
             vista.txt_apellido.setText(vista.tbl_empleado.getValueAt(fila, 1).toString());
             vista.txt_nombre.setText(vista.tbl_empleado.getValueAt(fila, 2).toString());
             vista.txt_fech_naci.setText(vista.tbl_empleado.getValueAt(fila, 3).toString());
-        
         }
     }
 
@@ -183,7 +191,5 @@ public class CtrlEmpleado implements ActionListener{
         vista.txt_fech_naci.setText("");
         vista.txt_codempleado.setText("");
     }
-
-
 
 }
