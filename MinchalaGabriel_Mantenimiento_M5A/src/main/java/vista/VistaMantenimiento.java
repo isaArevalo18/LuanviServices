@@ -10,10 +10,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author ANA
- */
+
 public class VistaMantenimiento extends javax.swing.JFrame {
 
     /**
@@ -261,17 +258,19 @@ public class VistaMantenimiento extends javax.swing.JFrame {
 
     private void txt_apellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_apellidoKeyTyped
         //validacion para que en apellidos solo se ingresen letras 
-        char c = evt.getKeyChar();
-        if (c < 'a' || c > 'z') {
+       char validar = evt.getKeyChar();
+        if (Character.isDigit(validar)) {  
             evt.consume();
+            JOptionPane.showMessageDialog(null, "INGRESE SOLO LETRAS");
         }
     }//GEN-LAST:event_txt_apellidoKeyTyped
 
     private void txt_nombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_nombreKeyTyped
         //validacion para que en nombres solo se ingresen letras  
-        char c = evt.getKeyChar();
-        if (c < 'a' || c > 'z') {
+       char validar = evt.getKeyChar();
+        if (Character.isDigit(validar)) {  
             evt.consume();
+            JOptionPane.showMessageDialog(null, "INGRESE SOLO LETRAS");
         }
     }//GEN-LAST:event_txt_nombreKeyTyped
 
