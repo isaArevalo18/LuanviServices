@@ -31,6 +31,8 @@ public class VistaMantenimiento extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
         jPanel1 = new javax.swing.JPanel();
         pl_empleado = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -49,9 +51,14 @@ public class VistaMantenimiento extends javax.swing.JFrame {
         btn_editar_registro = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu3 = new javax.swing.JMenu();
+        item_salir = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         item_empleado = new javax.swing.JMenuItem();
-        item_salir = new javax.swing.JMenuItem();
+
+        jMenuItem1.setText("jMenuItem1");
+
+        jMenu2.setText("jMenu2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -199,6 +206,13 @@ public class VistaMantenimiento extends javax.swing.JFrame {
                 .addGap(20, 20, 20))
         );
 
+        jMenu3.setText("Archivo");
+
+        item_salir.setText("Salir");
+        jMenu3.add(item_salir);
+
+        jMenuBar1.add(jMenu3);
+
         jMenu1.setText("Mantenimiento");
 
         item_empleado.setText("Empleado");
@@ -208,9 +222,6 @@ public class VistaMantenimiento extends javax.swing.JFrame {
             }
         });
         jMenu1.add(item_empleado);
-
-        item_salir.setText("Salir");
-        jMenu1.add(item_salir);
 
         jMenuBar1.add(jMenu1);
 
@@ -322,7 +333,10 @@ public class VistaMantenimiento extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     public javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JPanel pl_empleado;
