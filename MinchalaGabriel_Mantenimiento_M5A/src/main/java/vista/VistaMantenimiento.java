@@ -261,7 +261,7 @@ public class VistaMantenimiento extends javax.swing.JFrame {
        char validar = evt.getKeyChar();
         if (Character.isDigit(validar)) {  
             evt.consume();
-            JOptionPane.showMessageDialog(null, "INGRESE SOLO LETRAS");
+            JOptionPane.showMessageDialog(null, "Ingrese solo letras");
         }
     }//GEN-LAST:event_txt_apellidoKeyTyped
 
@@ -270,7 +270,7 @@ public class VistaMantenimiento extends javax.swing.JFrame {
        char validar = evt.getKeyChar();
         if (Character.isDigit(validar)) {  
             evt.consume();
-            JOptionPane.showMessageDialog(null, "INGRESE SOLO LETRAS");
+            JOptionPane.showMessageDialog(null, "Ingrese solo letras");
         }
     }//GEN-LAST:event_txt_nombreKeyTyped
 
