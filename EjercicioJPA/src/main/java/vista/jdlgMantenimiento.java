@@ -354,6 +354,7 @@ public class jdlgMantenimiento extends javax.swing.JDialog {
         private void jbtAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtAgregarActionPerformed
 
             try {
+                //validacion de ingreso de campos
                 if (ValidarCampos()) {
                     obtenerValores();
                     if (objControladorEmpleado.ingresarEmpleado(id, apellido, nombre, fecha, iddireccion, calleprincipal, callesecundaria, numero, barrio, telefono)) {

@@ -11,7 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.criteria.Fetch;
-
+// creacion de tabla empleado
 @Entity
 @Table(name = "EMPLEADO")
 public class Empleado implements Serializable {
@@ -29,7 +29,7 @@ public class Empleado implements Serializable {
 
     @Column(name = "FECHA_NACIMIENTO")
     private String fechaNacimiento;
-    
+    // creacion de la relacion uno a uno con la tabla direccion mediante la llave primaria
     @OneToOne(cascade={CascadeType.ALL})
     @JoinColumn(name = "COD_DIRECCION")
     private Direccion direccion;

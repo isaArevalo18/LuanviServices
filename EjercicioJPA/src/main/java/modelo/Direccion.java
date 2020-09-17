@@ -7,13 +7,13 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
+// creacion de la tabla direccion 
 @Entity
 @Table(name = "DIRECCION")
 public class Direccion implements Serializable {
-
+// creacion de los paramentros
     @Id
-    @Column(name="COD_DIRECCION")
+    @Column(name="COD_DIRECCION")// llave principal
     private Long id;
     @Column(name = "CALLEPRINCIPAL")
     private String calleprincipal;
@@ -25,6 +25,7 @@ public class Direccion implements Serializable {
     private String barrio;
     @Column(name = "TELEFONO")
     private String telefono;
+    // creacion de la relacion uno a uno
     @OneToOne(mappedBy = "direccion",fetch = FetchType.LAZY)
     private Empleado empleado;
 
