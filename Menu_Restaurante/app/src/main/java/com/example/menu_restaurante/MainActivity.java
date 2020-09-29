@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-        View headerView = navigationView.getHeaderView(0);
+        /*View headerView = navigationView.getHeaderView(0);
         correo = headerView.findViewById(R.id.txt_correo);
         usuario = headerView.findViewById(R.id.txt_usuario);
 
@@ -96,11 +96,11 @@ public class MainActivity extends AppCompatActivity {
                 .build();
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
-        cargar_datos_usuario();
+        cargar_datos_usuario();*/
 
     }
 
-    public void cerarSecion(View v)
+    /*public void cerarSecion(View v)
     {
         try {
             if (Sesion_tipo.equals("gmail"))
@@ -127,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
         {
             Toast.makeText(MainActivity.this,"Error en el Cierre de Sesion",Toast.LENGTH_SHORT).show();
         }
-    }
+    }*/
 
     public void cargar_datos_usuario ()
     {

@@ -31,8 +31,8 @@
         android:id="@+id/tvt_total"
         android:layout_width="145dp"
         android:layout_height="35dp"
-        android:layout_marginTop="524dp"
-        android:layout_marginEnd="232dp"
+        android:layout_marginTop="528dp"
+        android:layout_marginEnd="228dp"
         android:text="@string/StringGenerarTotal"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -40,8 +40,8 @@
 
     <Button
         android:id="@+id/btn_generar_compra"
-        android:layout_width="172dp"
-        android:layout_height="52dp"
+        android:layout_width="186dp"
+        android:layout_height="70dp"
         android:layout_marginTop="508dp"
         android:layout_marginEnd="28dp"
         android:text="@string/StringGenerarCompra"
