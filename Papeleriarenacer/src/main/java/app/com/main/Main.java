@@ -1,5 +1,5 @@
-
 package app.com.main;
+
 import Vista.Login;
 
 public class Main {
@@ -8,8 +8,10 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-     Login vista=new Login();
-     vista.setVisible(true);
+        //Declaramos la vista del Login
+        Login vista = new Login();
+        //Hacemos visible la vista del Login
+        vista.setVisible(true);
     }
-    
+
 }

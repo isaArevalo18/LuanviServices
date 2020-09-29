@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author ANA
+ * @author LuanviServices
  */
 public class Login extends javax.swing.JFrame {
 
@@ -19,7 +19,9 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
-       
+        //Centrar la vista en pantalla
+        this.setLocationRelativeTo(null);
+
     }
 
     /**
@@ -78,33 +80,31 @@ public class Login extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(161, 161, 161)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 164, Short.MAX_VALUE))
+                        .addGap(125, 125, 125)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
+                        .addGap(105, 105, 105)
+                        .addComponent(btn_recuperar, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(147, 147, 147)
+                        .addComponent(btn_ingresar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(44, 44, 44)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel1)
                             .addComponent(jLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jtx_usuario)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btn_recuperar, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jp_clave, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
-                .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(162, 162, 162)
-                .addComponent(btn_ingresar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jp_clave)
+                            .addComponent(jtx_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(78, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jtx_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -112,11 +112,11 @@ public class Login extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jp_clave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-                .addGap(18, 18, 18)
+                .addGap(28, 28, 28)
                 .addComponent(btn_ingresar)
                 .addGap(18, 18, 18)
                 .addComponent(btn_recuperar)
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -134,20 +134,26 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_ingresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ingresarActionPerformed
-        CtrlUsuario usuario=new CtrlUsuario();
-        String username=usuario.Login(jtx_usuario.getText(),jp_clave.getText());
-        if (username.length()>0) {
-            JOptionPane.showMessageDialog(null,"BIENVENIDO: "+username);
-        }else{
-            JOptionPane.showMessageDialog(null,"Revise su correo y contraseña");
+        //Se declara la clase de CtrlUsuario
+        CtrlUsuario usuario = new CtrlUsuario();
+        //Se llama al método de Login de la clase CtrlUsuario enviando los datos (usuario y clave)
+        String username = usuario.Login(jtx_usuario.getText(), jp_clave.getText());
+        //Si se obtuvo resultado se visualiza el mensaje de Bienvenido
+        //Si no se obtuvo resultados se visualiza el mensaje de Revision de correo o clave
+        if (username.length() > 0) {
+            JOptionPane.showMessageDialog(null, "BIENVENIDO: " + username);
+        } else {
+            JOptionPane.showMessageDialog(null, "Revise su correo y contraseña");
         }
     }//GEN-LAST:event_btn_ingresarActionPerformed
 
     private void btn_recuperarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_recuperarActionPerformed
-       RecuperarPassword recuperacion=new RecuperarPassword();
-       recuperacion.setVisible(true);
-       recuperacion.setLocationRelativeTo(null);
-       this.dispose();
+        //Se declara la vista de RecuperarPassword
+        RecuperarPassword recuperacion = new RecuperarPassword();
+        //Se hace visible la vista
+        recuperacion.setVisible(true);
+        //Se cierra la vista actual
+        this.dispose();
     }//GEN-LAST:event_btn_recuperarActionPerformed
 
     /**
