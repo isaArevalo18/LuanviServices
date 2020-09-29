@@ -5,9 +5,9 @@ import java.util.Properties;
 public class ConfigCorreo {
 
     //Aqui va el correo desde donde se enviara las notificaciones
-    public static String CorreoSistema = "cuenta.prueba.ex16@gmail.com";
+    public static String CorreoSistema = "correoprueba@gmail.com";
     //Aqui va la clave del correo
-    public static String Password = "Peluches18";
+    public static String Password = "clavedeprueba";
 
     public static Properties ConfigurarServidorCorreo() {
         String proveedorCorreo = "smtp.gmail.com";
