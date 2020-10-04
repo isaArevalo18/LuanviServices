@@ -11,7 +11,7 @@ public class Conexion {
     //Usuario de la base de datos
     private String user = "postgres";
     //Clave de la base de datos
-    private String password = "12345";
+    private String password = "1234";
 
     public Conexion() {
         try {
