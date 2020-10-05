@@ -1,80 +1,113 @@
-
 package modelo;
 
 import java.util.ArrayList;
 
-
 public class Lecturas {
-    public static ArrayList<Lecturas> listaLectura = new ArrayList<>();
-    private String fecha_lecturaAct;
-    private String fecha_lecturaAnter;
-    private String lecturaAnter;
-    private String lecturaAct;
-    private String numMedidor;
-    private String consumo;
-    private boolean estado;
+
+    private int idlectura;
+    private String lectura;
+    private String fechalectura;
+    private int consumo;
+    private String estado;
+    private int idCliente;
+    private int idPlanilla;
+    private double valorpago;
+    private int meslectura;
+    private int lecturaAnterior;
+    private String fechaLecturaAnterior;
 
     public Lecturas() {
     }
     
-
-    public String getFecha_lecturaAct() {
-        return fecha_lecturaAct;
+    public int getIdlectura() {
+        return idlectura;
     }
 
-    public void setFecha_lecturaAct(String fecha_lecturaAct) {
-        this.fecha_lecturaAct = fecha_lecturaAct;
+    public void setIdlectura(int idlectura) {
+        this.idlectura = idlectura;
     }
 
-    public String getFecha_lecturaAnter() {
-        return fecha_lecturaAnter;
+    public String getLectura() {
+        return lectura;
     }
 
-    public void setFecha_lecturaAnter(String fecha_lecturaAnter) {
-        this.fecha_lecturaAnter = fecha_lecturaAnter;
+    public void setLectura(String lectura) {
+        this.lectura = lectura;
     }
 
-    public String getLecturaAnter() {
-        return lecturaAnter;
+    public String getFechalectura() {
+        return fechalectura;
     }
 
-    public void setLecturaAnter(String lecturaAnter) {
-        this.lecturaAnter = lecturaAnter;
+    public void setFechalectura(String fechalectura) {
+        this.fechalectura = fechalectura;
     }
 
-    public String getLecturaAct() {
-        return lecturaAct;
-    }
-
-    public void setLecturaAct(String lecturaAct) {
-        this.lecturaAct = lecturaAct;
-    }
-
-    public String getNumMedidor() {
-        return numMedidor;
-    }
-
-    public void setNumMedidor(String numMedidor) {
-        this.numMedidor = numMedidor;
-    }
-
-    public String getConsumo() {
+    public int getConsumo() {
         return consumo;
     }
 
-    public void setConsumo(String consumo) {
+    public void setConsumo(int consumo) {
         this.consumo = consumo;
     }
 
-    public boolean isEstado() {
+    public String getEstado() {
         return estado;
     }
 
-    public void setEstado(boolean estado) {
+    public void setEstado(String estado) {
         this.estado = estado;
     }
-    public static String getcodigo(){
-        return "fac"+listaLectura+1;
+
+    public int getIdCliente() {
+        return idCliente;
     }
+
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
+    }
+
+    public int getIdPlanilla() {
+        return idPlanilla;
+    }
+
+    public void setIdPlanilla(int idPlanilla) {
+        this.idPlanilla = idPlanilla;
+    }
+
+    public double getValorpago() {
+        return valorpago;
+    }
+
+    public void setValorpago(double valorpago) {
+        this.valorpago = valorpago;
+    }
+
+    public int getMeslectura() {
+        return meslectura;
+    }
+
+    public void setMeslectura(int meslectura) {
+        this.meslectura = meslectura;
+    }
+
+    public int getLecturaAnterior() {
+        return lecturaAnterior;
+    }
+
+    public void setLecturaAnterior(int lecturaAnterior) {
+        this.lecturaAnterior = lecturaAnterior;
+    }
+
+    public String getFechaLecturaAnterior() {
+        return fechaLecturaAnterior;
+    }
+
+    public void setFechaLecturaAnterior(String fechaLecturaAnterior) {
+        this.fechaLecturaAnterior = fechaLecturaAnterior;
+    }
+   
     
+   
+
 }

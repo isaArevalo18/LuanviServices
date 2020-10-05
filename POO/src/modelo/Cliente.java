@@ -3,29 +3,37 @@ package modelo;
 
 import java.util.ArrayList;
 
-public class Cliente extends Persona  {
-    private static final double  Medi_amb=0.50;
+public class Cliente extends Usuario{
+    private int idCliente;
+    private String fechaCreacion;
     private String num_medidor;
-
-    public Cliente(String num_medidor, String categoria, String total) {
-        this.num_medidor = num_medidor;
-        this.categoria = categoria;
-        this.total = total;
-    }
-
-    public Cliente(String num_medidor, String categoria, String total, String cedula, String nombre, String apellido, String fechaNacimiento, String direccion, String telefono, String correo) {
-        super(cedula, nombre, apellido, fechaNacimiento, direccion, telefono, correo);
-        this.num_medidor = num_medidor;
-        this.categoria = categoria;
-        this.total = total;
-    }
+    private int idusuario;
 
     public Cliente() {
     }
 
-    private String categoria;
-    private String total;
+    public Cliente(int idCliente, String fechaCreacion,String num_medidor, int idusuario) {
+        this.idCliente = idCliente;
+        this.fechaCreacion = fechaCreacion;
+        this.num_medidor = num_medidor;
+        this.idusuario = idusuario;
+    }
 
+    public int getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
+    }
+
+    public String getFechaCreacion() {
+        return fechaCreacion;
+    }
+
+    public void setFechaCreacion(String fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
+    }
 
     public String getNum_medidor() {
         return num_medidor;
@@ -35,25 +43,19 @@ public class Cliente extends Persona  {
         this.num_medidor = num_medidor;
     }
 
-    public String getCategoria() {
-        return categoria;
+    public int getIdusuario() {
+        return idusuario;
     }
 
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
+    public void setIdusuario(int idusuario) {
+        this.idusuario = idusuario;
     }
 
-    public String getTotal() {
-        return total;
+    @Override
+    public String toString() {
+        return "Cliente{" + "idCliente=" + idCliente + ", fechaCreacion=" + fechaCreacion + ", num_medidor=" + num_medidor + ", idusuario=" + idusuario + '}';
     }
-
-    public void setTotal(String total) {
-        this.total = total;
-    }
-
-    public double getMedi_amb(){
-        return Medi_amb;
-    }
+    
     
 
 }

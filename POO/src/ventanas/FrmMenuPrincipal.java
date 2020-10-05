@@ -17,8 +17,6 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     TimerTask tarea;
     int velMil = velocidad * 1000;
 
-    
-
     public FrmMenuPrincipal() {
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/AguaIcono.png")).getImage());
@@ -27,9 +25,9 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         setVisible(true);
 
     }
-    
+
     public void cambiar() {
-        
+
         tarea = new TimerTask() {
             Icon icono;
 
@@ -77,6 +75,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         miSalir = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         itmNuevoUsuario = new javax.swing.JMenuItem();
+        itmNuevoEmpleado = new javax.swing.JMenuItem();
         itemPagoConsumo = new javax.swing.JMenu();
         itmPagoConsumo = new javax.swing.JMenuItem();
         intemLecturas = new javax.swing.JMenu();
@@ -209,6 +208,21 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         });
         jMenu1.add(itmNuevoUsuario);
 
+        itmNuevoEmpleado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/businessman_add.png"))); // NOI18N
+        itmNuevoEmpleado.setText("Nuevo Empleado");
+        itmNuevoEmpleado.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        itmNuevoEmpleado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                itmNuevoEmpleadoMouseEntered(evt);
+            }
+        });
+        itmNuevoEmpleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itmNuevoEmpleadoActionPerformed(evt);
+            }
+        });
+        jMenu1.add(itmNuevoEmpleado);
+
         jMenuBar1.add(jMenu1);
 
         itemPagoConsumo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/generar.png"))); // NOI18N
@@ -271,7 +285,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         jMenu2.add(MiUsuarios);
 
         MiConsultaGeneral.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Consulta general.png"))); // NOI18N
-        MiConsultaGeneral.setText("Consulta General");
+        MiConsultaGeneral.setText("Consulta Planillas");
         MiConsultaGeneral.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         MiConsultaGeneral.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -328,7 +342,9 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void MiConsultaGeneralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MiConsultaGeneralActionPerformed
-      
+       FrmConsultasFactura consultasFactura=new FrmConsultasFactura();
+       consultasFactura.setVisible(true);
+       this.setVisible(false);
     }//GEN-LAST:event_MiConsultaGeneralActionPerformed
 
     private void itmNuevoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmNuevoUsuarioActionPerformed
@@ -354,19 +370,18 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     private void itmPagoConsumoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmPagoConsumoActionPerformed
         FrmConsumoPago consmo = new FrmConsumoPago();
         consmo.setVisible(true);
-       
+
     }//GEN-LAST:event_itmPagoConsumoActionPerformed
 
     private void MiPlanillaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MiPlanillaActionPerformed
-        FrmPlanillaPagar planilla = new FrmPlanillaPagar();
-        planilla.setVisible(true);
-        
+      
+
     }//GEN-LAST:event_MiPlanillaActionPerformed
 
     private void lecturas(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lecturas
         FrmIngresoLectura v = new FrmIngresoLectura();
         v.setVisible(true);
-        
+
     }//GEN-LAST:event_lecturas
 
     private void miSalirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_miSalirMouseEntered
@@ -410,7 +425,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_conClienteActionPerformed
 
     private void conEmpladoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_conEmpladoActionPerformed
-      
+
     }//GEN-LAST:event_conEmpladoActionPerformed
 
     private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
@@ -418,8 +433,18 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_SalirActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-      
+
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void itmNuevoEmpleadoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_itmNuevoEmpleadoMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_itmNuevoEmpleadoMouseEntered
+
+    private void itmNuevoEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmNuevoEmpleadoActionPerformed
+        FrmRegistroEmpleados rep = new FrmRegistroEmpleados();
+        rep.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_itmNuevoEmpleadoActionPerformed
 
 //    public static void main(String args[]) {
 //
@@ -430,7 +455,6 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
 //            }
 //        });
 //    }
-
 //
 //oPago();
 //        consmo.setVisible(true);
@@ -483,6 +507,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     public static javax.swing.JMenuItem conEmplado;
     private javax.swing.JMenu intemLecturas;
     private javax.swing.JMenu itemPagoConsumo;
+    public static javax.swing.JMenuItem itmNuevoEmpleado;
     public static javax.swing.JMenuItem itmNuevoUsuario;
     public static javax.swing.JMenuItem itmPagoConsumo;
     private javax.swing.JButton jButton1;

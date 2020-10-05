@@ -2,7 +2,6 @@ package clases;
 
 import modelo.Cliente;
 import modelo.Lecturas;
-import static modelo.Lecturas.listaLectura;
 import ventanas.FrmCreacionUsuario;
 
 public class CalcularPrecio {
@@ -25,48 +24,48 @@ public class CalcularPrecio {
        
         double multiplSinExeso;
 //*******************************Calcular Precio ******************
-        for (Cliente c : FrmCreacionUsuario.ListaCliente) {
-            if (c.getNum_medidor().equals(numeroMed)) {
-
-                for (Lecturas L : listaLectura) {
-                    for (int i = listaLectura.size(); i <= listaLectura.size(); i--) {
-                        if (L.getNumMedidor().equals(numeroMed)) {
-
-                            lecActual = Integer.parseInt(L.getLecturaAct());
-                            lecAnterior = Integer.parseInt(L.getLecturaAnter());
-                            resta = lecActual - lecAnterior;
-                            if (resta == 0) {
-                                subTotal = 2.50;
-
-                            } else {
-                                if (resta > 10 && resta <= 20) {
-                                    restaExeso = resta - 10;
-                                    multiplicacionEx = restaExeso * 1.00;
-                                    multiplSinExeso = 10 * 0.25;
-                                    subTotal = multiplicacionEx + multiplSinExeso;
-
-                                } else {
-                                    if (resta > 20) {
-                                        restaExeso = resta - 20;
-                                       multiplicacionEx= restaExeso * 5.00;
-                                        subTotal = multiplicacionEx + 2.50 + 10;
-                                    } else {
-                                        subTotal = 2.50;
-                                    }
-
-                                }
-                            }
-                            Total = String.format("%.2f", subTotal);
-
-                            break;
-                        }
-                        break;
-                    }
-
-                }
-
-            }
-        }
+//        for (Cliente c : FrmCreacionUsuario.ListaCliente) {
+//            if (c.getNum_medidor().equals(numeroMed)) {
+//
+//                for (Lecturas L : listaLectura) {
+//                    for (int i = listaLectura.size(); i <= listaLectura.size(); i--) {
+//                        if (L.getNumMedidor().equals(numeroMed)) {
+//
+//                            lecActual = Integer.parseInt(L.getLectura());
+//                            lecAnterior = Integer.parseInt(L.getLecturaAnter());
+//                            resta = lecActual - lecAnterior;
+//                            if (resta == 0) {
+//                                subTotal = 2.50;
+//
+//                            } else {
+//                                if (resta > 10 && resta <= 20) {
+//                                    restaExeso = resta - 10;
+//                                    multiplicacionEx = restaExeso * 1.00;
+//                                    multiplSinExeso = 10 * 0.25;
+//                                    subTotal = multiplicacionEx + multiplSinExeso;
+//
+//                                } else {
+//                                    if (resta > 20) {
+//                                        restaExeso = resta - 20;
+//                                       multiplicacionEx= restaExeso * 5.00;
+//                                        subTotal = multiplicacionEx + 2.50 + 10;
+//                                    } else {
+//                                        subTotal = 2.50;
+//                                    }
+//
+//                                }
+//                            }
+//                            Total = String.format("%.2f", subTotal);
+//
+//                            break;
+//                        }
+//                        break;
+//                    }
+//
+//                }
+//
+//            }
+//        }
 
     }
 
@@ -78,7 +77,6 @@ public class CalcularPrecio {
         LECTURAANT = Integer.parseInt(lecAnter);
         total = LECTURAACT - LECTURAANT;
         RESTA = Integer.toString(total);
-
     }
 
     public String getTotal() {

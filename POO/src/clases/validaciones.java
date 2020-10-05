@@ -2,11 +2,13 @@ package clases;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import javax.swing.JOptionPane;
+import java.util.Calendar;
 import javax.swing.JTextField;
 
 public class validaciones {
+
     String ce;
+
     // validacion de datos de clientes --------------------------------------------
     public static boolean validarCedula(String cedula) {
         boolean validar = false;
@@ -42,7 +44,7 @@ public class validaciones {
             } else {
                 validar = false;
             }
-            
+
         } else {
             validar = false;
         }
@@ -50,49 +52,68 @@ public class validaciones {
         return validar;
     }
     Character s;
+
     public static boolean validarCorreo(String correo) {
         boolean validar = false;
         validar = correo.matches("^[_a-z0-9-]+(\\.[_a-z0-9-]+)*@"
                 + "[a-z0-9-]+(\\.[a-z0-9-]+)*(\\.[a-z]{2,4})$");
         return validar;
     }
-    public void soloLentrasEspacios(KeyEvent evt){
-        s=evt.getKeyChar();
-        if (!Character.isLetter(s)&&s!=KeyEvent.VK_SPACE) {
+
+    public void soloLentrasEspacios(KeyEvent evt) {
+        s = evt.getKeyChar();
+        if (!Character.isLetter(s) && s != KeyEvent.VK_SPACE) {
             evt.consume();
         }
     }
-    
+
     public void ValidarLetras(JTextField campo) {
         campo.addKeyListener(new KeyAdapter() {
-            public void keyTyped(KeyEvent e){
-                char c=e.getKeyChar();
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
                 if (Character.isDigit(c)) {
                     e.consume();
                 }
             }
         });
     }
-    
-     public void ValidarNumeros(JTextField campo) {
+
+    public void ValidarNumeros(JTextField campo) {
         campo.addKeyListener(new KeyAdapter() {
-            public void keyTyped(KeyEvent e){
-                char c=e.getKeyChar();
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
                 if (!Character.isDigit(c)) {
                     e.consume();
                 }
             }
         });
     }
-     public void LimitarCaracteres(JTextField campo,int cant) {
+
+    public void LimitarCaracteres(JTextField campo, int cant) {
         campo.addKeyListener(new KeyAdapter() {
-            public void keyTyped(KeyEvent e){
-                char c=e.getKeyChar();
-                int tamaño=campo.getText().length();
-                if (tamaño>=cant) {
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                int tamaño = campo.getText().length();
+                if (tamaño >= cant) {
                     e.consume();
                 }
             }
         });
+    }
+
+    public static boolean validarFechaLectura(String fechaanterior, String fechaactual) {
+        String[] fechArrayAnterior = fechaanterior.split("-");
+        int mesAnterior = Integer.valueOf(fechArrayAnterior[1]);
+
+        String[] fechArrayActual = fechaactual.split("-");
+        int mesActual = Integer.valueOf(fechArrayActual[1]);
+        System.out.println("Mes Anterior: "+mesAnterior);
+        System.out.println("Mes Actual: "+mesActual);
+        if (mesAnterior==mesActual) {
+            return false;
+        }else{
+            return true;
+        }
+        
     }
 }

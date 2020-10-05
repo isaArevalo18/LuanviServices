@@ -1,47 +1,66 @@
 package ventanas;
 
+import Controlador.CtrlLectura;
+
 import clases.CalcularPrecio;
 import clases.validaciones;
+
 import java.text.SimpleDateFormat;
+import java.util.Date;
+
 //import java.util.ArrayList;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import modelo.Cliente;
 import modelo.Lecturas;
-import static modelo.Lecturas.listaLectura;
-import static ventanas.FrmCreacionUsuario.ListaCliente;
 
 public class FrmIngresoLectura extends javax.swing.JFrame {
 
-    String numero;
+    String parametroNumMedidor;
+    String parametroCedula;
     validaciones val = new validaciones();
     CalcularPrecio calcular = new CalcularPrecio();
-    SimpleDateFormat formato = new SimpleDateFormat("dd/MM/YYYY");
+    SimpleDateFormat formato = new SimpleDateFormat("YYYY-MM-dd");
+    CtrlLectura ctrlLectura = new CtrlLectura();
+    int id = 0;
+    //Parametros para cargar una lectura anterior en un formulario
+    int idlectura;
+    String lectura;
+    String consumo;
+    String fechalectura;
+    String lectura_anterior;
+    String fechalectura_anterior;
+    String caracter = "";
+    int lectura_Actual = 0;
+    int lectura_Anterior = 0;
+    int total_consumo = 0;
+    double valorPago;
 
     public FrmIngresoLectura() {
 
         initComponents();
+        txtConsumo.setText("0000");
+        txt_valorpago.setText("0.00");
+        btn_eliminarlectura.setEnabled(false);
+        btn_editarlectura.setEnabled(false);
+        rbt_medidor.setSelected(true);
+        txtNumMedidor.setEnabled(true);
+        txtNumMedidor.setEditable(true);
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/AguaIcono.png")).getImage());
-        val.ValidarNumeros(txtLec_Actual);
-        val.LimitarCaracteres(txtLec_Actual, 10);
+        val.ValidarNumeros(txt_lectura);
+        val.LimitarCaracteres(txt_lectura, 4);
         habilitarBGuardarLect();
         this.setLocationRelativeTo(null);
         //MostrarLectura();
 
         // ---------------------------------------------------------------------
-        modeloTabla = (DefaultTableModel) tablaLecturas.getModel();
-
-        agregarDatosTabla();
     }
 
     // -------------------------------------------------------------------------
     private void agregarDatosTabla() {
 
-        modeloTabla.setRowCount(0);
+        /*modeloTabla.setRowCount(0);
 
         int numRegistros = listaLectura.size();
 
@@ -57,7 +76,7 @@ public class FrmIngresoLectura extends javax.swing.JFrame {
                 listaLectura.get(i).isEstado()
 
             });
-        }
+        }*/
     }
 
     @SuppressWarnings("unchecked")
@@ -65,6 +84,7 @@ public class FrmIngresoLectura extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel2 = new javax.swing.JPanel();
         lbNum = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -76,7 +96,7 @@ public class FrmIngresoLectura extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         txtApellido = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        txtLec_Actual = new javax.swing.JTextField();
+        txt_lectura = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaLecturas = new javax.swing.JTable();
@@ -85,6 +105,8 @@ public class FrmIngresoLectura extends javax.swing.JFrame {
         btnBuscar = new javax.swing.JButton();
         btnNuevoLec = new javax.swing.JButton();
         btnGuardarLectura = new javax.swing.JButton();
+        btn_eliminarlectura = new javax.swing.JButton();
+        btn_editarlectura = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         txtFechaAnterior = new javax.swing.JTextField();
@@ -93,6 +115,14 @@ public class FrmIngresoLectura extends javax.swing.JFrame {
         txtCedula = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         txtConsumo = new javax.swing.JTextField();
+        rbt_medidor = new javax.swing.JRadioButton();
+        rbt_cedula = new javax.swing.JRadioButton();
+        jLabel11 = new javax.swing.JLabel();
+        txt_idcliente = new javax.swing.JTextField();
+        jd_fechalectura = new com.toedter.calendar.JDateChooser();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        txt_valorpago = new javax.swing.JTextField();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -148,6 +178,8 @@ public class FrmIngresoLectura extends javax.swing.JFrame {
 
         jLabel3.setText("Nombre:");
 
+        txtNumMedidor.setEditable(false);
+        txtNumMedidor.setEnabled(false);
         txtNumMedidor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNumMedidorActionPerformed(evt);
@@ -169,23 +201,46 @@ public class FrmIngresoLectura extends javax.swing.JFrame {
 
         jLabel6.setText("Lec.Anterior");
 
-        txtLec_Actual.addKeyListener(new java.awt.event.KeyAdapter() {
+        txt_lectura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_lecturaActionPerformed(evt);
+            }
+        });
+        txt_lectura.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_lecturaKeyPressed(evt);
+            }
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtLec_ActualKeyReleased(evt);
+                txt_lecturaKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_lecturaKeyTyped(evt);
             }
         });
 
-        jLabel7.setText("Lec.Actual:");
+        jLabel7.setText("Lectura:");
 
         tablaLecturas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Num Medidor", "Lectura Anterior", "fecha Lectura Anterior", "Lectura Actual", "Fecha Lectura Actual", "Consumo", "Estado"
+                "Id", "fechaLectura", "lectura", "consumo M3", "estado", "valorpago"
             }
-        ));
-        tablaLecturas.setEnabled(false);
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        tablaLecturas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaLecturasMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tablaLecturas);
 
         jLabel8.setText("Fecha:");
@@ -202,7 +257,7 @@ public class FrmIngresoLectura extends javax.swing.JFrame {
         });
 
         btnNuevoLec.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/generar.png"))); // NOI18N
-        btnNuevoLec.setText("Nuevo");
+        btnNuevoLec.setText("Nueva Lectura");
         btnNuevoLec.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNuevoLecActionPerformed(evt);
@@ -217,6 +272,20 @@ public class FrmIngresoLectura extends javax.swing.JFrame {
             }
         });
 
+        btn_eliminarlectura.setText("eliminar");
+        btn_eliminarlectura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_eliminarlecturaActionPerformed(evt);
+            }
+        });
+
+        btn_editarlectura.setText("editar lectura");
+        btn_editarlectura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_editarlecturaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -224,21 +293,27 @@ public class FrmIngresoLectura extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btn_eliminarlectura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnGuardarLectura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnNuevoLec, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_editarlectura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(31, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(24, Short.MAX_VALUE)
                 .addComponent(btnBuscar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(btnNuevoLec, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnGuardarLectura)
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btn_eliminarlectura)
+                .addGap(18, 18, 18)
+                .addComponent(btn_editarlectura)
+                .addContainerGap())
         );
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/salida.png"))); // NOI18N
@@ -264,10 +339,54 @@ public class FrmIngresoLectura extends javax.swing.JFrame {
         jLabel4.setText("Cedula");
 
         txtCedula.setEditable(false);
+        txtCedula.setEnabled(false);
+        txtCedula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCedulaActionPerformed(evt);
+            }
+        });
 
-        jLabel10.setText("Cosumo");
+        jLabel10.setText("Cosumo M3");
 
         txtConsumo.setEditable(false);
+        txtConsumo.setToolTipText("");
+        txtConsumo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtConsumoKeyReleased(evt);
+            }
+        });
+
+        buttonGroup1.add(rbt_medidor);
+        rbt_medidor.setText("NroMedidor");
+        rbt_medidor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbt_medidorActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(rbt_cedula);
+        rbt_cedula.setText("Cedula");
+        rbt_cedula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbt_cedulaActionPerformed(evt);
+            }
+        });
+
+        jLabel11.setText("Buscar por:");
+
+        txt_idcliente.setEditable(false);
+
+        jd_fechalectura.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jd_fechalecturaKeyReleased(evt);
+            }
+        });
+
+        jLabel12.setText("IdCliente:");
+
+        jLabel13.setText("ValorPago:");
+
+        txt_valorpago.setEditable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -287,30 +406,50 @@ public class FrmIngresoLectura extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel10))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtFechaAnterior, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
-                    .addComponent(txtLecAnterior)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
-                    .addComponent(txtConsumo)
-                    .addComponent(txtNumMedidor))
-                .addGap(46, 46, 46)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel10))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtFechaAnterior, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
+                            .addComponent(txtLecAnterior)
+                            .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
+                            .addComponent(txtConsumo)
+                            .addComponent(txtNumMedidor)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(rbt_medidor, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(rbt_cedula, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel7))
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel4))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtLec_Actual, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
-                    .addComponent(txtCedula)
-                    .addComponent(txtApellido))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel12))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txt_lectura, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
+                            .addComponent(txtCedula)
+                            .addComponent(txtApellido)
+                            .addComponent(jd_fechalectura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txt_idcliente, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txt_valorpago, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12))
@@ -319,12 +458,16 @@ public class FrmIngresoLectura extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel11)
+                            .addComponent(rbt_medidor)
+                            .addComponent(rbt_cedula)
+                            .addComponent(txt_idcliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel12))
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
                             .addComponent(txtNumMedidor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -340,22 +483,29 @@ public class FrmIngresoLectura extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtLecAnterior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6)
-                            .addComponent(txtLec_Actual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_lectura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel7))
-                        .addGap(30, 30, 30)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtFechaAnterior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel9))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, Short.MAX_VALUE)
-                                .addComponent(jLabel10)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE))
+                                .addGap(30, 30, 30)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(txtFechaAnterior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel9)
+                                    .addComponent(jLabel8)))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(txtConsumo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                .addGap(28, 28, 28)
+                                .addComponent(jd_fechalectura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtConsumo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel13)
+                            .addComponent(txt_valorpago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(21, 21, 21))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -372,51 +522,24 @@ public class FrmIngresoLectura extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNumMedidorActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-                //***********************Busqueda de los datos del cliente*******************************
-                    if (!FrmCreacionUsuario.ListaCliente.isEmpty()) {
-                        if (txtNumMedidor.getText().length() > 0) {
-                            for (Cliente c : FrmCreacionUsuario.ListaCliente) {
-                                if (c.getNum_medidor().equals(txtNumMedidor.getText())) {
-                                    JOptionPane.showMessageDialog(null, "Medidor encontrado!");
-                                    txtNombre.setText(c.getNombre());
-                                    txtApellido.setText(c.getApellido());
-                                    txtCedula.setText(c.getCedula());
-                                    lbNum.setText(c.getNum_medidor());
-                                    //***********************Busqueda del las lecturas en el array listalectura
-                                    if (!listaLectura.isEmpty()) {
-                                        for (Lecturas L : listaLectura) {
-                                            for (int i = listaLectura.size(); i <= listaLectura.size(); i--) {
-                                                if (L.getNumMedidor().equals(txtNumMedidor.getText())) {
-                                                    txtLecAnterior.setText(L.getLecturaAct());
-                                                    txtFechaAnterior.setText(L.getFecha_lecturaAct());
-                                                    txtConsumo.setText(L.getConsumo());
-
-                                                    break;
-                                                }
-                                                break;
-                                            }
-                                        }
-                                    } else {
-                                        JOptionPane.showMessageDialog(null, "No hay lecturas");
-                                    }
-                                    break;
-                                }else{
-                                     JOptionPane.showMessageDialog(null, "Medidor no encontrada!");
-                                }
-                            }
-                        } else {
-                            JOptionPane.showMessageDialog(null, "Error: Ingrese el numero de medidor");
-                        }
-                    } else {
-                        JOptionPane.showMessageDialog(null, "No se encontraron datos los cuales mostrar");
-                    }
-
-
+        //***********************Busqueda de los datos del cliente*******************************
+        txtConsumo.setText("");
+        txt_lectura.setText("");
+        jd_fechalectura.setDate(null);
+        txt_lectura.setEditable(true);
+        jd_fechalectura.setEnabled(true);
+        BuscarCliente();
+        btn_eliminarlectura.setEnabled(true);
 
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnNuevoLecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoLecActionPerformed
         limpiar();
+        txt_lectura.setEditable(true);
+        jd_fechalectura.setEnabled(true);
+        rbt_medidor.setSelected(true);
+        txtNumMedidor.setEnabled(true);
+        txtNumMedidor.setEditable(true);
     }//GEN-LAST:event_btnNuevoLecActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -450,70 +573,71 @@ public class FrmIngresoLectura extends javax.swing.JFrame {
     }//GEN-LAST:event_formKeyTyped
 
     private void btnGuardarLecturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarLecturaActionPerformed
-        Lecturas lec = new Lecturas();
-        Lecturas lec2 = new Lecturas();
-        CalcularPrecio calculo = new CalcularPrecio();
-        boolean correcto = true;
-        boolean registrar = true;
-        boolean cedCorr = true;
-        correcto = false;
-        String Intento;
+        lectura_Actual = Integer.parseInt(txt_lectura.getText());
+        lectura_Anterior = Integer.parseInt(txtLecAnterior.getText());
+        if (lectura_Actual < lectura_Anterior) {
+            JOptionPane.showMessageDialog(null, "La Lectura Actual no puede ser menor a la Anterior");
+        } else {
+            String fechalecturaactual = formato.format(jd_fechalectura.getDate());
+            String fechalecturaacterior = txtFechaAnterior.getText();
+            System.out.println();
 
-        if (!FrmCreacionUsuario.ListaCliente.isEmpty()) {
-            if (txtNumMedidor.getText().length() > 0) {
+            if (txt_lectura.getText().equals("") || fechalecturaactual.equals("")) {
+                JOptionPane.showMessageDialog(null, "LLene todos los campos");
+            } else {
+                if (validaciones.validarFechaLectura(fechalecturaacterior, fechalecturaactual)) {
+                    ctrlLectura = new CtrlLectura();
 
-                for (Cliente c : FrmCreacionUsuario.ListaCliente) {
-                    if (c.getNum_medidor().equals(txtNumMedidor.getText())) {
-                        registrar = true;
-                        break;
-                    } else {
-                        registrar = false;
-                    }
+                    //Llamamos a la funcion para calcular el valor de pago de acuerdo a la lectura
+                    valorPago = calcularValorPago(Integer.parseInt(txtConsumo.getText()));
+                    txt_valorpago.setText(valorPago + "");
+
+                    Lecturas lec = new Lecturas();
+                    lec.setLectura(txt_lectura.getText());
+                    lec.setFechalectura(fechalecturaactual);
+                    lec.setEstado("pendiente");
+                    int consumoval = Integer.parseInt(txtConsumo.getText());
+                    lec.setConsumo(consumoval);
+                    valorPago = Double.parseDouble(txt_valorpago.getText());
+                    lec.setValorpago(valorPago);
+                    lec.setIdCliente(Integer.parseInt(txt_idcliente.getText()));
+                    lec.setFechaLecturaAnterior(txtFechaAnterior.getText());
+                    lec.setLecturaAnterior(Integer.parseInt(txtLecAnterior.getText()));
+                    ctrlLectura.insertarLectura(lec);
+                    MostrarLecturasCliente(Integer.parseInt(txt_idcliente.getText()));
+
+                    txt_lectura.setEditable(false);
+                    jd_fechalectura.setEnabled(false);
+                } else {
+                    JOptionPane.showMessageDialog(null, "No puede generar dos Lecturas el mismo mes");
                 }
             }
-        }
-        int LECTURA_ANT = Integer.parseInt(txtLecAnterior.getText());
-        int LECT_ACTUAL = Integer.parseInt(txtLec_Actual.getText()); //validar LECT_ACTUAL
-        if (LECT_ACTUAL < LECTURA_ANT || LECT_ACTUAL > 100000000) {
-            registrar = false;
-            txtLec_Actual.setText("");
-        }
-       /* if (cFechaLecturaAct.getDate() == null) {
-            registrar = false;
-        }*/
 
-        if (registrar == true) {
-            int ax = JOptionPane.showConfirmDialog(null, "Desea guardar la lectura?");
-            if (ax == JOptionPane.YES_OPTION) {
-
-                lec.setNumMedidor(txtNumMedidor.getText());
-                lec.setFecha_lecturaAnter(txtFechaAnterior.getText());
-                //String fechaLectura = formato.format(cFechaLecturaAct.getDate());
-               // lec.setFecha_lecturaAct(fechaLectura);
-                lec.setLecturaAnter(txtLecAnterior.getText());
-                lec.setLecturaAct(txtLec_Actual.getText());
-                calculo.calcularM3(txtLec_Actual.getText(), txtLecAnterior.getText());
-                lec.setConsumo(calculo.getConsumo());
-                listaLectura.add(lec);
-
-                JOptionPane.showMessageDialog(null, "Lectura guardado correctamente");
-                agregarDatosTabla();
-                limpiar();
-
-            } else if (ax == JOptionPane.NO_OPTION) {
-                JOptionPane.showMessageDialog(null, "Lectura no guardado");
-            }
-
-        } else {
-            JOptionPane.showMessageDialog(null, "Algun dato fue incorrecto vuelva a ingresar ");
         }
 
 
     }//GEN-LAST:event_btnGuardarLecturaActionPerformed
 
-    private void txtLec_ActualKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLec_ActualKeyReleased
+    private void txt_lecturaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_lecturaKeyReleased
         habilitarBGuardarLect();
-    }//GEN-LAST:event_txtLec_ActualKeyReleased
+        System.out.println(evt.getKeyCode());
+        if (Character.isDigit(evt.getKeyChar())) {
+            // System.out.println("cumple");
+            if (caracter.length() < 4) {
+                caracter = caracter + String.valueOf(evt.getKeyChar());
+                CalcularConsumo();
+            }
+        } else {
+            caracter = "";
+            lectura_Actual = 0;
+            lectura_Anterior = 0;
+            total_consumo = 0;
+            caracter = txt_lectura.getText();
+            CalcularConsumo();
+        }
+
+
+    }//GEN-LAST:event_txt_lecturaKeyReleased
 
     private void txtNumMedidorKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumMedidorKeyReleased
         habilitarBGuardarLect();
@@ -523,21 +647,157 @@ public class FrmIngresoLectura extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtFechaAnteriorActionPerformed
 
-    public void limpiar() {
+    private void txtCedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCedulaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCedulaActionPerformed
 
+    private void rbt_medidorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbt_medidorActionPerformed
+        txtNumMedidor.setEditable(true);
+        txtCedula.setEditable(false);
+        txtNumMedidor.setEnabled(true);
+        txtCedula.setEnabled(false);
+        limpiar();
+    }//GEN-LAST:event_rbt_medidorActionPerformed
+
+    private void rbt_cedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbt_cedulaActionPerformed
+        txtCedula.setEnabled(true);
+        txtCedula.setEditable(true);
+        txtNumMedidor.setEnabled(false);
+        txtNumMedidor.setEditable(false);
+        limpiar();
+
+    }//GEN-LAST:event_rbt_cedulaActionPerformed
+
+    private void jd_fechalecturaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jd_fechalecturaKeyReleased
+
+    }//GEN-LAST:event_jd_fechalecturaKeyReleased
+
+    private void btn_eliminarlecturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarlecturaActionPerformed
+
+        ctrlLectura = new CtrlLectura();
+        int fila = tablaLecturas.getSelectedRow();
+        if (fila > -1) {
+            if (!tablaLecturas.getValueAt(fila, 4).toString().equals("pagado")) {
+                int idlectura = Integer.parseInt(tablaLecturas.getValueAt(fila, 0).toString());
+                ctrlLectura.eliminarLectura(idlectura);
+                BuscarCliente();
+            } else {
+                JOptionPane.showMessageDialog(null, "No se puede eliminar una Lectura pagada");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecciones por favor una Lectura de la tabla para eliminar");
+        }
+
+    }//GEN-LAST:event_btn_eliminarlecturaActionPerformed
+
+    private void tablaLecturasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaLecturasMouseClicked
+        txt_lectura.setEditable(true);
+        jd_fechalectura.setEnabled(true);
+        int fila = tablaLecturas.getSelectedRow();
+        if (!tablaLecturas.getValueAt(fila, 4).toString().equals("pagado")) {
+            btn_editarlectura.setEnabled(true);
+            idlectura = Integer.parseInt(tablaLecturas.getValueAt(fila, 0).toString());
+            fechalectura = tablaLecturas.getValueAt(fila, 1).toString();
+            lectura = tablaLecturas.getValueAt(fila, 2).toString();
+            consumo = tablaLecturas.getValueAt(fila, 3).toString();
+            txt_valorpago.setText(tablaLecturas.getValueAt(fila, 5).toString());
+
+            if (fila == tablaLecturas.getRowCount() - 1) {
+                fechalectura_anterior = tablaLecturas.getValueAt(fila, 1).toString();
+                lectura_anterior = "0";
+            } else {
+                fechalectura_anterior = tablaLecturas.getValueAt(fila + 1, 1).toString();
+                lectura_anterior = tablaLecturas.getValueAt(fila + 1, 2).toString();
+            }
+            cargarDatos();
+        } else {
+            JOptionPane.showMessageDialog(null, "No se puede editar una Lectura en estado Pagado");
+        }
+
+
+    }//GEN-LAST:event_tablaLecturasMouseClicked
+
+    private void btn_editarlecturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editarlecturaActionPerformed
+        if (tablaLecturas.getSelectedRow() > -1) {
+            ctrlLectura = new CtrlLectura();
+            String fechalecturaactual = formato.format(jd_fechalectura.getDate());
+            String fechalecturaacterior = txtFechaAnterior.getText();
+
+            if (txt_lectura.getText().equals("") || fechalecturaactual.equals("")) {
+                JOptionPane.showMessageDialog(null, "LLene todos los campos");
+            } else {
+                if (validaciones.validarFechaLectura(fechalecturaacterior, fechalecturaactual)) {
+                    ctrlLectura = new CtrlLectura();
+                    Lecturas lec = new Lecturas();
+
+                    valorPago = calcularValorPago(Integer.parseInt(txtConsumo.getText()));
+                    txt_valorpago.setText(valorPago + "");
+
+                    lec.setLectura(txt_lectura.getText());
+                    lec.setFechalectura(fechalecturaactual);
+                    int consumovalor = Integer.parseInt(txtConsumo.getText());
+                    lec.setConsumo(consumovalor);
+                    lec.setIdlectura(idlectura);
+                    valorPago = Double.parseDouble(txt_valorpago.getText());
+                    lec.setValorpago(valorPago);
+                    lec.setFechaLecturaAnterior(txtFechaAnterior.getText());
+                    lec.setLecturaAnterior(Integer.parseInt(txtLecAnterior.getText()));
+
+                    ctrlLectura.editarLectura(lec);
+                    MostrarLecturasCliente(Integer.parseInt(txt_idcliente.getText()));
+
+                    txt_lectura.setEditable(false);
+                    jd_fechalectura.setEnabled(false);
+                    btn_editarlectura.setEnabled(false);
+                    btn_eliminarlectura.setEnabled(false);
+                } else {
+                    JOptionPane.showMessageDialog(null, "No puede generar dos Lecturas el mismo mes");
+                }
+
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecciones por favor una Lectura de la tabla para Editar");
+        }
+    }//GEN-LAST:event_btn_editarlecturaActionPerformed
+
+    private void txt_lecturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_lecturaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_lecturaActionPerformed
+
+    private void txt_lecturaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_lecturaKeyTyped
+
+    }//GEN-LAST:event_txt_lecturaKeyTyped
+
+    private void txt_lecturaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_lecturaKeyPressed
+
+    }//GEN-LAST:event_txt_lecturaKeyPressed
+
+    private void txtConsumoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtConsumoKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtConsumoKeyReleased
+
+    public void limpiar() {
+        btn_eliminarlectura.setEnabled(false);
+        btn_editarlectura.setEnabled(false);
+        txt_idcliente.setText("");
         txtNombre.setText("");
         txtApellido.setText("");
-        txtLec_Actual.setText("");
+        txt_lectura.setText("");
         txtLecAnterior.setText("");
         txtNumMedidor.setText("");
         txtCedula.setText("");
         txtFechaAnterior.setText("");
         txtConsumo.setText("");
+        jd_fechalectura.setDate(null);
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.setColumnIdentifiers(new Object[]{"Id", "Fecha Lectura", "lectura", "Consumo", "Estado", "ValorPago"});
+        tablaLecturas.setModel(modelo);
+
         //cFechaLecturaAct.setDate(null);
     }
 
     public void habilitarBGuardarLect() {
-        if (!txtLec_Actual.getText().isEmpty() && !txtLecAnterior.getText().isEmpty() && !txtNumMedidor.getText().isEmpty()) {
+        if (!txt_lectura.getText().isEmpty() && !txtLecAnterior.getText().isEmpty() && !txtNumMedidor.getText().isEmpty()) {
             btnGuardarLectura.setEnabled(true);
 
         } else {
@@ -546,17 +806,186 @@ public class FrmIngresoLectura extends javax.swing.JFrame {
         }
     }
 
-   // -----------------------------------------------------------------------------------------
-    private DefaultTableModel modeloTabla;
+    public void MostrarLecturasCliente(int idcliente) {
+
+        //**********************Metodo para mostrar los datos del cliente el la tabla*******************
+        ctrlLectura = new CtrlLectura();
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.setColumnIdentifiers(new Object[]{"Id", "Fecha Lectura", "lectura", "Consumo", "Estado", "ValorPago"});
+        ctrlLectura.listarLecturasCliente(modelo, idcliente);
+        tablaLecturas.setModel(modelo);
+
+    }
+
+    public void CalcularConsumo() {
+        if (txt_lectura.getText().length() > 0 && txtLecAnterior.getText().length() > 0) {
+            lectura_Actual = Integer.parseInt(txt_lectura.getText());
+            System.out.println(lectura_Actual);
+            lectura_Anterior = Integer.parseInt(txtLecAnterior.getText());
+            System.out.println(lectura_Anterior);
+
+            total_consumo = lectura_Actual - lectura_Anterior;
+            if (txtLecAnterior.getText().equals("0")) {
+                txt_valorpago.setText("0");
+                txtConsumo.setText("0");
+            } else {
+                txtConsumo.setText(String.valueOf(total_consumo));
+            }
+
+        } else {
+            txtConsumo.setText("");
+            caracter = "";
+            lectura_Actual = 0;
+            lectura_Anterior = 0;
+            total_consumo = 0;
+        }
+
+    }
+
+    public static double calcularValorPago(int consumo) {
+        double totalsinexceso = 0;
+        double totalconsumoexceso = 0;
+        double residuototalexceso = 0;
+
+        if (consumo > 10 && consumo < 20) {
+            residuototalexceso = consumo % 10 * 1;
+        } else {
+            residuototalexceso = consumo % 10 * 5;
+        }
+
+        System.out.println("residuo" + residuototalexceso);
+        if (consumo > 0) {
+
+            if (consumo <= 10) {
+                totalsinexceso = consumo * 2.50;
+                System.out.println("Rango de 10");
+                return totalsinexceso;
+            } else {
+                if (consumo > 10 && consumo < 20) {
+                    totalsinexceso = 10 * 2.50;
+                    if (consumo == 20) {
+                        System.out.println("Rango de 20");
+                        totalconsumoexceso = 20 * 1;
+                        return totalconsumoexceso + totalsinexceso;
+                    } else {
+                        System.out.println("Rango de 20 menor");
+                        totalconsumoexceso = consumo % 10 * 1;
+                        return totalconsumoexceso + totalsinexceso;
+                    }
+
+                } else {
+                    System.out.println("Rango mayor que 20");
+                    //System.out.println(totalconsumoexceso=residuototalexceso);
+                    int consumovalor = consumo - consumo % 10;
+                    System.out.println("Consumo valor " + consumovalor);
+                    int incremento = 0;
+                    while (incremento < consumovalor) {
+
+                        //System.out.println(incremento);
+                        incremento = incremento + 10;
+                        if (incremento == 10) {
+
+                            totalsinexceso = incremento * 2.50;
+                            //  System.out.println(totalsinexceso);
+                        }
+                        if (incremento == 20) {
+                            totalconsumoexceso = totalconsumoexceso + 10 * 1;
+                            // System.out.println(totalconsumoexceso);
+                        } else {
+
+                            if (incremento == consumovalor) {
+                                //System.out.println("Residuo"+residuototalexceso);
+                                totalconsumoexceso = totalconsumoexceso + (incremento - 20) * 5;
+                            }
+                            // System.out.println(totalconsumoexceso);
+                        }
+
+                    };
+                }
+
+            }
+
+        }
+        return totalsinexceso + totalconsumoexceso + residuototalexceso;
+    }
+
+    public void BuscarCliente() {
+        Cliente cliente;
+        ctrlLectura = new CtrlLectura();
+        parametroCedula = txtCedula.getText();
+        parametroNumMedidor = txtNumMedidor.getText();
+        if (parametroNumMedidor.equals("") && parametroCedula.equals("")) {
+            JOptionPane.showMessageDialog(null, "Ingrese el numero de medidor o cedula, para realizar la busqueda");
+        } else {
+            if (parametroCedula.equals("")) {
+                cliente = ctrlLectura.buscarDatosCliente(parametroNumMedidor);
+            } else {
+                cliente = ctrlLectura.buscarDatosCliente(parametroCedula);
+            }
+
+            if (cliente.getNombre() != null) {
+                txtCedula.setEditable(false);
+                txtCedula.setEnabled(true);
+                txtNumMedidor.setEditable(false);
+                txtNumMedidor.setEnabled(true);
+                txt_idcliente.setText(cliente.getIdCliente() + "");
+                txtNumMedidor.setText(cliente.getNum_medidor());
+                txtCedula.setText(cliente.getCedula());
+                txtNombre.setText(cliente.getNombre());
+                txtApellido.setText(cliente.getApellido());
+
+                MostrarLecturasCliente(cliente.getIdCliente());
+                //Se cierrar todas las conexiones de la bd por eso es necesario volver a crear una instancia 
+                // del controlador para poder conectarnos de nuevo a la bd
+                /*
+                 Con este metodo obtenemos la ultima lectura y la ponemos como la anterior para realizar el nuevo ingreso de otra lectura
+                 */
+                Lecturas lecturas = ctrlLectura.obtenerUltimaLectura(cliente.getIdCliente());
+                if (lecturas.getLectura() == null && lecturas.getFechalectura() == null) {
+                    txtLecAnterior.setText("0");
+                    txtFechaAnterior.setText(cliente.getFechaCreacion());
+                } else {
+                    txtLecAnterior.setText(lecturas.getLectura());
+                    txtFechaAnterior.setText(lecturas.getFechalectura());
+                }
+
+            } else {
+
+                JOptionPane.showMessageDialog(null, "Cliente no encontrado");
+            }
+        }
+
+    }
+
+    public void cargarDatos() {
+        try {
+            txt_lectura.setText(lectura);
+            txtLecAnterior.setText(lectura_anterior);
+            txtFechaAnterior.setText(fechalectura_anterior);
+            txtConsumo.setText(consumo);
+            Date fechaNac = new SimpleDateFormat("yyyy-MM-dd").parse(fechalectura);
+            jd_fechalectura.setDate(fechaNac);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al cargar la lectura");
+        }
+
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBuscar;
+    public javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnGuardarLectura;
     private javax.swing.JButton btnNuevoLec;
+    private javax.swing.JButton btn_editarlectura;
+    private javax.swing.JButton btn_eliminarlectura;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -569,15 +998,20 @@ public class FrmIngresoLectura extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private com.toedter.calendar.JDateChooser jd_fechalectura;
     private javax.swing.JLabel lbNum;
+    private javax.swing.JRadioButton rbt_cedula;
+    private javax.swing.JRadioButton rbt_medidor;
     private javax.swing.JTable tablaLecturas;
     private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtCedula;
     private javax.swing.JTextField txtConsumo;
     private javax.swing.JTextField txtFechaAnterior;
     private javax.swing.JTextField txtLecAnterior;
-    private javax.swing.JTextField txtLec_Actual;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtNumMedidor;
+    private javax.swing.JTextField txt_idcliente;
+    private javax.swing.JTextField txt_lectura;
+    private javax.swing.JTextField txt_valorpago;
     // End of variables declaration//GEN-END:variables
 }
