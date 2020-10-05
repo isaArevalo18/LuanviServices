@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import modelo.Cliente;
 
-public class UsuarioClienteDAO extends Conexion{
+public class UsuarioClienteDAO extends Conexion {
 
     Connection con;
     ResultSet rs;
@@ -34,27 +34,25 @@ public class UsuarioClienteDAO extends Conexion{
         }
         return respuesta;
     }
-    
+
     public int InsertarCliente(Cliente c) {
-            sql = "insert into Cliente(fechaCreacion,numeromedidor,idUsuario) values(?,?,?)";
-            try {
-                con = getConexion();
-                ps = con.prepareStatement(sql);
-                ps.setString(1, c.getFechaCreacion());
-                ps.setString(2, c.getNum_medidor());
-                ps.setInt(3, c.getIdusuario());
-                respuesta = ps.executeUpdate();
-            } catch (Exception e) {
-                System.out.println("Error al insertar cliente" + e);
-            } finally {
-                CerrarConexion();
-            }
+        sql = "insert into Cliente(fechaCreacion,numeromedidor,idUsuario) values(?,?,?)";
+        try {
+            con = getConexion();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, c.getFechaCreacion());
+            ps.setString(2, c.getNum_medidor());
+            ps.setInt(3, c.getIdusuario());
+            respuesta = ps.executeUpdate();
+        } catch (Exception e) {
+            System.out.println("Error al insertar cliente" + e);
+        } finally {
+            CerrarConexion();
+        }
         return respuesta;
     }
-    
-    
-    
-     public List<Cliente> Listar() {
+
+    public List<Cliente> Listar() {
         sql = "SELECT c.idUsuario,cedula,nombre,apellido,fechaNacimiento,fechacreacion,direccion,telefono,correo,numeromedidor"
                 + " FROM usuario u INNER JOIN  cliente c ON u.idusuario=c.idUsuario ORDER BY c.idUsuario DESC";
         List<Cliente> clientes = new ArrayList<>();
@@ -83,8 +81,7 @@ public class UsuarioClienteDAO extends Conexion{
         }
         return clientes;
     }
-     
-     
+
     public int Actualizar(Cliente uc) {
         sql = "UPDATE Usuario u INNER JOIN Cliente c ON  u.idusuario=c.idusuario"
                 + " SET cedula=?,nombre=?,apellido=?,fechaNacimiento=?,direccion=?,telefono=?,correo=?,fechaCreacion=?,numeromedidor=? "
@@ -99,36 +96,35 @@ public class UsuarioClienteDAO extends Conexion{
             ps.setString(5, uc.getDireccion());
             ps.setString(6, uc.getTelefono());
             ps.setString(7, uc.getCorreo());
-            ps.setString(8,uc.getFechaCreacion());
+            ps.setString(8, uc.getFechaCreacion());
             ps.setString(9, uc.getNum_medidor());
             ps.setInt(10, uc.getIdusuario());
-            respuesta=ps.executeUpdate();    
+            respuesta = ps.executeUpdate();
         } catch (Exception e) {
             System.out.println("Error de actualizacion" + e);
-        }finally{
-             CerrarConexion();
+        } finally {
+            CerrarConexion();
         }
         return respuesta;
     }
-    
-    
+
     public int Eliminar(int id) {
         try {
-            sql = "DELETE FROM Usuario where idusuario="+id;
+            sql = "DELETE FROM Usuario where idusuario=" + id;
             con = getConexion();
             ps = con.prepareStatement(sql);
-            respuesta=ps.executeUpdate();
-             
+            respuesta = ps.executeUpdate();
+
         } catch (Exception e) {
-            System.out.println("Error de Eliminacion"+e);
-        }finally{
-             CerrarConexion();
+            System.out.println("Error de Eliminacion" + e);
+        } finally {
+            CerrarConexion();
         }
         return respuesta;
     }
-     
-   //Metodo parqa obtener el id del usuario
-  public int IdUsuario() {
+
+    //Metodo parqa obtener el id del usuario
+    public int IdUsuario() {
         int id = 0;
         sql = "select max(idusuario) from usuario";
         try {
@@ -136,18 +132,17 @@ public class UsuarioClienteDAO extends Conexion{
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
             if (rs.next()) {
-                id=rs.getInt(1);
+                id = rs.getInt(1);
             }
         } catch (Exception e) {
-            System.out.println("Error al obtener id_usuario"+e);
+            System.out.println("Error al obtener id_usuario" + e);
         }
         return id;
     }
-  
-  
-  public List<Cliente> Buscar(String cedula) {
+
+    public List<Cliente> Buscar(String cedula) {
         sql = "SELECT c.idUsuario,cedula,nombre,apellido,fechaNacimiento,fechacreacion,direccion,telefono,correo,numeromedidor"
-                + " FROM usuario u INNER JOIN  cliente c ON u.idusuario=c.idUsuario WHERE cedula="+cedula;
+                + " FROM usuario u INNER JOIN  cliente c ON u.idusuario=c.idUsuario WHERE cedula=" + cedula;
         List<Cliente> clientes = new ArrayList<>();
         try {
             con = getConexion();
@@ -174,7 +169,7 @@ public class UsuarioClienteDAO extends Conexion{
         }
         return clientes;
     }
-    
+
     public void CerrarConexion() {
         try {
             if (ps != null) {

@@ -147,6 +147,24 @@ public class UsuarioEmpleadoDAO extends Conexion {
         }
         return id;
     }
+    
+    public boolean iniciar_sesion(String usuario, String clave){
+        Boolean sesion = false;
+        sql = "SELECT usuario FROM `empleado` WHERE usuario=? AND clave=?";
+        try {
+            con = getConexion();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, usuario);
+            ps.setString(2, clave);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                sesion = true;
+            }
+        } catch (Exception e) {
+            System.out.println("Error al iniciar sesion" + e);
+        }
+        return sesion;
+    }
 
     public void CerrarConexion() {
         try {

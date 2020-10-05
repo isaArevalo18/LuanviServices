@@ -9,9 +9,8 @@ public class Planilla {
     private double consumoexceso;
     private double consumosinexceso;
 
-     
     public Planilla() {
-        
+
     }
 
     public Planilla(int idplanilla, String fechaPlanilla, double total, int idCliente) {
@@ -20,9 +19,7 @@ public class Planilla {
         this.total = total;
         this.idCliente = idCliente;
     }
-    
-    
-    
+
     public int getIdplanilla() {
         return idplanilla;
     }
@@ -70,9 +67,5 @@ public class Planilla {
     public void setConsumosinexceso(double consumosinexceso) {
         this.consumosinexceso = consumosinexceso;
     }
-    
-    
-    
-    
-    
+
 }

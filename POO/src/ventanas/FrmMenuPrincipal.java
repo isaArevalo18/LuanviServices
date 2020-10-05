@@ -19,6 +19,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
 
     public FrmMenuPrincipal() {
         initComponents();
+        this.setLocationRelativeTo(null);
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/AguaIcono.png")).getImage());
         cambiar();
 
@@ -69,7 +70,6 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         Salir = new javax.swing.JMenuItem();
         panelImage1 = new ventanas.PanelImage1();
         lbImagenes = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu5 = new javax.swing.JMenu();
         miSalir = new javax.swing.JMenuItem();
@@ -135,36 +135,21 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         lbImagenes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/agua1.png"))); // NOI18N
         lbImagenes.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/salida.png"))); // NOI18N
-        jButton1.setText("Inicio Seccion");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout panelImage1Layout = new javax.swing.GroupLayout(panelImage1);
         panelImage1.setLayout(panelImage1Layout);
         panelImage1Layout.setHorizontalGroup(
             panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelImage1Layout.createSequentialGroup()
                 .addContainerGap(814, Short.MAX_VALUE)
-                .addGroup(panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelImage1Layout.createSequentialGroup()
-                        .addComponent(lbImagenes)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelImage1Layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(29, 29, 29))))
+                .addComponent(lbImagenes)
+                .addContainerGap())
         );
         panelImage1Layout.setVerticalGroup(
             panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelImage1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lbImagenes)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 291, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(101, 101, 101))
+                .addContainerGap(433, Short.MAX_VALUE))
         );
 
         jMenuBar1.setBackground(new java.awt.Color(204, 204, 255));
@@ -342,9 +327,9 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void MiConsultaGeneralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MiConsultaGeneralActionPerformed
-       FrmConsultasFactura consultasFactura=new FrmConsultasFactura();
-       consultasFactura.setVisible(true);
-       this.setVisible(false);
+        FrmConsultasFactura consultasFactura = new FrmConsultasFactura();
+        consultasFactura.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_MiConsultaGeneralActionPerformed
 
     private void itmNuevoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmNuevoUsuarioActionPerformed
@@ -370,18 +355,19 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     private void itmPagoConsumoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmPagoConsumoActionPerformed
         FrmConsumoPago consmo = new FrmConsumoPago();
         consmo.setVisible(true);
-
+        this.dispose();
     }//GEN-LAST:event_itmPagoConsumoActionPerformed
 
     private void MiPlanillaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MiPlanillaActionPerformed
-      
-
+        FrmPlanillaPagar v = new FrmPlanillaPagar();
+        v.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_MiPlanillaActionPerformed
 
     private void lecturas(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lecturas
         FrmIngresoLectura v = new FrmIngresoLectura();
         v.setVisible(true);
-
+        this.dispose();
     }//GEN-LAST:event_lecturas
 
     private void miSalirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_miSalirMouseEntered
@@ -431,10 +417,6 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
         System.exit(0);
     }//GEN-LAST:event_SalirActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void itmNuevoEmpleadoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_itmNuevoEmpleadoMouseEntered
         // TODO add your handling code here:
@@ -510,7 +492,6 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     public static javax.swing.JMenuItem itmNuevoEmpleado;
     public static javax.swing.JMenuItem itmNuevoUsuario;
     public static javax.swing.JMenuItem itmPagoConsumo;
-    private javax.swing.JButton jButton1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu10;
     private javax.swing.JMenu jMenu2;

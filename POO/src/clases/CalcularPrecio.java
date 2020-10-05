@@ -18,10 +18,9 @@ public class CalcularPrecio {
 //        double Total_pru;
 //
 //        Cliente cli = new Cliente();
-       
         double restaExeso;
         double multiplicacionEx;
-       
+
         double multiplSinExeso;
 //*******************************Calcular Precio ******************
 //        for (Cliente c : FrmCreacionUsuario.ListaCliente) {

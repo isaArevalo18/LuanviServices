@@ -1,19 +1,12 @@
-
 package Main;
 
-import ventanas.FrmMenuPrincipal;
-
-
-
+import ventanas.FrmLogin;
 
 public class POO {
 
-  
     public static void main(String[] args) {
-        FrmMenuPrincipal m = new FrmMenuPrincipal();
-        m.setVisible(true);
-      // LoginPrin m=new LoginPrin();
-       // m.setVisible(true);
+        FrmLogin log = new FrmLogin();
+        log.setVisible(true);
     }
-    
+
 }

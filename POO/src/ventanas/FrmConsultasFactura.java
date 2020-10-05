@@ -233,17 +233,17 @@ public class FrmConsultasFactura extends javax.swing.JFrame {
         btn_eliminar.setEnabled(true);
         int fila = tbplanillas.getSelectedRow();
 
-        idPlanilla =Integer.parseInt(tbplanillas.getValueAt(fila, 0).toString());
+        idPlanilla = Integer.parseInt(tbplanillas.getValueAt(fila, 0).toString());
         cedula = tbplanillas.getValueAt(fila, 3).toString();
         idLectura = Integer.parseInt(tbplanillas.getValueAt(fila, 1).toString());
 
         System.out.println("id: " + idPlanilla + "medidor: " + cedula + "fecha:  " + idLectura);
-           
+
     }//GEN-LAST:event_tbplanillasMouseClicked
 
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
         ctrlPlanilla = new CtrlPlanilla();
-        if (ctrlPlanilla.EliminarPlanilla(idPlanilla,idLectura) > 0) {
+        if (ctrlPlanilla.EliminarPlanilla(idPlanilla, idLectura) > 0) {
             FrmConsumoPago fcp = new FrmConsumoPago();
             fcp.txtbuscarcliente.setText(cedula);
             fcp.BuscarCliente();
@@ -257,7 +257,7 @@ public class FrmConsultasFactura extends javax.swing.JFrame {
 
         ctrlPlanilla = new CtrlPlanilla();
         DefaultTableModel modelo = new DefaultTableModel();
-        modelo.setColumnIdentifiers(new Object[]{"IdPlanilla","IdLectura" ,"fechaPlanilla", "Cedula", "Nombre", "Apellido", "Direccion", "Nro medidor", "estado", "total"});
+        modelo.setColumnIdentifiers(new Object[]{"IdPlanilla", "IdLectura", "fechaPlanilla", "Cedula", "Nombre", "Apellido", "Direccion", "Nro medidor", "estado", "total"});
         ctrlPlanilla.listarPlanillasCliente(modelo, parametro);
         tbplanillas.setModel(modelo);
     }

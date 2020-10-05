@@ -107,13 +107,13 @@ public class validaciones {
 
         String[] fechArrayActual = fechaactual.split("-");
         int mesActual = Integer.valueOf(fechArrayActual[1]);
-        System.out.println("Mes Anterior: "+mesAnterior);
-        System.out.println("Mes Actual: "+mesActual);
-        if (mesAnterior==mesActual) {
+        System.out.println("Mes Anterior: " + mesAnterior);
+        System.out.println("Mes Actual: " + mesActual);
+        if (mesAnterior == mesActual) {
             return false;
-        }else{
+        } else {
             return true;
         }
-        
+
     }
 }

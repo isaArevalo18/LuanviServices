@@ -19,7 +19,6 @@ public class PlanillaDAO extends Conexion {
     String sql = "";
     int respuesta = 0;
 
-    
     public int insertar(DetallePlanilla p) {
         sql = "insert into Planilla(fechaplanilla,total,idlectura,valorsinexceso,valorexceso) values(?,?,?,?,?)";
         try {
@@ -53,8 +52,6 @@ public class PlanillaDAO extends Conexion {
 //        }
 //        return respuesta;
 //    }
-
-    
     public int eliminar(int id) {
         sql = "DELETE FROM Planilla WHERE idplanilla=" + id;
         try {
@@ -69,7 +66,6 @@ public class PlanillaDAO extends Conexion {
         return respuesta;
     }
 
-    
     public List<DetallePlanilla> Listar(String parametro) {
         List<DetallePlanilla> planillasdetalle = new ArrayList<>();
         sql = "SELECT idplanilla,l.idlectura,fechaplanilla,cedula,nombre,apellido,direccion,numeromedidor,estado,total\n"
@@ -77,8 +73,8 @@ public class PlanillaDAO extends Conexion {
                 + "INNER JOIN usuario u ON c.idUsuario=u.idusuario \n"
                 + "INNER JOIN lectura l ON  c.idcliente=l.idcliente \n"
                 + "INNER JOIN planilla p ON p.idlectura=l.idlectura \n"
-                + "WHERE estado='pagado' AND cedula="+parametro+" OR numeromedidor="+parametro+" ORDER BY idplanilla DESC";
-       
+                + "WHERE estado='pagado' AND cedula=" + parametro + " OR numeromedidor=" + parametro + " ORDER BY idplanilla DESC";
+
         try {
             con = getConexion();
             ps = con.prepareStatement(sql);
@@ -98,7 +94,7 @@ public class PlanillaDAO extends Conexion {
                 planillasdetalle.add(dp);
             }
         } catch (Exception e) {
-            System.out.println("Error al Listar detalle factura "+e);
+            System.out.println("Error al Listar detalle factura " + e);
         } finally {
             CerrarConexion();
         }
@@ -144,8 +140,6 @@ public class PlanillaDAO extends Conexion {
         }
         return respuesta;
     }
-    
-   
 
     /*
      * Este metodo va a crear una Lista de las lecturas que pertenecen a un planilla que va a ser eliminada 
@@ -177,8 +171,8 @@ public class PlanillaDAO extends Conexion {
         }
         return lecturasplanilla;
     }
-*/
-    /*
+     */
+ /*
      * Este metodo se encargara de cambiar el estado de todas aquellas lecturas de la planilla eliminada
      * a un estado pendiente para volver a emitir la planilla
      */
@@ -188,7 +182,7 @@ public class PlanillaDAO extends Conexion {
         try {
             con = getConexion();
             ps = con.prepareStatement(sql);
-            ps.setInt(1,idlectura);
+            ps.setInt(1, idlectura);
             respuesta = ps.executeUpdate();
         } catch (Exception e) {
             System.out.println("Error al cambiar el estado de la lectura:  " + e);
@@ -219,7 +213,6 @@ public class PlanillaDAO extends Conexion {
         return numplanilla;
     }
 
-    
     public void CerrarConexion() {
         try {
             if (ps != null) {

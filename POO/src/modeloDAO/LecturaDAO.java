@@ -30,8 +30,8 @@ public class LecturaDAO extends Conexion {
             ps.setString(4, lec.getEstado());
             ps.setInt(5, lec.getIdCliente());
             ps.setDouble(6, lec.getValorpago());
-            ps.setInt(7,lec.getLecturaAnterior());
-            ps.setString(8,lec.getFechaLecturaAnterior());
+            ps.setInt(7, lec.getLecturaAnterior());
+            ps.setString(8, lec.getFechaLecturaAnterior());
             respuesta = ps.executeUpdate();
         } catch (Exception e) {
             System.out.println("Error al insertar Lectura " + e);
@@ -47,7 +47,7 @@ public class LecturaDAO extends Conexion {
         sql = "SELECT idcliente,nombre,apellido,cedula,numeromedidor,direccion,correo,fechaNacimiento,telefono,fechaCreacion"
                 + " FROM usuario u INNER JOIN cliente c ON u.idusuario=c.idUsuario "
                 + "WHERE numeromedidor=" + parametro + " OR cedula=" + parametro;
- 
+
         try {
             con = getConexion();
             ps = con.prepareStatement(sql);
@@ -70,8 +70,6 @@ public class LecturaDAO extends Conexion {
         return cliente;
     }
 
-    
-    
     public List<Lecturas> Listar(int id) {
         /*  sql = "select l.idlectura,lectura,fechaLectura,consumo,estado FROM lectura l INNER JOIN cliente c "
                 + "ON c.idcliente=l.idcliente WHERE estado='pendiente' AND l.idcliente=" + id + " ORDER BY fechaLectura DESC";*/
@@ -98,16 +96,14 @@ public class LecturaDAO extends Conexion {
         }
         return lecturas;
     }
-    
-    
+
     /*Retorna una lista con totas las lecturas pendientes del cliente*/
-    
     public List<Lecturas> ListarPago(int id) {
-       
+
         sql = "select l.idlectura,lectura,fechaLectura,consumo,estado,valorpago,EXTRACT(MONTH FROM fechaLectura),fechaLecturaAnterior,lecturaanterior"
                 + " FROM lectura l INNER JOIN cliente c "
                 + "ON c.idcliente=l.idcliente WHERE estado='pendiente' AND l.idcliente=" + id + " AND consumo<>0 ORDER BY fechaLectura DESC";
-   
+
         List<Lecturas> lecturas = new ArrayList<>();
         try {
             con = getConexion();
@@ -136,7 +132,7 @@ public class LecturaDAO extends Conexion {
     public Lecturas obtenerUltimaLectura(int id) {
         Lecturas lec = new Lecturas();
         sql = "SELECT lectura,fechaLectura,consumo  FROM lectura WHERE idcliente=" + id
-                + " AND fechaLectura=(select max(fechaLectura) from lectura where idcliente=" + id+")";
+                + " AND fechaLectura=(select max(fechaLectura) from lectura where idcliente=" + id + ")";
         try {
             con = getConexion();
             ps = con.prepareStatement(sql);
@@ -155,9 +151,7 @@ public class LecturaDAO extends Conexion {
         }
         return lec;
     }
-    
-    
-   
+
     public int Editar(Lecturas lec) {
         sql = "UPDATE lectura SET lectura=?,fechaLectura=?,consumo=?,valorpago=?,lecturaanterior=?,fechaLecturaAnterior=? WHERE idlectura=?";
         try {
@@ -167,10 +161,9 @@ public class LecturaDAO extends Conexion {
             ps.setString(2, lec.getFechalectura());
             ps.setInt(3, lec.getConsumo());
             ps.setDouble(4, lec.getValorpago());
-            ps.setInt(5,lec.getLecturaAnterior());
-            ps.setString(6,lec.getFechaLecturaAnterior());
+            ps.setInt(5, lec.getLecturaAnterior());
+            ps.setString(6, lec.getFechaLecturaAnterior());
             ps.setInt(7, lec.getIdlectura());
-            
 
             respuesta = ps.executeUpdate();
         } catch (Exception e) {
@@ -181,7 +174,6 @@ public class LecturaDAO extends Conexion {
         return respuesta;
     }
 
-    
     public int Eliminar(int id) {
         sql = "DELETE FROM Lectura where idlectura=" + id;
         try {
@@ -196,7 +188,6 @@ public class LecturaDAO extends Conexion {
         return respuesta;
     }
 
-    
     public void CerrarConexion() {
         try {
             if (ps != null) {

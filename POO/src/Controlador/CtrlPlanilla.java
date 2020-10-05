@@ -25,26 +25,24 @@ public class CtrlPlanilla {
             JOptionPane.showMessageDialog(null, "Planilla no Generada con Exito");
         }
     }
-    
-    
-/*Este metodo lista las planillas y las busca por numero de cedula*/
+
+    /*Este metodo lista las planillas y las busca por numero de cedula*/
     public void listarPlanillasCliente(DefaultTableModel model, String parametro) {
         LimpiarTabla(model);
         List<DetallePlanilla> listaplanillas = planillaDAO.Listar(parametro);
         if (listaplanillas.size() > 0) {
             for (DetallePlanilla dp : listaplanillas) {
-                model.addRow(new Object[]{dp.getIdplanilla(),dp.getIdlectura(), dp.getFechaPlanilla(), dp.getCedula(),
+                model.addRow(new Object[]{dp.getIdplanilla(), dp.getIdlectura(), dp.getFechaPlanilla(), dp.getCedula(),
                     dp.getNombrecliente(), dp.getApellidopcliente(), dp.getDireccioncliente(),
                     dp.getNumeromedidor(), dp.getEstado(), dp.getTotal()});
             }
-        }else{
-            JOptionPane.showMessageDialog(null,"Este Cliente no tiene registro de Planillas");
+        } else {
+            JOptionPane.showMessageDialog(null, "Este Cliente no tiene registro de Planillas");
         }
 
     }
 
     /*No borrar hasta la entrega final del proyecto*/
-    
 //    public void actualizarPlanilla(Planilla p) {
 //        if (planillaDAO.actualizar(p) > 0) {
 //            JOptionPane.showMessageDialog(null, "Planilla Actualizada con Exito");
@@ -52,8 +50,6 @@ public class CtrlPlanilla {
 //            JOptionPane.showMessageDialog(null, "Planilla no Actualizada con Exito");
 //        }
 //    }
-    
-    
 //    public void EliminarFactura(int id, String fechaPago, DefaultTableModel model) {
 //        List<Lecturas> listalecturas = new ArrayList<>();
 //        if (planillaDAO.eliminar(id) > 0) {
@@ -63,31 +59,31 @@ public class CtrlPlanilla {
 //            JOptionPane.showMessageDialog(null, "Planilla No Eliminada con Exito");
 //        }
 //    }
-    
     /*Metodo para Anular la planilla y cambiar el estado de la lectura a pendiente */
-    /*Al cambiar a pendiente debera generar una nueva factura de la misma */
-    public int EliminarPlanilla(int idPlanilla,int idlectura){
-        if (planillaDAO.cambiarEstadoLectura(idlectura)>0) {
-            if (planillaDAO.eliminar(idPlanilla)>0) {
-                JOptionPane.showMessageDialog(null,"Planilla Anulada con Exito");
+ /*Al cambiar a pendiente debera generar una nueva factura de la misma */
+    public int EliminarPlanilla(int idPlanilla, int idlectura) {
+        if (planillaDAO.cambiarEstadoLectura(idlectura) > 0) {
+            if (planillaDAO.eliminar(idPlanilla) > 0) {
+                JOptionPane.showMessageDialog(null, "Planilla Anulada con Exito");
                 return 1;
-            }else{
-                JOptionPane.showMessageDialog(null,"No se pudo Anular la planilla");
+            } else {
+                JOptionPane.showMessageDialog(null, "No se pudo Anular la planilla");
                 return 0;
             }
-        }else{
-            JOptionPane.showMessageDialog(null,"No se pudo Anular la planilla");
+        } else {
+            JOptionPane.showMessageDialog(null, "No se pudo Anular la planilla");
             return 0;
         }
     }
-    
+
     /*Este metodo retorna el id de la ultima planilla de la bd*/
-    public String obtenerNumeroPlanilla(){
-       String numeroplanilla=String.valueOf(planillaDAO.numeroPlanilla());
-       return numeroplanilla;
+    public String obtenerNumeroPlanilla() {
+        String numeroplanilla = String.valueOf(planillaDAO.numeroPlanilla());
+        return numeroplanilla;
     }
-/*Metodo para limpiar el modelo de la tabla
-    */
+
+    /*Metodo para limpiar el modelo de la tabla
+     */
     private void LimpiarTabla(DefaultTableModel model) {
         for (int i = 0; i < model.getRowCount(); i++) {
             model.removeRow(i);

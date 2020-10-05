@@ -18,7 +18,7 @@ public class Lecturas {
 
     public Lecturas() {
     }
-    
+
     public int getIdlectura() {
         return idlectura;
     }
@@ -106,8 +106,5 @@ public class Lecturas {
     public void setFechaLecturaAnterior(String fechaLecturaAnterior) {
         this.fechaLecturaAnterior = fechaLecturaAnterior;
     }
-   
-    
-   
 
 }

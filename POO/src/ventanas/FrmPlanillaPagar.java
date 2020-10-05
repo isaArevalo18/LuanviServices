@@ -411,7 +411,7 @@ public class FrmPlanillaPagar extends javax.swing.JFrame implements Printable {
             } else {
                 residuototalexceso = consumo % 10 * 5;
             }
-            
+
             /*Si el consumo es menor a 10*/
             if (consumo <= 10) {
                 totalsinexceso = consumo * 2.50;
@@ -432,9 +432,9 @@ public class FrmPlanillaPagar extends javax.swing.JFrame implements Printable {
                     }
 
                 } else {
-                   /*Aqui realizamos el calculo de los consumos que son superiores a 20*/
-                   
-                    /*En la variable consumovalor vamos a almacenar hasta el ultimo multiplo de 10 dek valor que consumimos por ejemplo
+                    /*Aqui realizamos el calculo de los consumos que son superiores a 20*/
+
+ /*En la variable consumovalor vamos a almacenar hasta el ultimo multiplo de 10 dek valor que consumimos por ejemplo
                          Si consumimos 52m3 esta variable sera igual a 50m3
                      */
                     int consumovalor = consumo - consumo % 10;

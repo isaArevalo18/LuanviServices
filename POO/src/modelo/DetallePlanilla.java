@@ -1,4 +1,3 @@
-
 package modelo;
 
 import java.util.ArrayList;
@@ -6,8 +5,9 @@ import java.util.List;
 
 /*
   * Esta clase tendra la funcionalidad de proporcionarnos una vista detallada de las facturas de un cliente en una tabla
-*/
-public class DetallePlanilla extends Planilla{
+ */
+public class DetallePlanilla extends Planilla {
+
     int idcliente;
     int idlectura;
     String cedula;
@@ -22,14 +22,12 @@ public class DetallePlanilla extends Planilla{
     String lectura_actual;
     String mespago;
     String correocliente;
-   
-    public static List<DetallePlanilla>cargarPlanilla=new ArrayList<>();
-    
+
+    public static List<DetallePlanilla> cargarPlanilla = new ArrayList<>();
 
     public DetallePlanilla() {
     }
-   
-     
+
     public DetallePlanilla(String nombrecliente, String apellidopcliente, String direccioncliente, String numeromedidor, String estado, int idplanilla, String fechaPlanilla, double total, int idCliente) {
         super(idplanilla, fechaPlanilla, total, idCliente);
         this.nombrecliente = nombrecliente;
@@ -46,8 +44,6 @@ public class DetallePlanilla extends Planilla{
     public void setCedula(String cedula) {
         this.cedula = cedula;
     }
-
-    
 
     public String getNombrecliente() {
         return nombrecliente;
@@ -160,7 +156,5 @@ public class DetallePlanilla extends Planilla{
     public void setIdlectura(int idlectura) {
         this.idlectura = idlectura;
     }
-    
-    
-  
+
 }

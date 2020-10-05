@@ -1,6 +1,7 @@
 package modelo;
 
 public class Usuario {
+
     private int idusuario;
     private String cedula;
     private String nombre;
@@ -93,9 +94,4 @@ public class Usuario {
         return "Usuario{" + "idusuario=" + idusuario + ", cedula=" + cedula + ", nombre=" + nombre + ", apellido=" + apellido + ", fechaNacimiento=" + fechaNacimiento + ", direccion=" + direccion + ", telefono=" + telefono + ", correo=" + correo + '}';
     }
 
-   
-
-   
-    
-    
 }

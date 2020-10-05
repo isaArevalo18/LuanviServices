@@ -1,7 +1,7 @@
-
 package modelo;
 
-public class Empleado extends Usuario{
+public class Empleado extends Usuario {
+
     private int IdEmpleado;
     private String cargo;
     private String clave;
@@ -66,7 +66,5 @@ public class Empleado extends Usuario{
     public void setIdusuario(int idusuario) {
         this.idusuario = idusuario;
     }
-    
-    
-    
+
 }

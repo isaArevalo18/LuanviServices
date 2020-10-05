@@ -1,9 +1,9 @@
 package modelo;
 
-
 import java.util.ArrayList;
 
-public class Cliente extends Usuario{
+public class Cliente extends Usuario {
+
     private int idCliente;
     private String fechaCreacion;
     private String num_medidor;
@@ -12,7 +12,7 @@ public class Cliente extends Usuario{
     public Cliente() {
     }
 
-    public Cliente(int idCliente, String fechaCreacion,String num_medidor, int idusuario) {
+    public Cliente(int idCliente, String fechaCreacion, String num_medidor, int idusuario) {
         this.idCliente = idCliente;
         this.fechaCreacion = fechaCreacion;
         this.num_medidor = num_medidor;
@@ -55,7 +55,5 @@ public class Cliente extends Usuario{
     public String toString() {
         return "Cliente{" + "idCliente=" + idCliente + ", fechaCreacion=" + fechaCreacion + ", num_medidor=" + num_medidor + ", idusuario=" + idusuario + '}';
     }
-    
-    
 
 }

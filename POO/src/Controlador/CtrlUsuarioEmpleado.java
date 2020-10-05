@@ -1,4 +1,3 @@
-
 package Controlador;
 
 import java.util.List;
@@ -9,8 +8,9 @@ import modelo.Empleado;
 import modeloDAO.UsuarioEmpleadoDAO;
 
 public class CtrlUsuarioEmpleado {
-    UsuarioEmpleadoDAO usuarioEmpleadoDAO=new UsuarioEmpleadoDAO();
-    
+
+    UsuarioEmpleadoDAO usuarioEmpleadoDAO = new UsuarioEmpleadoDAO();
+
     public void guardarUsuarioEmpleado(Empleado eu) {
         if (usuarioEmpleadoDAO.insertarUsuario(eu) > 0) {
             //Una vez creado el registro en la tabla usuario en la base de datos
@@ -33,8 +33,8 @@ public class CtrlUsuarioEmpleado {
         List<Empleado> listaclientes = usuarioEmpleadoDAO.Listar();
         for (Empleado empleado : listaclientes) {
             model.addRow(new Object[]{empleado.getIdusuario(), empleado.getCedula(), empleado.getNombre(), empleado.getApellido(),
-                empleado.getFechaNacimiento(),empleado.getFechaCreacion(), empleado.getDireccion(), empleado.getTelefono(), empleado.getCorreo(), empleado.getCargo(),
-            empleado.getUsuario(),empleado.getClave()});
+                empleado.getFechaNacimiento(), empleado.getFechaCreacion(), empleado.getDireccion(), empleado.getTelefono(), empleado.getCorreo(), empleado.getCargo(),
+                empleado.getUsuario(), empleado.getClave()});
         }
     }
 
@@ -45,8 +45,8 @@ public class CtrlUsuarioEmpleado {
             JOptionPane.showMessageDialog(null, "Empleado no Actualizado Exitosamente");
         }
     }
-    
-    public void eliminarUsuarioEmpleado(int id){
+
+    public void eliminarUsuarioEmpleado(int id) {
         if (usuarioEmpleadoDAO.Eliminar(id) > 0) {
             JOptionPane.showMessageDialog(null, "Empleado Eliminado Exitosamente");
         } else {
@@ -60,5 +60,5 @@ public class CtrlUsuarioEmpleado {
             i--;
         }
     }
-    
+
 }
