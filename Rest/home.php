@@ -10,7 +10,6 @@
 		<button class="rj-btn">Empleados</button>
 		<button class="rj-btn">Clientes</button>
 		<button class="rj-btn">Productos</button>
-
 	</div>
 </body>
 </html>
