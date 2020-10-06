@@ -14,7 +14,7 @@ public class FrmLoginRegistrarEmpleado extends javax.swing.JFrame {
 
     CtrlUsuarioEmpleado ctrlUsuarioEmpleado;
     SimpleDateFormat formato = new SimpleDateFormat("YYYY/MM/dd");
-    
+    //Claave de verificacion 
     String clave_verificacion = "1234";
 
     public FrmLoginRegistrarEmpleado() {
@@ -22,8 +22,17 @@ public class FrmLoginRegistrarEmpleado extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         obtenerFechaActual();
+        //Validaciones de los campos
+        vali.ValidarNumeros(txtCedulaEmpleado);
+        vali.LimitarCaracteres(txtCedulaEmpleado, 10);
+        vali.ValidarLetras(txtNombreEmpleado);
+        vali.ValidarLetras(txtApellidoEmpleado);
+        vali.ValidarLetras(txtDireccionEmpleado);
+        vali.ValidarNumeros(txtTelefonoEmpleado);
+        vali.LimitarCaracteres(txtTelefonoEmpleado, 7);
     }
 
+    //Método para obtener la fecha actual
     public void obtenerFechaActual() {
         Calendar c = new GregorianCalendar();
         String dia = Integer.toString(c.get(Calendar.DATE));
@@ -70,16 +79,6 @@ public class FrmLoginRegistrarEmpleado extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         txtCedulaEmpleado.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        txtCedulaEmpleado.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                txtCedulaEmpleadoMouseEntered(evt);
-            }
-        });
-        txtCedulaEmpleado.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtCedulaEmpleadoKeyReleased(evt);
-            }
-        });
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setText("Cedula:");
@@ -87,29 +86,8 @@ public class FrmLoginRegistrarEmpleado extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setText("Nombre:");
 
-        txtNombreEmpleado.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtNombreEmpleadoKeyReleased(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtNombreEmpleadoKeyTyped(evt);
-            }
-        });
-
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel4.setText("Direccion:");
-
-        txtDireccionEmpleado.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtDireccionEmpleadoKeyReleased(evt);
-            }
-        });
-
-        txtCorreoEmpleado.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtCorreoEmpleadoKeyReleased(evt);
-            }
-        });
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel5.setText("Correo:");
@@ -117,29 +95,11 @@ public class FrmLoginRegistrarEmpleado extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel8.setText("Apellido:");
 
-        txtApellidoEmpleado.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtApellidoEmpleadoKeyReleased(evt);
-            }
-        });
-
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel9.setText("Telefono:");
 
-        txtTelefonoEmpleado.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtTelefonoEmpleadoKeyReleased(evt);
-            }
-        });
-
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel10.setText("Fecha de Nacimiento:");
-
-        cFechaEmpleado.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                cFechaEmpleadoKeyReleased(evt);
-            }
-        });
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel11.setText("Cargo:");
@@ -168,11 +128,6 @@ public class FrmLoginRegistrarEmpleado extends javax.swing.JFrame {
         });
 
         txt_fechacreacion_usuario.setEnabled(false);
-        txt_fechacreacion_usuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_fechacreacion_usuarioActionPerformed(evt);
-            }
-        });
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel13.setText("Fecha de creacion de Usuario: ");
@@ -310,42 +265,6 @@ public class FrmLoginRegistrarEmpleado extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtCedulaEmpleadoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtCedulaEmpleadoMouseEntered
-
-    }//GEN-LAST:event_txtCedulaEmpleadoMouseEntered
-
-    private void txtCedulaEmpleadoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCedulaEmpleadoKeyReleased
-
-    }//GEN-LAST:event_txtCedulaEmpleadoKeyReleased
-
-    private void txtNombreEmpleadoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreEmpleadoKeyReleased
-
-    }//GEN-LAST:event_txtNombreEmpleadoKeyReleased
-
-    private void txtNombreEmpleadoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreEmpleadoKeyTyped
-        vali.soloLentrasEspacios(evt);
-    }//GEN-LAST:event_txtNombreEmpleadoKeyTyped
-
-    private void txtDireccionEmpleadoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDireccionEmpleadoKeyReleased
-
-    }//GEN-LAST:event_txtDireccionEmpleadoKeyReleased
-
-    private void txtCorreoEmpleadoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCorreoEmpleadoKeyReleased
-
-    }//GEN-LAST:event_txtCorreoEmpleadoKeyReleased
-
-    private void txtApellidoEmpleadoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidoEmpleadoKeyReleased
-
-    }//GEN-LAST:event_txtApellidoEmpleadoKeyReleased
-
-    private void txtTelefonoEmpleadoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoEmpleadoKeyReleased
-
-    }//GEN-LAST:event_txtTelefonoEmpleadoKeyReleased
-
-    private void cFechaEmpleadoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cFechaEmpleadoKeyReleased
-        // habilitarBGuardar();
-    }//GEN-LAST:event_cFechaEmpleadoKeyReleased
-
     private void jb_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_cancelarActionPerformed
         FrmLogin v = new FrmLogin();
         v.setVisible(true);
@@ -353,13 +272,13 @@ public class FrmLoginRegistrarEmpleado extends javax.swing.JFrame {
     }//GEN-LAST:event_jb_cancelarActionPerformed
 
     private void jb_registrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_registrarseActionPerformed
-        if (!txtCedulaEmpleado.equals("") && !txtNombreEmpleado.equals("") && !txtApellidoEmpleado.equals("")
+         if (!txtCedulaEmpleado.equals("") && !txtNombreEmpleado.equals("") && !txtApellidoEmpleado.equals("")
                 && cFechaEmpleado.getDate() != null && !txt_fechacreacion_usuario.equals("") && !txtDireccionEmpleado.equals("")
                 && !txtTelefonoEmpleado.equals("") && !txtCorreoEmpleado.equals("") && !jcbCargo.getSelectedItem().toString().equals("Seleccione")
                 && !txt_nombre_usuario.equals("") && !txt_clave.equals("")) {
-            
+            //Mensaje de petición de clave de verificación
             String clave = JOptionPane.showInputDialog("Clave de confirmacion");
-
+            //Compara si la clave ingresada y la de verificación son iguales
             if (clave.equals(clave_verificacion)) {
                 ctrlUsuarioEmpleado = new CtrlUsuarioEmpleado();
                 Empleado empleado = new Empleado();
@@ -383,10 +302,6 @@ public class FrmLoginRegistrarEmpleado extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Llene todos los datos.");
         }
     }//GEN-LAST:event_jb_registrarseActionPerformed
-
-    private void txt_fechacreacion_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_fechacreacion_usuarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_fechacreacion_usuarioActionPerformed
 
     /**
      * @param args the command line arguments

@@ -89,7 +89,7 @@ public class UsuarioEmpleadoDAO extends Conexion {
     }
 
     public int Actualizar(Empleado eu) {
-        sql = "UPDATE Usuario u INNER JOIN Empleado e ON  u.idusuario=e.idusuario"
+        sql = "UPDATE usuario u INNER JOIN empleado e ON  u.idusuario=e.idusuario"
                 + " SET cedula=?,nombre=?,apellido=?,fechaNacimiento=?,fechaCreacion=?,direccion=?,telefono=?,correo=?,cargo=?,clave=?,usuario=? "
                 + "WHERE u.idusuario=?";
         try {

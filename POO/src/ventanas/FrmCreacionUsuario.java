@@ -37,7 +37,6 @@ public class FrmCreacionUsuario extends javax.swing.JFrame {
     String fecha;
 
     public FrmCreacionUsuario() {
-
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
@@ -45,9 +44,7 @@ public class FrmCreacionUsuario extends javax.swing.JFrame {
         txt_id.setVisible(false);
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/AguaIcono.png")).getImage());
         holders();
-
         MostrarCliente();
-
         bloquear();
         bloquearTerminareditar();
         //****************Validamos los txt Para el ingreso de solo numeros o letras****************
@@ -57,16 +54,12 @@ public class FrmCreacionUsuario extends javax.swing.JFrame {
         vali.ValidarLetras(txtNombre);
         vali.ValidarLetras(txtApellido);
         vali.ValidarLetras(txtDireccion);
-        //vali.ValidarLetras(txtCorreo);
+        vali.ValidarLetras(txtCorreo);
         vali.ValidarNumeros(txtTelefono);
         vali.LimitarCaracteres(txtTelefono, 7);
         vali.ValidarNumeros(txtNumMedidor);
         vali.LimitarCaracteres(txtNumMedidor, 7);
-        // vali.ValidarNumeros(txtLec_Actual);
-        //vali.LimitarCaracteres(txtLec_Actual, 5);
-        // vali.ValidarNumeros(txtLect_Anterior);
-        //vali.LimitarCaracteres(txtLect_Anterior, 5);
-        ///********************************
+        
         setLocationRelativeTo(null);
         tabClientes.addMouseListener(new java.awt.event.MouseAdapter() {
             DefaultTableModel model = new DefaultTableModel();
@@ -81,11 +74,9 @@ public class FrmCreacionUsuario extends javax.swing.JFrame {
                 fecha_nac = tabClientes.getValueAt(o, 5).toString();
                 telefono = tabClientes.getValueAt(o, 6).toString();
                 num_medidor = tabClientes.getValueAt(o, 7).toString();
-
                 tabClientesMouseClicked(evt);
             }
         });
-
     }
 
     public void holders() {
@@ -94,11 +85,8 @@ public class FrmCreacionUsuario extends javax.swing.JFrame {
         TextPrompt prueba2 = new TextPrompt("Obligatorio", txtApellido);
         TextPrompt prueba3 = new TextPrompt("Obligatorio", txtCorreo);
         TextPrompt prueba4 = new TextPrompt("Obligatorio", txtDireccion);
-        ///  TextPrompt prueba5 = new TextPrompt("Obligatorio", txtLec_Actual);
-        //   TextPrompt prueba6 = new TextPrompt("Obligatorio", txtLect_Anterior);
         TextPrompt prueba7 = new TextPrompt("Obligatorio", txtNumMedidor);
         TextPrompt prueba8 = new TextPrompt("Obligatorio", txtTelefono);
-
     }
 
     @SuppressWarnings("unchecked")
@@ -169,11 +157,6 @@ public class FrmCreacionUsuario extends javax.swing.JFrame {
         jLabel5.setText("Correo:");
 
         txtCedula.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        txtCedula.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                txtCedulaMouseEntered(evt);
-            }
-        });
         txtCedula.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtCedulaKeyReleased(evt);
@@ -183,9 +166,6 @@ public class FrmCreacionUsuario extends javax.swing.JFrame {
         txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtNombreKeyReleased(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtNombreKeyTyped(evt);
             }
         });
 
@@ -213,11 +193,6 @@ public class FrmCreacionUsuario extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel10.setText("Fecha de Nacimiento:");
 
-        txtNumMedidor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNumMedidorActionPerformed(evt);
-            }
-        });
         txtNumMedidor.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtNumMedidorKeyReleased(evt);
@@ -556,10 +531,6 @@ public class FrmCreacionUsuario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtNumMedidorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumMedidorActionPerformed
-
-    }//GEN-LAST:event_txtNumMedidorActionPerformed
-
     private void tabClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabClientesMouseClicked
         btnEliminar.setEnabled(true);
         int s = tabClientes.getSelectedRow();
@@ -573,12 +544,6 @@ public class FrmCreacionUsuario extends javax.swing.JFrame {
         telefono = tabClientes.getValueAt(s, 7).toString();
         correo = tabClientes.getValueAt(s, 8).toString();
         num_medidor = tabClientes.getValueAt(s, 9).toString();
-
-        //ObtenerRegistro();
-        // desbloquear();
-//        lec_actual = tabClientes.getValueAt(s, 8).toString();
-//        lec_anterior = tabClientes.getValueAt(s, 9).toString();
-
     }//GEN-LAST:event_tabClientesMouseClicked
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
@@ -607,12 +572,12 @@ public class FrmCreacionUsuario extends javax.swing.JFrame {
             }
         }
         //**********************************************************************
-
         String APELLIDO = txtApellido.getText();
         if (correcto != APELLIDO.matches("[ a-zA-Z]")) { //validar Apellido
             registrar = false;
             txtApellido.setText("");
         }
+        
         String DIRECCION = txtDireccion.getText();
         if (correcto != DIRECCION.matches("[ a-zA-Z]")) { //validar Direccion
             registrar = false;
@@ -680,11 +645,9 @@ public class FrmCreacionUsuario extends javax.swing.JFrame {
                 cliente.setFechaCreacion(txt_fechacreacion_usuario.getText());
                 cliente.setNum_medidor(txtNumMedidor.getText());
                 ctrlcliente.guardarUsuarioCliente(cliente);
-                // listaLectura.add(lect);
                 MostrarCliente();
                 limpiar();
                 btnGuardar.setEnabled(false);
-
             } else if (ax == JOptionPane.NO_OPTION) {
                 JOptionPane.showMessageDialog(null, "Cliente no guardado");
             }
@@ -693,18 +656,12 @@ public class FrmCreacionUsuario extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Algun dato fue incorrecto vuelva a ingresar ");
         }
         MostrarCliente();
-
-
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
         desbloquear();
         obtenerFechaActual();
         bloquearTerminareditar();
-        //  txtLec_Actual.setEnabled(true);
-//        txtLect_Anterior.setEnabled(true);
-        btnEliminar.setEnabled(true);
-        btnGuardar.setVisible(true);
         limpiar();
     }//GEN-LAST:event_btnNuevoActionPerformed
 
@@ -753,21 +710,16 @@ public class FrmCreacionUsuario extends javax.swing.JFrame {
         desbloquear();
         btnGuardar.setEnabled(false);
         //******************Trae los datos de ta tabla a los txt*******************
-        desbloquearTerminareditar();
-        ObtenerRegistro();
-        btnEliminar.setEnabled(false);
-        // txtLec_Actual.setEnabled(false);
-        // txtLect_Anterior.setEnabled(false);
-
+        if (ObtenerRegistro()){
+            btnEliminar.setEnabled(false);
+            btnTerminarEdicion.setEnabled(true);
+        }
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnTerminarEdicionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTerminarEdicionActionPerformed
-        // txtLec_Actual.setEnabled(false);
-//        txtLect_Anterior.setEnabled(false);
         ctrlcliente = new CtrlUsuarioCliente();
         boolean correcto = true;
         boolean registrar = true;
-        boolean cedCorr = true;
         correcto = false;
 
         if (txtNombre.getText().isEmpty()) {
@@ -789,7 +741,6 @@ public class FrmCreacionUsuario extends javax.swing.JFrame {
                 txtApellido.setText("");
             }
         }
-
         //**********************************************************************
         if (txtDireccion.getText().isEmpty()) {
             registrar = false;
@@ -800,7 +751,6 @@ public class FrmCreacionUsuario extends javax.swing.JFrame {
                 txtApellido.setText("");
             }
         }
-
         //**********************************************************************
         if (txtTelefono.getText().isEmpty()) {
             registrar = false;
@@ -812,7 +762,6 @@ public class FrmCreacionUsuario extends javax.swing.JFrame {
             }
         }
         //**********************************************************************
-
         boolean registrar2 = validaciones.validarCorreo(txtCorreo.getText());//validacion de correo
         if (registrar2 == false) {
             registrar = false;
@@ -837,7 +786,6 @@ public class FrmCreacionUsuario extends javax.swing.JFrame {
                 cliente.setCorreo(txtCorreo.getText());
                 cliente.setFechaCreacion(txt_fechacreacion_usuario.getText());
                 cliente.setNum_medidor(txtNumMedidor.getText());
-
                 ctrlcliente.actualizarUsuarioCliente(cliente);
                 MostrarCliente();
                 limpiar();
@@ -846,13 +794,9 @@ public class FrmCreacionUsuario extends javax.swing.JFrame {
             } else if (ax == JOptionPane.NO_OPTION) {
                 JOptionPane.showMessageDialog(null, "Cambios no guardado");
             }
-
         } else {
             JOptionPane.showMessageDialog(null, "Algun dato fue incorrecto vuelva a ingresar ");
         }
-//        MostrarCliente();
-
-
     }//GEN-LAST:event_btnTerminarEdicionActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -860,10 +804,6 @@ public class FrmCreacionUsuario extends javax.swing.JFrame {
         men.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void txtCedulaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtCedulaMouseEntered
-
-    }//GEN-LAST:event_txtCedulaMouseEntered
 
     private void btnNuevoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNuevoMouseEntered
         btnNuevo.setToolTipText("Registrar un nuevo Cliente");
@@ -889,10 +829,6 @@ public class FrmCreacionUsuario extends javax.swing.JFrame {
         habilitarBGuardar();
     }//GEN-LAST:event_cFechaKeyReleased
 
-    private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
-        vali.soloLentrasEspacios(evt);
-    }//GEN-LAST:event_txtNombreKeyTyped
-
     public void bloquear() {
         //*********************Bloque todos los campos************************* 
         txtCedula.setEnabled(false);
@@ -902,9 +838,6 @@ public class FrmCreacionUsuario extends javax.swing.JFrame {
         txtCorreo.setEnabled(false);
         txtTelefono.setEnabled(false);
         txtNumMedidor.setEnabled(false);
-        // txtLec_Actual.setEnabled(false);
-        // txtLect_Anterior.setEnabled(false);
-
         btnEliminar.setEnabled(false);
         btnNuevo.setEnabled(true);
     }
@@ -918,9 +851,6 @@ public class FrmCreacionUsuario extends javax.swing.JFrame {
         txtCorreo.setEnabled(true);
         txtTelefono.setEnabled(true);
         txtNumMedidor.setEnabled(true);
-        //txtLec_Actual.setEnabled(true);
-        //txtLect_Anterior.setEnabled(true);
-
     }
 
     public void bloquearTerminareditar() {
@@ -928,19 +858,13 @@ public class FrmCreacionUsuario extends javax.swing.JFrame {
         btnTerminarEdicion.setEnabled(false);
     }
 
-    public void desbloquearTerminareditar() {
-        //*********************Desbloquea el boton Terminar Edicion****************
-        btnTerminarEdicion.setEnabled(true);
-    }
-
     public void habilitarBGuardar() {
         //*******************Habilita el boton Guardar si todos los campos estan llenos*********************
         if (!txtCedula.getText().isEmpty() && !txtNombre.getText().isEmpty() && !txtApellido.getText().isEmpty()
                 && !txtDireccion.getText().isEmpty() && !txtTelefono.getText().isEmpty() && !txtCorreo.getText().isEmpty()
-                && /*!txtLec_Actual.getText().isEmpty() && /*!txtLect_Anterior.getText().isEmpty() &&*/ !txtNumMedidor.getText().isEmpty()) {
+                && !txtNumMedidor.getText().isEmpty()) {
 
             btnGuardar.setEnabled(true);
-
         } else {
             btnGuardar.setEnabled(false);
         }
@@ -954,14 +878,10 @@ public class FrmCreacionUsuario extends javax.swing.JFrame {
         txtDireccion.setText("");
         txtTelefono.setText("");
         txtCorreo.setText("");
-        //  txtLec_Actual.setText("");
-        //  txtLect_Anterior.setText("");
         txtNumMedidor.setText("");
-
     }
 
     public void MostrarCliente() {
-
         //**********************Metodo para mostrar los datos del cliente el la tabla*******************
         ctrlcliente = new CtrlUsuarioCliente();
         DefaultTableModel modelo = new DefaultTableModel();
@@ -972,7 +892,8 @@ public class FrmCreacionUsuario extends javax.swing.JFrame {
 
     }
 
-    public void ObtenerRegistro() {
+    public boolean ObtenerRegistro() {
+        Boolean selec = false;
         if (tabClientes.getSelectedRow() != -1) {
             try {
                 lbl_id.setVisible(true);
@@ -988,13 +909,14 @@ public class FrmCreacionUsuario extends javax.swing.JFrame {
                 txtTelefono.setText(telefono);
                 txtCorreo.setText(correo);
                 txtNumMedidor.setText(num_medidor);
-
+                selec = true;
             } catch (Exception e) {
                 System.out.println(e);
             }
         } else {
             JOptionPane.showMessageDialog(null, "Seleccione un Registro de Tabla por Favor");
         }
+        return selec;
     }
 
     public void obtenerFechaActual() {
@@ -1004,16 +926,6 @@ public class FrmCreacionUsuario extends javax.swing.JFrame {
         String año = Integer.toString(c.get(Calendar.YEAR));
         txt_fechacreacion_usuario.setText(año + "-" + mes + "-" + dia);
     }
-
-//!txtLect_Anterior.getText().isEmpty() &&
-//    public static void main(String args[]) {
-//
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new FrmCreacionUsuario().setVisible(true);
-//            }
-//        });
-//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEditar;

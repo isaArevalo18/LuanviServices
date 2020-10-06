@@ -1,14 +1,10 @@
 package ventanas;
 
 import Controlador.CtrlLectura;
-
 import clases.CalcularPrecio;
 import clases.validaciones;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
-//import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -23,6 +19,7 @@ public class FrmIngresoLectura extends javax.swing.JFrame {
     CalcularPrecio calcular = new CalcularPrecio();
     SimpleDateFormat formato = new SimpleDateFormat("YYYY-MM-dd");
     CtrlLectura ctrlLectura = new CtrlLectura();
+    validaciones vali = new validaciones();
     int id = 0;
     //Parametros para cargar una lectura anterior en un formulario
     int idlectura;
@@ -38,7 +35,6 @@ public class FrmIngresoLectura extends javax.swing.JFrame {
     double valorPago;
 
     public FrmIngresoLectura() {
-
         initComponents();
         txtConsumo.setText("0000");
         txt_valorpago.setText("0.00");
@@ -50,11 +46,14 @@ public class FrmIngresoLectura extends javax.swing.JFrame {
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/AguaIcono.png")).getImage());
         val.ValidarNumeros(txt_lectura);
         val.LimitarCaracteres(txt_lectura, 4);
-        habilitarBGuardarLect();
         this.setLocationRelativeTo(null);
-        //MostrarLectura();
 
-        // ---------------------------------------------------------------------
+        vali.ValidarNumeros(txtCedula);
+        vali.LimitarCaracteres(txtCedula, 10);
+        vali.ValidarLetras(txtNombre);
+        vali.ValidarLetras(txtApellido);
+        vali.ValidarNumeros(txtNumMedidor);
+        vali.LimitarCaracteres(txtNumMedidor, 7);
     }
 
     // -------------------------------------------------------------------------
@@ -179,11 +178,6 @@ public class FrmIngresoLectura extends javax.swing.JFrame {
 
         txtNumMedidor.setEditable(false);
         txtNumMedidor.setEnabled(false);
-        txtNumMedidor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNumMedidorActionPerformed(evt);
-            }
-        });
         txtNumMedidor.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtNumMedidorKeyReleased(evt);
@@ -200,20 +194,9 @@ public class FrmIngresoLectura extends javax.swing.JFrame {
 
         jLabel6.setText("Lec.Anterior");
 
-        txt_lectura.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_lecturaActionPerformed(evt);
-            }
-        });
         txt_lectura.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txt_lecturaKeyPressed(evt);
-            }
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txt_lecturaKeyReleased(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txt_lecturaKeyTyped(evt);
             }
         });
 
@@ -504,10 +487,6 @@ public class FrmIngresoLectura extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtNumMedidorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumMedidorActionPerformed
-
-    }//GEN-LAST:event_txtNumMedidorActionPerformed
-
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         //***********************Busqueda de los datos del cliente*******************************
         txtConsumo.setText("");
@@ -516,8 +495,6 @@ public class FrmIngresoLectura extends javax.swing.JFrame {
         txt_lectura.setEditable(true);
         jd_fechalectura.setEnabled(true);
         BuscarCliente();
-        btn_eliminarlectura.setEnabled(true);
-
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnNuevoLecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoLecActionPerformed
@@ -525,6 +502,8 @@ public class FrmIngresoLectura extends javax.swing.JFrame {
         txt_lectura.setEditable(true);
         jd_fechalectura.setEnabled(true);
         rbt_medidor.setSelected(true);
+        txtCedula.setEnabled(false);
+        txtCedula.setEditable(false);
         txtNumMedidor.setEnabled(true);
         txtNumMedidor.setEditable(true);
     }//GEN-LAST:event_btnNuevoLecActionPerformed
@@ -570,7 +549,6 @@ public class FrmIngresoLectura extends javax.swing.JFrame {
             } else {
                 if (validaciones.validarFechaLectura(fechalecturaacterior, fechalecturaactual)) {
                     ctrlLectura = new CtrlLectura();
-
                     //Llamamos a la funcion para calcular el valor de pago de acuerdo a la lectura
                     valorPago = calcularValorPago(Integer.parseInt(txtConsumo.getText()));
                     txt_valorpago.setText(valorPago + "");
@@ -595,17 +573,12 @@ public class FrmIngresoLectura extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "No puede generar dos Lecturas el mismo mes");
                 }
             }
-
         }
-
-
     }//GEN-LAST:event_btnGuardarLecturaActionPerformed
 
     private void txt_lecturaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_lecturaKeyReleased
         habilitarBGuardarLect();
-        System.out.println(evt.getKeyCode());
         if (Character.isDigit(evt.getKeyChar())) {
-            // System.out.println("cumple");
             if (caracter.length() < 4) {
                 caracter = caracter + String.valueOf(evt.getKeyChar());
                 CalcularConsumo();
@@ -618,8 +591,6 @@ public class FrmIngresoLectura extends javax.swing.JFrame {
             caracter = txt_lectura.getText();
             CalcularConsumo();
         }
-
-
     }//GEN-LAST:event_txt_lecturaKeyReleased
 
     private void txtNumMedidorKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumMedidorKeyReleased
@@ -648,15 +619,13 @@ public class FrmIngresoLectura extends javax.swing.JFrame {
         txtNumMedidor.setEnabled(false);
         txtNumMedidor.setEditable(false);
         limpiar();
-
     }//GEN-LAST:event_rbt_cedulaActionPerformed
 
     private void jd_fechalecturaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jd_fechalecturaKeyReleased
-
+        habilitarBGuardarLect();
     }//GEN-LAST:event_jd_fechalecturaKeyReleased
 
     private void btn_eliminarlecturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarlecturaActionPerformed
-
         ctrlLectura = new CtrlLectura();
         int fila = tablaLecturas.getSelectedRow();
         if (fila > -1) {
@@ -670,7 +639,6 @@ public class FrmIngresoLectura extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Selecciones por favor una Lectura de la tabla para eliminar");
         }
-
     }//GEN-LAST:event_btn_eliminarlecturaActionPerformed
 
     private void tablaLecturasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaLecturasMouseClicked
@@ -696,8 +664,6 @@ public class FrmIngresoLectura extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "No se puede editar una Lectura en estado Pagado");
         }
-
-
     }//GEN-LAST:event_tablaLecturasMouseClicked
 
     private void btn_editarlecturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editarlecturaActionPerformed
@@ -736,24 +702,11 @@ public class FrmIngresoLectura extends javax.swing.JFrame {
                 } else {
                     JOptionPane.showMessageDialog(null, "No puede generar dos Lecturas el mismo mes");
                 }
-
             }
         } else {
             JOptionPane.showMessageDialog(null, "Selecciones por favor una Lectura de la tabla para Editar");
         }
     }//GEN-LAST:event_btn_editarlecturaActionPerformed
-
-    private void txt_lecturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_lecturaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_lecturaActionPerformed
-
-    private void txt_lecturaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_lecturaKeyTyped
-
-    }//GEN-LAST:event_txt_lecturaKeyTyped
-
-    private void txt_lecturaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_lecturaKeyPressed
-
-    }//GEN-LAST:event_txt_lecturaKeyPressed
 
     private void txtConsumoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtConsumoKeyReleased
         // TODO add your handling code here:
@@ -775,37 +728,30 @@ public class FrmIngresoLectura extends javax.swing.JFrame {
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.setColumnIdentifiers(new Object[]{"Id", "Fecha Lectura", "lectura", "Consumo", "Estado", "ValorPago"});
         tablaLecturas.setModel(modelo);
-
-        //cFechaLecturaAct.setDate(null);
     }
 
     public void habilitarBGuardarLect() {
-        if (!txt_lectura.getText().isEmpty() && !txtLecAnterior.getText().isEmpty() && !txtNumMedidor.getText().isEmpty()) {
+        System.out.println(jd_fechalectura.getDate());
+        if (!txt_lectura.getText().isEmpty() || jd_fechalectura.getDate() != null) {
             btnGuardarLectura.setEnabled(true);
-
         } else {
             btnGuardarLectura.setEnabled(false);
-
         }
     }
 
     public void MostrarLecturasCliente(int idcliente) {
-
         //**********************Metodo para mostrar los datos del cliente el la tabla*******************
         ctrlLectura = new CtrlLectura();
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.setColumnIdentifiers(new Object[]{"Id", "Fecha Lectura", "lectura", "Consumo", "Estado", "ValorPago"});
         ctrlLectura.listarLecturasCliente(modelo, idcliente);
         tablaLecturas.setModel(modelo);
-
     }
 
     public void CalcularConsumo() {
-        if (txt_lectura.getText().length() > 0 && txtLecAnterior.getText().length() > 0) {
+        if (txt_lectura.getText().length() > 0 && txtLecAnterior.getText().length() >= 0) {
             lectura_Actual = Integer.parseInt(txt_lectura.getText());
-            System.out.println(lectura_Actual);
             lectura_Anterior = Integer.parseInt(txtLecAnterior.getText());
-            System.out.println(lectura_Anterior);
 
             total_consumo = lectura_Actual - lectura_Anterior;
             if (txtLecAnterior.getText().equals("0")) {
@@ -814,7 +760,6 @@ public class FrmIngresoLectura extends javax.swing.JFrame {
             } else {
                 txtConsumo.setText(String.valueOf(total_consumo));
             }
-
         } else {
             txtConsumo.setText("");
             caracter = "";
@@ -822,7 +767,6 @@ public class FrmIngresoLectura extends javax.swing.JFrame {
             lectura_Anterior = 0;
             total_consumo = 0;
         }
-
     }
 
     public static double calcularValorPago(int consumo) {
@@ -882,12 +826,9 @@ public class FrmIngresoLectura extends javax.swing.JFrame {
                             }
                             // System.out.println(totalconsumoexceso);
                         }
-
                     };
                 }
-
             }
-
         }
         return totalsinexceso + totalconsumoexceso + residuototalexceso;
     }
@@ -931,13 +872,10 @@ public class FrmIngresoLectura extends javax.swing.JFrame {
                     txtLecAnterior.setText(lecturas.getLectura());
                     txtFechaAnterior.setText(lecturas.getFechalectura());
                 }
-
             } else {
-
                 JOptionPane.showMessageDialog(null, "Cliente no encontrado");
             }
         }
-
     }
 
     public void cargarDatos() {
@@ -951,7 +889,6 @@ public class FrmIngresoLectura extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al cargar la lectura");
         }
-
     }
 
 

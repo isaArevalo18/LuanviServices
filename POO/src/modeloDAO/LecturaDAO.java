@@ -47,7 +47,6 @@ public class LecturaDAO extends Conexion {
         sql = "SELECT idcliente,nombre,apellido,cedula,numeromedidor,direccion,correo,fechaNacimiento,telefono,fechaCreacion"
                 + " FROM usuario u INNER JOIN cliente c ON u.idusuario=c.idUsuario "
                 + "WHERE numeromedidor=" + parametro + " OR cedula=" + parametro;
-
         try {
             con = getConexion();
             ps = con.prepareStatement(sql);
@@ -131,18 +130,16 @@ public class LecturaDAO extends Conexion {
     /*Obtiene los datos de la ultima lectura del cliente*/
     public Lecturas obtenerUltimaLectura(int id) {
         Lecturas lec = new Lecturas();
-        sql = "SELECT lectura,fechaLectura,consumo  FROM lectura WHERE idcliente=" + id
+        sql = "SELECT lectura,fechaLectura,consumo FROM lectura WHERE idcliente=" + id
                 + " AND fechaLectura=(select max(fechaLectura) from lectura where idcliente=" + id + ")";
         try {
             con = getConexion();
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
             if (rs.next()) {
-
                 lec.setLectura(rs.getString(1));
                 lec.setFechalectura(rs.getString(2));
                 lec.setConsumo(rs.getInt(3));
-
             }
         } catch (Exception e) {
             System.out.println("Error al buscar lectura anterior: " + e);

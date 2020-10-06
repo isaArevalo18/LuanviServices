@@ -21,10 +21,8 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/AguaIcono.png")).getImage());
-        cambiar();
-
         setVisible(true);
-
+        cambiar();
     }
 
     public void cambiar() {
@@ -55,7 +53,6 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         };
         timer = new Timer();
         timer.scheduleAtFixedRate(tarea, velMil, velMil);
-
     }
 
     @SuppressWarnings("unchecked")
@@ -196,11 +193,6 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         itmNuevoEmpleado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/businessman_add.png"))); // NOI18N
         itmNuevoEmpleado.setText("Nuevo Empleado");
         itmNuevoEmpleado.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        itmNuevoEmpleado.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                itmNuevoEmpleadoMouseEntered(evt);
-            }
-        });
         itmNuevoEmpleado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 itmNuevoEmpleadoActionPerformed(evt);
@@ -288,22 +280,12 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
 
         jMenu10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/salirw.png"))); // NOI18N
         jMenu10.setText("Planilla");
-        jMenu10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu10ActionPerformed(evt);
-            }
-        });
 
         MiPlanilla.setText("Planilla");
         MiPlanilla.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         MiPlanilla.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 MiPlanillaMouseEntered(evt);
-            }
-        });
-        MiPlanilla.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MiPlanillaActionPerformed(evt);
             }
         });
         jMenu10.add(MiPlanilla);
@@ -348,21 +330,11 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_MiUsuariosActionPerformed
 
-    private void jMenu10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu10ActionPerformed
-
-    }//GEN-LAST:event_jMenu10ActionPerformed
-
     private void itmPagoConsumoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmPagoConsumoActionPerformed
         FrmConsumoPago consmo = new FrmConsumoPago();
         consmo.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_itmPagoConsumoActionPerformed
-
-    private void MiPlanillaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MiPlanillaActionPerformed
-        FrmPlanillaPagar v = new FrmPlanillaPagar();
-        v.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_MiPlanillaActionPerformed
 
     private void lecturas(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lecturas
         FrmIngresoLectura v = new FrmIngresoLectura();
@@ -401,7 +373,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     private void PagoAguaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PagoAguaActionPerformed
         FrmConsumoPago consmo = new FrmConsumoPago();
         consmo.setVisible(true);
-
+        this.dispose();
     }//GEN-LAST:event_PagoAguaActionPerformed
 
     private void conClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_conClienteActionPerformed
@@ -418,65 +390,11 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_SalirActionPerformed
 
-    private void itmNuevoEmpleadoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_itmNuevoEmpleadoMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_itmNuevoEmpleadoMouseEntered
-
     private void itmNuevoEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmNuevoEmpleadoActionPerformed
         FrmRegistroEmpleados rep = new FrmRegistroEmpleados();
         rep.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_itmNuevoEmpleadoActionPerformed
-
-//    public static void main(String args[]) {
-//
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new FrmMenuPrincipal().setVisible(true);
-//
-//            }
-//        });
-//    }
-//
-//oPago();
-//        consmo.setVisible(true);
-//        dispose();
-//    }                                               
-////
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        <editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(FrmMenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(FrmMenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(FrmMenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(FrmMenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        </editor-fold>
-//        </editor-fold>
-//        </editor-fold>
-//        </editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new FrmMenuPrincipal().setVisible(true);
-//            }
-//        });
-//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JMenu Consultas;

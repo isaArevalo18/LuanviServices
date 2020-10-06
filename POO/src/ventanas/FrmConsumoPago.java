@@ -1,6 +1,7 @@
 package ventanas;
 
 import Controlador.CtrlLectura;
+import clases.validaciones;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
@@ -13,9 +14,6 @@ import modelo.Lecturas;
 
 public class FrmConsumoPago extends javax.swing.JDialog {
 
-    /*Variables necesarias para almacenar algunos valores que retornan algunos metodos 
-    y no se se muestran en la vista, pero son necesarios
-     */
     double subTotal;
     int lecActual;
     int lecAnterior;
@@ -28,10 +26,15 @@ public class FrmConsumoPago extends javax.swing.JDialog {
     String parametroCedula;
     List<Lecturas> lecturas;
 
+    validaciones vali = new validaciones();
+
     public FrmConsumoPago() {
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/AguaIcono.png")).getImage());
         this.setLocationRelativeTo(null);
+        jButton2.setEnabled(false);
+        vali.ValidarNumeros(txtbuscarcliente);
+        vali.LimitarCaracteres(txtbuscarcliente, 10);
     }
 
     @SuppressWarnings("unchecked")
@@ -75,11 +78,12 @@ public class FrmConsumoPago extends javax.swing.JDialog {
         txtValorxMes = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         txt_medidor = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
 
         setTitle("Consumo a Pagar");
         setBackground(new java.awt.Color(204, 204, 255));
 
-        jLabel9.setText("Valor total a  Pagar");
+        jLabel9.setText("Valor total a  Pagar:");
 
         txtValorPagar.setEditable(false);
 
@@ -184,7 +188,7 @@ public class FrmConsumoPago extends javax.swing.JDialog {
 
         txtCorreo.setEditable(false);
 
-        jLabel1.setText("ConsumoM3 Ultimo Mes:");
+        jLabel1.setText("Consumo:");
 
         txtConsumo.setEditable(false);
 
@@ -203,7 +207,7 @@ public class FrmConsumoPago extends javax.swing.JDialog {
 
             },
             new String [] {
-                "LecturaM3", "Mes", "ConsumoM3", "Valor a Pagar", "Estado"
+                "Lectura (m3)", "Mes", "Consumo (m3)", "Valor a Pagar", "Estado"
             }
         ) {
             Class[] types = new Class [] {
@@ -226,7 +230,7 @@ public class FrmConsumoPago extends javax.swing.JDialog {
 
         txt_telefono.setEditable(false);
 
-        jLabel8.setText("Valor a Pagar Mes:");
+        jLabel8.setText("Valor a Pagar:");
 
         txtValorxMes.setEditable(false);
 
@@ -234,6 +238,8 @@ public class FrmConsumoPago extends javax.swing.JDialog {
         jLabel13.setText("Medidor");
 
         txt_medidor.setEditable(false);
+
+        jLabel14.setText("m3");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -286,6 +292,30 @@ public class FrmConsumoPago extends javax.swing.JDialog {
                                     .addComponent(txt_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(110, 110, 110))))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel8))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtConsumo, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel14)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addComponent(txtValorPagar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addComponent(txtValorxMes, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(30, 30, 30))))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel3)
@@ -294,39 +324,12 @@ public class FrmConsumoPago extends javax.swing.JDialog {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(28, 415, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(8, 8, 8)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabel1)
-                                            .addComponent(jLabel9))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(txtConsumo, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(0, 0, Short.MAX_VALUE))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                                        .addComponent(txtValorPagar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                                        .addComponent(txtValorxMes, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                .addGap(30, 30, 30))))))
+                                .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txt_medidor, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap())))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 586, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -385,7 +388,8 @@ public class FrmConsumoPago extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(txtConsumo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtConsumo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel14))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
@@ -408,7 +412,6 @@ public class FrmConsumoPago extends javax.swing.JDialog {
             /*Agregamos los datos del cliente y los datos de la lectura a un objeto de la clase DetallePlanilla que seleccionamos en la tabla 
              para enviarlos 
              */
-
             DetallePlanilla dp = new DetallePlanilla();
             dp.setIdCliente(idcliente);
             dp.setCedula(txtCedula.getText());
@@ -431,11 +434,9 @@ public class FrmConsumoPago extends javax.swing.JDialog {
             FrmPlanillaPagar frmPlanillaPagar = new FrmPlanillaPagar();
             frmPlanillaPagar.setVisible(true);
             dispose();
-
         } else {
             JOptionPane.showMessageDialog(null, "Seleccione la Lectura que Desea Facturar");
         }
-
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -447,7 +448,6 @@ public class FrmConsumoPago extends javax.swing.JDialog {
     private void btnConsultarPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarPagoActionPerformed
         BuscarCliente();
         GenerarDetallePago();
-
     }//GEN-LAST:event_btnConsultarPagoActionPerformed
 
     /*
@@ -455,24 +455,21 @@ public class FrmConsumoPago extends javax.swing.JDialog {
      */
     public void GenerarDetallePago() {
         double totalPagar = 0;
-
         ctrlLectura = new CtrlLectura();
         /*Buscamos todas las lecturas pedientes por el id del cliente  y las almacenamos en un arraylist */
         lecturas = ctrlLectura.obtenerLecturasPago(idcliente);
-
         System.out.println(lecturas.size() + "cantidad de lecturas pago");
 
         if (lecturas.isEmpty()) {
             JOptionPane.showMessageDialog(null, "No se puede realizar el pago, el cliente no posee una Lectura Pendiente");
-            txtApellido.setText("");
+            /*txtApellido.setText("");
             txtCedula.setText("");
             txtCorreo.setText("");
             txt_telefono.setText("");
             txt_medidor.setText("");
             txtDireccion.setText("");
             txtbuscarcliente.setText("");
-            txtFechaLectura.setText("");
-
+            txtFechaLectura.setText("");*/
         } else {
             /*
               Obtenemos los datos de la ultima lectura que se encuentra almacenada en el ArrayList
@@ -481,13 +478,10 @@ public class FrmConsumoPago extends javax.swing.JDialog {
             txt_lectura_anterior.setText(lecturas.get(0).getLecturaAnterior() + "");
             txt_lectura_actual.setText(lecturas.get(0).getLectura());
             txtConsumo.setText(lecturas.get(0).getConsumo() + "");
-
             //Limpiamos la tabla
             reiniciarModeloTabla();
             DefaultTableModel model = (DefaultTableModel) tabPagos.getModel();
-
             for (int i = 0; i < lecturas.size(); i++) {
-
                 /*Con esta condicion evitamos que nos liste la primera lectura que no tienen ningun valor exxistente de pago*/
                 if (lecturas.get(i).getConsumo() != 0) {
                     model.addRow(new Object[]{lecturas.get(i).getLectura(), convertirMes(lecturas.get(i).getMeslectura() - 1), lecturas.get(i).getConsumo(), lecturas.get(i).getValorpago(),
@@ -497,10 +491,10 @@ public class FrmConsumoPago extends javax.swing.JDialog {
                 /*Realizamos una sumatoria para obtener el valor total a pagar de todas las lecturas pendientes*/
                 totalPagar = totalPagar + lecturas.get(i).getValorpago();
             }
-
             txtValorPagar.setText(totalPagar + "");
             //Enviamos a mostrar el valor del ultimo consumo en metros cubicos por esa razon colamos 0
             txtConsumo.setText(lecturas.get(0).getConsumo() + "");
+            jButton2.setEnabled(true);
         }
     }
 
@@ -509,7 +503,6 @@ public class FrmConsumoPago extends javax.swing.JDialog {
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.setColumnIdentifiers(new Object[]{"ConsumoM3", "Mes", "Consumo", "Valor a Pagar", "Estado"});
         tabPagos.setModel(modelo);
-
     }
 
     /*Metodo que convierte el numero del mes de la lectura en Lectra*/
@@ -568,7 +561,6 @@ public class FrmConsumoPago extends javax.swing.JDialog {
         /*Extraemos los valores*/
         double valormes = Double.parseDouble(tabPagos.getValueAt(fila, 3).toString());
         txtValorxMes.setText(valormes + "");
-
         //Recorremos la lista  para obtener los datos de lectura anterior y actual y su consumo
         for (Lecturas lectura : lecturas) {
             if (lectura.getValorpago() == valormes) {
@@ -586,11 +578,10 @@ public class FrmConsumoPago extends javax.swing.JDialog {
         ctrlLectura = new CtrlLectura();
         parametroNumMedidor = txtbuscarcliente.getText();
         if (parametroNumMedidor.equals("")) {
-            JOptionPane.showMessageDialog(null, "Ingrese el numero de medidor para realizar la busqueda");
+            JOptionPane.showMessageDialog(null, "Ingrese el numero de medidor o cedula para realizar la busqueda");
         } else {
             /*Lllamamos al metodo buscarDatosCliente que busca por numero de medidor o cedula*/
             cliente = ctrlLectura.buscarDatosCliente(parametroNumMedidor);
-
             if (cliente.getNombre() != null) {
                 /*Enviamos los valores a las cajas de texto*/
                 txtCedula.setText(cliente.getCedula());
@@ -604,49 +595,11 @@ public class FrmConsumoPago extends javax.swing.JDialog {
                 /*LLamamos el metodo obtener ultima lectura y cargar los datos de la misma en los campos de texto*/
                 Lecturas lecturas = ctrlLectura.obtenerUltimaLectura(cliente.getIdCliente());
                 txtFechaLectura.setText(lecturas.getFechalectura());
-
             } else {
-
                 JOptionPane.showMessageDialog(null, "Cliente no encontrado");
             }
         }
     }
-
-    //    /**
-    //     * @param args the command line arguments
-    //     */
-    //    public static void main(String args[]) {
-    //        /* Set the Nimbus look and feel */
-    //        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-    //        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-    //         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-    //         */
-    //        try {
-    //            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-    //                if ("Nimbus".equals(info.getName())) {
-    //                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-    //                    break;
-    //                }
-    //            }
-    //        } catch (ClassNotFoundException ex) {
-    //            java.util.logging.Logger.getLogger(FrmConsumoPago.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-    //        } catch (InstantiationException ex) {
-    //            java.util.logging.Logger.getLogger(FrmConsumoPago.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-    //        } catch (IllegalAccessException ex) {
-    //            java.util.logging.Logger.getLogger(FrmConsumoPago.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-    //        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-    //            java.util.logging.Logger.getLogger(FrmConsumoPago.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-    //        }
-    //        //</editor-fold>
-    //        //</editor-fold>
-    //
-    //        /* Create and display the form */
-    //        java.awt.EventQueue.invokeLater(new Runnable() {
-    //            public void run() {
-    //                new FrmConsumoPago().setVisible(true);
-    //            }
-    //        });
-    //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnConsultarPago;
@@ -658,6 +611,7 @@ public class FrmConsumoPago extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -113,10 +113,11 @@ public class FrmLogin extends javax.swing.JFrame {
 
     private void jb_iniciarsesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_iniciarsesionActionPerformed
         UsuarioEmpleadoDAO DAO = new UsuarioEmpleadoDAO();
-
+        //LLama al metodo de iniciar sesion
         Boolean sesion = DAO.iniciar_sesion(txt_usuario.getText(), txt_clave.getText());
-
+        //Si sesion en true
         if (sesion) {
+            //Abre el menu peincipal
             FrmMenuPrincipal m = new FrmMenuPrincipal();
             m.setVisible(true);
             this.dispose();

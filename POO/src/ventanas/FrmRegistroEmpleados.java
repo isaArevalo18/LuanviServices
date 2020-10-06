@@ -40,21 +40,19 @@ public class FrmRegistroEmpleados extends javax.swing.JFrame {
     String contraseña;
 
     public FrmRegistroEmpleados() {
-
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/AguaIcono.png")).getImage());
         obtenerFechaActual();
+        bloquear();
         MostrarEmpleado();
+        btnGuardarEmpleado.setEnabled(false);
+        btnTerminarEdicion.setEnabled(false);
+        btnEliminarEmpleado.setEnabled(false);
         txt_idempleado.setVisible(false);
         lbl_id.setVisible(false);
-        //holders();
-
-        /*bloquear();
-        bloquearTerminareditar();
-        //****************Validamos los txt Para el ingreso de solo numeros o letras****************
-        btnGuardarEmpleado.setEnabled(false);
+        //Validacion de los campos
         vali.ValidarNumeros(txtCedulaEmpleado);
         vali.LimitarCaracteres(txtCedulaEmpleado, 10);
         vali.ValidarLetras(txtNombreEmpleado);
@@ -62,37 +60,6 @@ public class FrmRegistroEmpleados extends javax.swing.JFrame {
         vali.ValidarLetras(txtDireccionEmpleado);
         vali.ValidarNumeros(txtTelefonoEmpleado);
         vali.LimitarCaracteres(txtTelefonoEmpleado, 7);
-
-        ///********************************
-        setLocationRelativeTo(null);
-        tabEmpleados.addMouseListener(new java.awt.event.MouseAdapter() {
-            DefaultTableModel model = new DefaultTableModel();
-
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                int o = tabEmpleados.getSelectedRow();
-                cedula = tabEmpleados.getValueAt(o, 0).toString();
-                nombre = tabEmpleados.getValueAt(o, 1).toString();
-                apellido = tabEmpleados.getValueAt(o, 2).toString();
-                direccion = tabEmpleados.getValueAt(o, 3).toString();
-                correo = tabEmpleados.getValueAt(o, 4).toString();
-                fecha_nac = tabEmpleados.getValueAt(o, 5).toString();
-                telefono = tabEmpleados.getValueAt(o, 6).toString();
-                cargo=tabEmpleados.getValueAt(o, 7).toString();
-                tabEmpleadosMouseClicked(evt);
-            }
-        });
-
-    }
-
-    public void holders() {
-     /*   TextPrompt prueba = new TextPrompt("Obligatorio", txtCedulaEmpleado);
-        TextPrompt prueba1 = new TextPrompt("Obligatorio", txtNombreEmpleado);
-        TextPrompt prueba2 = new TextPrompt("Obligatorio", txtApellidoEmpleado);
-        TextPrompt prueba3 = new TextPrompt("Obligatorio", txtCorreoEmpleado);
-        TextPrompt prueba4 = new TextPrompt("Obligatorio", txtDireccionEmpleado);
-        TextPrompt prueba5 = new TextPrompt("Obligatorio", txtTelefonoEmpleado);
-        TextPrompt prueba6 = new TextPrompt("Obligatorio", cFechaEmpleado);
-        TextPrompt prueba7 = new TextPrompt("Obligatorio", jcbCargo);*/
     }
 
     @SuppressWarnings("unchecked")
@@ -167,11 +134,6 @@ public class FrmRegistroEmpleados extends javax.swing.JFrame {
         jLabel5.setText("Correo:");
 
         txtCedulaEmpleado.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        txtCedulaEmpleado.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                txtCedulaEmpleadoMouseEntered(evt);
-            }
-        });
         txtCedulaEmpleado.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtCedulaEmpleadoKeyReleased(evt);
@@ -181,9 +143,6 @@ public class FrmRegistroEmpleados extends javax.swing.JFrame {
         txtNombreEmpleado.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtNombreEmpleadoKeyReleased(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtNombreEmpleadoKeyTyped(evt);
             }
         });
 
@@ -414,6 +373,23 @@ public class FrmRegistroEmpleados extends javax.swing.JFrame {
         jLabel11.setText("Cargo:");
 
         jcbCargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "Presidente", "Tesorero" }));
+        jcbCargo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jcbCargoKeyReleased(evt);
+            }
+        });
+
+        txt_nombre_usuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_nombre_usuarioKeyReleased(evt);
+            }
+        });
+
+        txt_clave.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_claveKeyReleased(evt);
+            }
+        });
 
         jLabel6.setText("Nombre de Usuario:");
 
@@ -473,7 +449,7 @@ public class FrmRegistroEmpleados extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txt_nombre_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lbl_clave1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lbl_clave1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txt_clave, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(11, 11, 11))))
@@ -490,7 +466,7 @@ public class FrmRegistroEmpleados extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 37, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jScrollPane1))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -565,7 +541,7 @@ public class FrmRegistroEmpleados extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -573,6 +549,7 @@ public class FrmRegistroEmpleados extends javax.swing.JFrame {
 
     private void tabEmpleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabEmpleadosMouseClicked
         int fila = tabEmpleados.getSelectedRow();
+        btnEliminarEmpleado.setEnabled(true);
         idEmpleado = Integer.parseInt(tabEmpleados.getValueAt(fila, 0).toString());
         cedula = tabEmpleados.getValueAt(fila, 1).toString();
         nombre = tabEmpleados.getValueAt(fila, 2).toString();
@@ -588,52 +565,53 @@ public class FrmRegistroEmpleados extends javax.swing.JFrame {
     }//GEN-LAST:event_tabEmpleadosMouseClicked
 
     private void btnGuardarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarEmpleadoActionPerformed
-        ctrlUsuarioEmpleado = new CtrlUsuarioEmpleado();
-        Empleado empleado = new Empleado();
-        empleado.setCedula(txtCedulaEmpleado.getText());
-        empleado.setNombre(txtNombreEmpleado.getText());
-        empleado.setApellido(txtApellidoEmpleado.getText());
-        String fecha = formato.format(cFechaEmpleado.getDate());
-        empleado.setFechaNacimiento(fecha);
-        empleado.setFechaCreacion(txt_fechacreacion_usuario.getText());
-        empleado.setDireccion(txtDireccionEmpleado.getText());
-        empleado.setTelefono(txtTelefonoEmpleado.getText());
-        empleado.setCorreo(txtCorreoEmpleado.getText());
-        empleado.setCargo(jcbCargo.getSelectedItem().toString());
-        empleado.setUsuario(txt_nombre_usuario.getText());
-        empleado.setClave(txt_clave.getText());
-        ctrlUsuarioEmpleado.guardarUsuarioEmpleado(empleado);
-        MostrarEmpleado();
-        //empleado.set
-
+        if (!txtCedulaEmpleado.equals("") && !txtNombreEmpleado.equals("") && !txtApellidoEmpleado.equals("")
+                && cFechaEmpleado.getDate() != null && !txt_fechacreacion_usuario.equals("") && !txtDireccionEmpleado.equals("")
+                && !txtTelefonoEmpleado.equals("") && !txtCorreoEmpleado.equals("") && !jcbCargo.getSelectedItem().toString().equals("Seleccione")
+                && !txt_nombre_usuario.equals("") && !txt_clave.equals("")) {
+            ctrlUsuarioEmpleado = new CtrlUsuarioEmpleado();
+            Empleado empleado = new Empleado();
+            empleado.setCedula(txtCedulaEmpleado.getText());
+            empleado.setNombre(txtNombreEmpleado.getText());
+            empleado.setApellido(txtApellidoEmpleado.getText());
+            String fecha = formato.format(cFechaEmpleado.getDate());
+            empleado.setFechaNacimiento(fecha);
+            empleado.setFechaCreacion(txt_fechacreacion_usuario.getText());
+            empleado.setDireccion(txtDireccionEmpleado.getText());
+            empleado.setTelefono(txtTelefonoEmpleado.getText());
+            empleado.setCorreo(txtCorreoEmpleado.getText());
+            empleado.setCargo(jcbCargo.getSelectedItem().toString());
+            empleado.setUsuario(txt_nombre_usuario.getText());
+            empleado.setClave(txt_clave.getText());
+            ctrlUsuarioEmpleado.guardarUsuarioEmpleado(empleado);
+            MostrarEmpleado();
+        } else {
+            JOptionPane.showMessageDialog(null, "Llene todos los datos.");
+        }
     }//GEN-LAST:event_btnGuardarEmpleadoActionPerformed
 
-    private void btnNuevoEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoEmpleadoActionPerformed
-
-    }//GEN-LAST:event_btnNuevoEmpleadoActionPerformed
-
     private void txtCedulaEmpleadoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCedulaEmpleadoKeyReleased
-
+        habilitarBGuardar();
     }//GEN-LAST:event_txtCedulaEmpleadoKeyReleased
 
     private void txtNombreEmpleadoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreEmpleadoKeyReleased
-
+        habilitarBGuardar();
     }//GEN-LAST:event_txtNombreEmpleadoKeyReleased
 
     private void txtApellidoEmpleadoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidoEmpleadoKeyReleased
-
+        habilitarBGuardar();
     }//GEN-LAST:event_txtApellidoEmpleadoKeyReleased
 
     private void txtDireccionEmpleadoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDireccionEmpleadoKeyReleased
-
+        habilitarBGuardar();
     }//GEN-LAST:event_txtDireccionEmpleadoKeyReleased
 
     private void txtTelefonoEmpleadoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoEmpleadoKeyReleased
-
+        habilitarBGuardar();
     }//GEN-LAST:event_txtTelefonoEmpleadoKeyReleased
 
     private void txtCorreoEmpleadoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCorreoEmpleadoKeyReleased
-
+        habilitarBGuardar();
     }//GEN-LAST:event_txtCorreoEmpleadoKeyReleased
 
     private void btnEliminarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarEmpleadoActionPerformed
@@ -646,53 +624,99 @@ public class FrmRegistroEmpleados extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Seleccione un registro de la tabla para Eliminar");
         }
-
     }//GEN-LAST:event_btnEliminarEmpleadoActionPerformed
 
     private void btnEditarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarEmpleadoActionPerformed
-        ObtenerRegistro();
-        /*desbloquear();
-       
-        //******************Trae los datos de ta tabla a los txt*******************
-        txtCedulaEmpleado.setEnabled(false);
-        desbloquearTerminareditar();
-        lbID.setText(cedula);
-        txtCedulaEmpleado.setText(cedula);
-        txtNombreEmpleado.setText(nombre);
-        txtApellidoEmpleado.setText(apellido);
-        txtDireccionEmpleado.setText(direccion);
-        txtCorreoEmpleado.setText(correo);
-        txtTelefonoEmpleado.setText(telefono);*/
-
-
+        if (ObtenerRegistro()) {
+            btnTerminarEdicion.setEnabled(true);
+            btnEliminarEmpleado.setEnabled(false);
+        }
     }//GEN-LAST:event_btnEditarEmpleadoActionPerformed
 
     private void btnTerminarEdicionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTerminarEdicionActionPerformed
-
         ctrlUsuarioEmpleado = new CtrlUsuarioEmpleado();
-        Empleado empleado = new Empleado();
-        empleado.setIdusuario(Integer.parseInt(txt_idempleado.getText()));
-        empleado.setCedula(txtCedulaEmpleado.getText());
-        empleado.setNombre(txtNombreEmpleado.getText());
-        empleado.setApellido(txtApellidoEmpleado.getText());
-        String fecha = formato.format(cFechaEmpleado.getDate());
-        empleado.setFechaNacimiento(fecha);
-        empleado.setFechaCreacion(txt_fechacreacion_usuario.getText());
-        empleado.setDireccion(txtDireccionEmpleado.getText());
-        empleado.setTelefono(txtTelefonoEmpleado.getText());
-        empleado.setCorreo(txtCorreoEmpleado.getText());
-        empleado.setCargo(jcbCargo.getSelectedItem().toString());
-        empleado.setUsuario(txt_nombre_usuario.getText());
+        boolean correcto = true;
+        boolean registrar = true;
+        correcto = false;
 
-        ctrlUsuarioEmpleado.actualizarUsuarioEmpleado(empleado);
-        MostrarEmpleado();
+        if (txtNombreEmpleado.getText().isEmpty()) {
+            registrar = false;
+        } else {
+            String NOMBRE = txtNombreEmpleado.getText();
+            if (correcto != NOMBRE.matches("^[ a-zA-Z]")) { //validar nombre
+                registrar = false;
+                txtNombreEmpleado.setText("");
+            }
+        }
+        //**********************************************************************
+        if (txtApellidoEmpleado.getText().isEmpty()) {
+            registrar = false;
+        } else {
+            String APELLIDO = txtApellidoEmpleado.getText();
+            if (correcto != APELLIDO.matches("[ a-zA-Z]")) { //validar Apellido
+                registrar = false;
+                txtApellidoEmpleado.setText("");
+            }
+        }
+        //**********************************************************************
+        if (txtDireccionEmpleado.getText().isEmpty()) {
+            registrar = false;
+        } else {
+            String DIRECCION = txtDireccionEmpleado.getText();
+            if (correcto != DIRECCION.matches("[ a-zA-Z]")) { //validar Direccion
+                registrar = false;
+                txtApellidoEmpleado.setText("");
+            }
+        }
+        //**********************************************************************
+        if (txtTelefonoEmpleado.getText().isEmpty()) {
+            registrar = false;
+        } else {
+            double TELEFONO = Double.parseDouble(txtTelefonoEmpleado.getText()); //validar telefono
+            if (TELEFONO < 1 || TELEFONO > 565616142) {
+                registrar = false;
+                txtTelefonoEmpleado.setText("");
+            }
+        }
+        //**********************************************************************
+        boolean registrar2 = validaciones.validarCorreo(txtCorreoEmpleado.getText());//validacion de correo
+        if (registrar2 == false) {
+            registrar = false;
+            txtCorreoEmpleado.setText("");
+        }
+        if (cFechaEmpleado.getDate() == null) {
+            registrar = false;
+        }
 
-        txt_clave.setVisible(true);
-        lbl_clave1.setVisible(true);
-        lbl_id.setVisible(false);
-        txt_idempleado.setVisible(false);
-//        MostrarCliente();
-
+        if (registrar == true) {
+            int ax = JOptionPane.showConfirmDialog(null, "Desea guardar los cambios?");
+            if (ax == JOptionPane.YES_OPTION) {
+                Empleado empleado = new Empleado();
+                empleado.setIdusuario(Integer.parseInt(txt_idempleado.getText()));
+                empleado.setCedula(txtCedulaEmpleado.getText());
+                empleado.setNombre(txtNombreEmpleado.getText());
+                empleado.setApellido(txtApellidoEmpleado.getText());
+                String fecha = formato.format(cFechaEmpleado.getDate());
+                empleado.setFechaNacimiento(fecha);
+                empleado.setFechaCreacion(txt_fechacreacion_usuario.getText());
+                empleado.setDireccion(txtDireccionEmpleado.getText());
+                empleado.setTelefono(txtTelefonoEmpleado.getText());
+                empleado.setCorreo(txtCorreoEmpleado.getText());
+                empleado.setCargo(jcbCargo.getSelectedItem().toString());
+                empleado.setUsuario(txt_nombre_usuario.getText());
+                empleado.setClave(txt_clave.getText());
+                ctrlUsuarioEmpleado.actualizarUsuarioEmpleado(empleado);
+                MostrarEmpleado();
+                limpiar();
+                btnGuardarEmpleado.setEnabled(false);
+                obtenerFechaActual();
+                btnTerminarEdicion.setEnabled(false);
+            } else if (ax == JOptionPane.NO_OPTION) {
+                JOptionPane.showMessageDialog(null, "Cambios no guardado");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Algun dato fue incorrecto vuelva a ingresar ");
+        }
     }//GEN-LAST:event_btnTerminarEdicionActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -701,24 +725,20 @@ public class FrmRegistroEmpleados extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void txtCedulaEmpleadoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtCedulaEmpleadoMouseEntered
-
-    }//GEN-LAST:event_txtCedulaEmpleadoMouseEntered
-
     private void btnNuevoEmpleadoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNuevoEmpleadoMouseEntered
-
+        btnNuevoEmpleado.setToolTipText("Registrar un nuevo Empleado");
     }//GEN-LAST:event_btnNuevoEmpleadoMouseEntered
 
     private void btnGuardarEmpleadoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarEmpleadoMouseEntered
-
+        btnGuardarEmpleado.setToolTipText("Guardar nuevo Empleado");
     }//GEN-LAST:event_btnGuardarEmpleadoMouseEntered
 
     private void btnEliminarEmpleadoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarEmpleadoMouseEntered
-
+        btnEliminarEmpleado.setToolTipText("Eliminar al empleado seleccionado");
     }//GEN-LAST:event_btnEliminarEmpleadoMouseEntered
 
     private void btnEditarEmpleadoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarEmpleadoMouseEntered
-
+        btnEditarEmpleado.setToolTipText("Editar al empleado seleccionado");
     }//GEN-LAST:event_btnEditarEmpleadoMouseEntered
 
     private void btnTerminarEdicionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTerminarEdicionMouseEntered
@@ -726,24 +746,43 @@ public class FrmRegistroEmpleados extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTerminarEdicionMouseEntered
 
     private void cFechaEmpleadoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cFechaEmpleadoKeyReleased
-        // habilitarBGuardar();
+        habilitarBGuardar();
     }//GEN-LAST:event_cFechaEmpleadoKeyReleased
 
-    private void txtNombreEmpleadoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreEmpleadoKeyTyped
-        vali.soloLentrasEspacios(evt);
-    }//GEN-LAST:event_txtNombreEmpleadoKeyTyped
+    private void txt_nombre_usuarioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_nombre_usuarioKeyReleased
+        habilitarBGuardar();
+    }//GEN-LAST:event_txt_nombre_usuarioKeyReleased
 
-    /* public void bloquear() {
-        //*********************Bloque todos los campos************************* 
-        txtCedulaEmpleado.setEnabled(false);
-        txtNombreEmpleado.setEnabled(false);
-        txtApellidoEmpleado.setEnabled(false);
-        txtDireccionEmpleado.setEnabled(false);
-        txtCorreoEmpleado.setEnabled(false);
-        txtTelefonoEmpleado.setEnabled(false);
-  
+    private void jcbCargoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jcbCargoKeyReleased
+        habilitarBGuardar();
+    }//GEN-LAST:event_jcbCargoKeyReleased
+
+    private void txt_claveKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_claveKeyReleased
+        habilitarBGuardar();
+    }//GEN-LAST:event_txt_claveKeyReleased
+
+    private void btnNuevoEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoEmpleadoActionPerformed
+        desbloquear();
+        obtenerFechaActual();
+        bloquearTerminareditar();
+        limpiar();
+    }//GEN-LAST:event_btnNuevoEmpleadoActionPerformed
+
+    public void MostrarEmpleado() {
+        //**********************Metodo para mostrar los datos del cliente el la tabla*******************
+        ctrlUsuarioEmpleado = new CtrlUsuarioEmpleado();
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.setColumnIdentifiers(new Object[]{"Id", "Cedula", "Nombre", "Apellido",
+            "Fecha Nacimiento", "FechaCreacion", "Direccion", "Telefono", "Correo", "Cargo", "Usuario", "Clave"});
+        ctrlUsuarioEmpleado.listarUsuarioEmpleado(modelo);
+        tabEmpleados.setModel(modelo);
     }
-
+    
+    public void bloquearTerminareditar() {
+        //*********************Boquea el boton Terminar Edicion****************
+        btnTerminarEdicion.setEnabled(false);
+    }
+    
     public void desbloquear() {
         //*********************Desbloquea Los campos del JFrame****************
         txtCedulaEmpleado.setEnabled(true);
@@ -752,24 +791,12 @@ public class FrmRegistroEmpleados extends javax.swing.JFrame {
         txtDireccionEmpleado.setEnabled(true);
         txtCorreoEmpleado.setEnabled(true);
         txtTelefonoEmpleado.setEnabled(true);
-   
+        cFechaEmpleado.setEnabled(true);
+        jcbCargo.setEnabled(true);
+        txt_nombre_usuario.setEnabled(true);
+        txt_clave.setEnabled(true);
     }
-
-    public void bloquearTerminareditar() {
-        //*********************Boquea el boton Terminar Edicion****************
-        btnTerminarEdicion.setEnabled(false);
-    }
-
-    public void desbloquearTerminareditar() {
-        //*********************Desbloquea el boton Terminar Edicion****************
-        btnTerminarEdicion.setEnabled(true);
-    }
-
-    public void habilitarBGuardar() {
-        //*******************Habilita el boton Guardar si todos los campos estan llenos*********************
-      
-    }
-
+    
     public void limpiar() {
         //********************Limpia los JtextField*****************************
         txtCedulaEmpleado.setText("");
@@ -779,35 +806,29 @@ public class FrmRegistroEmpleados extends javax.swing.JFrame {
         txtTelefonoEmpleado.setText("");
         txtCorreoEmpleado.setText("");
         cFechaEmpleado.setDate(null);
-      
+        jcbCargo.setSelectedIndex(0);
+        txt_nombre_usuario.setText("");
+        txt_clave.setText("");
+    }
+    
+    public void bloquear() {
+        //*********************Bloque todos los campos************************* 
+        txtCedulaEmpleado.setEnabled(false);
+        txtNombreEmpleado.setEnabled(false);
+        txtApellidoEmpleado.setEnabled(false);
+        txtDireccionEmpleado.setEnabled(false);
+        txtCorreoEmpleado.setEnabled(false);
+        txtTelefonoEmpleado.setEnabled(false);
+        cFechaEmpleado.setEnabled(false);
+        jcbCargo.setEnabled(false);
+        txt_nombre_usuario.setEnabled(false);
+        txt_clave.setEnabled(false);
+        btnEliminarEmpleado.setEnabled(false);
+        btnNuevoEmpleado.setEnabled(true);
     }
 
-    public void MostrarCliente() {
-        //**********************Metodo para mostrar los datos del cliente el la tabla*******************
-     
-    }*/
-//!txtLect_Anterior.getText().isEmpty() &&
-//    public static void main(String args[]) {
-//
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new FrmCreacionUsuario().setVisible(true);
-//            }
-//        });
-//    }
-    public void MostrarEmpleado() {
-
-        //**********************Metodo para mostrar los datos del cliente el la tabla*******************
-        ctrlUsuarioEmpleado = new CtrlUsuarioEmpleado();
-        DefaultTableModel modelo = new DefaultTableModel();
-        modelo.setColumnIdentifiers(new Object[]{"Id", "Cedula", "Nombre", "Apellido",
-            "Fecha Nacimiento", "FechaCreacion", "Direccion", "Telefono", "Correo", "Cargo", "Usuario", "Clave"});
-        ctrlUsuarioEmpleado.listarUsuarioEmpleado(modelo);
-        tabEmpleados.setModel(modelo);
-
-    }
-
-    public void ObtenerRegistro() {
+    public boolean ObtenerRegistro() {
+        Boolean selec = false;
         if (tabEmpleados.getSelectedRow() != -1) {
             try {
                 lbl_id.setVisible(true);
@@ -823,15 +844,16 @@ public class FrmRegistroEmpleados extends javax.swing.JFrame {
                 txtTelefonoEmpleado.setText(telefono);
                 txtCorreoEmpleado.setText(correo);
                 txt_nombre_usuario.setText(usuario);
-                txt_clave.setVisible(false);
-                lbl_clave1.setVisible(false);
+                txt_clave.setText(contraseña);
                 jcbCargo.setSelectedItem(cargo);
+                selec = true;
             } catch (Exception e) {
                 System.out.println(e);
             }
         } else {
             JOptionPane.showMessageDialog(null, "Seleccione un Registro de Tabla por Favor");
         }
+        return selec;
     }
 
     public void obtenerFechaActual() {
@@ -840,6 +862,20 @@ public class FrmRegistroEmpleados extends javax.swing.JFrame {
         String mes = Integer.toString(c.get(Calendar.MONTH) + 1);
         String año = Integer.toString(c.get(Calendar.YEAR));
         txt_fechacreacion_usuario.setText(año + "-" + mes + "-" + dia);
+    }
+
+    public void habilitarBGuardar() {
+        //*******************Habilita el boton Guardar si todos los campos estan llenos*********************
+        if (!txtCedulaEmpleado.equals("") && !txtNombreEmpleado.equals("") && !txtApellidoEmpleado.equals("")
+                && cFechaEmpleado.getDate() != null && !txt_fechacreacion_usuario.equals("") && !txtDireccionEmpleado.equals("")
+                && !txtTelefonoEmpleado.equals("") && !txtCorreoEmpleado.equals("") && !jcbCargo.getSelectedItem().toString().equals("Seleccione")
+                && !txt_nombre_usuario.equals("") && !txt_clave.equals("")) {
+
+            btnGuardarEmpleado.setEnabled(true);
+
+        } else {
+            btnGuardarEmpleado.setEnabled(false);
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
