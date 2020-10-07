@@ -5,14 +5,10 @@
 	$_SESSION['usuario']=$usuario;//iniciamos 
 
 	//CONEXION A LA BASE DE DATOS
-
-	$user = "root";//nombre de usuario
-	$contrasena = "";  //contraseña
-	$servidor = "localhost";//nombre del host o direccion Ip
-	$basededatos = "login";//nombre de la base de datos
-	$conexion=mysqli_connect($servidor, $user,$contrasena,$basededatos);
+	include("conexion.php");
+	
 	//llamamos a la base de datos en una consulta
-	$consulta="SELECT*FROM usuarios where usuario='$usuario' and clave='$clave'";
+	$consulta="SELECT*FROM login where usuario='$usuario' and clave='$clave'";
 	$resultado=mysqli_query($conexion,$consulta);//nos devuelve la consulta
 	//nos va dar los datos
 	$filas=mysqli_num_rows($resultado);//nos almacena los resultado

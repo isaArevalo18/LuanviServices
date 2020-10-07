@@ -7,9 +7,9 @@
 </head>
 <body background="botones.jpeg">
 	<div class="rj-layout">
-		<button class="rj-btn">Empleados</button>
-		<button class="rj-btn">Clientes</button>
-		<button class="rj-btn">Productos</button>
-	</div>
+		
+		<a href="empleados.php"><button class="rj-btn">Empleados</button></a>
+		<a href="clientes.php"><button class="rj-btn">Clientes</button></a>
+		<a href="productos.php"><button class="rj-btn">Productos</button></a>
 </body>
 </html>

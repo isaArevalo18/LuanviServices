@@ -1,214 +1,167 @@
-<!DOCTYPE HTML>  
+<!doctype html>
 <html>
 <head>
-<style>
- * {
-  box-sizing: border-box;
-}
-.error {color:color #454545;}
-body {
-  font-family: Arial;
-  padding: 10px;
-  background: #FA8072;
-} 
-.head {
-  padding: 30px;
-  text-align: center;
-  background: white;
-}
-p {
-    color: #454545;
-}
-h2 {
-    color:#070;
-}
-</style>
-</style>
+<meta charset="utf-8">
+<title>Formulario Empleado</title>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 </head>
-<body>
 
-<h2>Somos MCDONALDS:</h2>
+<style>
+  input,label{
+  
+  margin: auto;
+  margin-top: 9px;
+  font-size: 15px;
+  font-family: century gothic;
+  }
+</style>
 
-<img src="https://starteq.net/wp-content/uploads/2019/11/mcdonalds-png-logo-picture-3-1024x1001.png" width="70" height="70" >
-<?php
-// define variables y establece valores vacíos
-$nombreErr= $direccionErr= $cedulaErr = $celularErr = $telefonoErr = $sexoErr = $emailErr = $generoErr = $sitioWebErr = "";
-$nombre= $direccion= $cedula = $celular= $telefono = $sexo = $email = $genero = $comentario = $sitioWeb = "" ;
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  //nombre
-  if (empty($_POST["nombre"])) {
-    $nombreErr = "El nombre es obligatorio";
-  } else {
-    $nombre = test_input($_POST["nombre"]);
-    // check if name only contains letters and whitespace
-    if (!preg_match("/^[a-zA-Z áéíóúÁÉÍÓÚñÑ]*$/",$nombre)) {
-      $nombreErr = "Solo se permiten letras y espacios en blanco";
-    }
-  }
-  //email
-  if (empty($_POST["email"])) {
-    $emailErr = "se requiere correo electronico";
-  } else {
-    $email = test_input($_POST["email"]);
-    // check if e-mail address is well-formed
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-      $emailErr = "Formato de E-mail invalido";
-    }
-  }
-  //sitio web  
-  if (empty($_POST["sitioWeb"])) {
-    $sitioWeb = "";
-  } else {
-    $sitioWeb = test_input($_POST["sitioWeb"]);
-    // check if URL address syntax is valid (this regular expression also allows dashes in the URL)
-    if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$sitioWeb)) {
-      $sitioWebErr = "URL invalido";
-    }
-  }
-  //comentario
-  if (empty($_POST["comentario"])) {
-    $comentario = "";
-  } else {
-    $comentario = test_input($_POST["comentario"]);
-  }
-  //genero
-  if (empty($_POST["genero"])) {
-    $generoErr = "se require seleccion";
-  } else {
-    $genero = test_input($_POST["genero"]);
-  }
+<body style="background-image: url('empleados.jpg');width: 100%;
+  height:100%;
+  background-size: cover;">
+    <main class="container p-5">
+       <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+      <h5 class="card-header bg bg-dark" style="color: white;">Formulario Empleados</h5>
+      <div class="card-body" style="background-color:#B4CDCC">
+          <form>
 
-  //sexo
-  if (empty($_POST["sexo"])) {
-    $sexoErr = "se require seleccion";
-  } else {
-    $sexo = test_input($_POST["sexo"]);
-  }
+      <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="nombre">Nombre:</label>
+            <input type="nombre" class="form-control" name="nombre" placeholder="Nombre *" attern="^[^0-9]+$" size="30" maxlength="245" required>
+          </div>
 
-  //direccion
-  if (empty($_POST["direccion"])) {
-    $direccionErr = "campo obligatorio";
-  } else {
-    $direccion = test_input($_POST["direccion"]);
-    // check if name only contains letters, whitespace and numbers
-    if (!preg_match("/^[a-zA-Z0-9 áéíóúÁÉÍÓÚñÑ]*$/",$direccion)) {
-      $direccionErr = "Solo se permiten letras y numeros ";
-    }
-  }
-//cedula
-   //
-    if (empty($_POST["cedula"])) {
-    $cedulaErr = "la cedula es obligatorio";
-  } else {
-    $cedula = test_input($_POST["cedula"]);
-    // check if name only contains letters and whitespace
-    if (!preg_match("/^([0]+([0-9]){9})$/",$cedula)) {
-      $cedulaErr = "Verifique que el primer numero sea cero, y que contenga 10 numeros,no se acepta letras o caracteres especiales";
-    }
-  }
+          <div class="form-group">
+          <label for="cedula">Cédula:</label>
+          <input type="text" class="form-control" name="cedula" placeholder="Cédula" maxlength="10" required>
+          </div> 
+         
+        <div class="form-group col-md-6">
+          <label for="direccion">Dirección:</label>
+          <input type="text" class="form-control" name="direccion" placeholder="Dirección *" required>
+        </div>
+        
+           <div class="form-group col-md-2">
+          <label for="celular">Celular:</label>
+          <input type="text" class="form-control" name="celular" placeholder="Celular" maxlength="10">
+          </div>
 
-//celular
-     if (empty($_POST["celular"])) {
-    $celular = "";
-  } else {
-    $celular = test_input($_POST["celular"]);
-    // verifica que el numero  de celular movil sea correcto
-    if (!preg_match_all("/^([0]+([0-9]){9})$/",$celular)) {
-      $celularErr = "celular incorrecto verifique comienze con cero y que tenga 10 digitos numericos";
-    }
-  }
+         <div class="form-group">
+          <label for="telefono">Teléfono:</label>
+          <input type="text" class="form-control" name="telefono" placeholder="Teléfono" maxlength="10">
+          </div>
+      
+      </div>
+      <div class="form-row">
+             <div class="form-group col-md-6">
+              <label for="email">Email:</label>
+              <input type="email" class="form-control" name="email" pattern=".+\.com" title="Ingrese un correo valido"placeholder="Email *" required>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="sitioweb">Sitio Web:</label>
+              <input type="text" class="form-control" name="sitioweb" placeholder="Sitio Web">
+            </div>
 
-//telefono
-     if (empty($_POST["telefono"])) {
-    $telefono = "";
-  } else {
-    $telefono = test_input($_POST["telefono"]);
-    // verifica que el numero  de telefono fijo sea correcto
-    if (!preg_match_all("/^([4]+([0-9]){6})$/",$telefono)) {
-      $telefonoErr = "telefono incorrecto: debe comenzar con [ 4 ] o verifique que contenga 7 digitos  ";
-    }
-  }
-}//
+            <div class="form-group col-md-6">
+             <p>Género:</p>
+          <form>
+            <label class="radio-inline" style="padding:5px">
+              <input type="radio" name="genero" checked>  Femenino
+            </label>
+            <label class="radio-inline" style="padding:5px">
+              <input type="radio" name="genero">  Masculino
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="genero">  Otros
+            </label>
+          </form>
 
+          <p>Sexo:</p>
+          <form>
+            <label class="radio-inline" style="padding:5px">
+              <input type="radio" name="sexo" checked>  Mujer
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="sexo">  Hombre
+            </label>
+          </form>
+          </div>
 
-function test_input($data) {
-  $data = trim($data);
-  $data = stripslashes($data);
-  $data = htmlspecialchars($data);
-  return $data;
-}
-?>
+           <div class="form-group col-md-6">
+              <label for="comentario">Comentario</label>
+              <textarea class="form-control" name="comentario" rows="3"></textarea>
+            </div>
+      </div>
+     
+      <button type="submit" class="btn btn-primary">Guardar</button>
 
-<h2>FORMULARIO DE ASPIRANTE: </h2>
-<p><span class="error">* Campos obligatorios</span></p>
-<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
-  Nombre: <input type="text" name="nombre" value="<?php echo $nombre;?>">
-  <span class="error">* <?php echo $nombreErr;?></span>
-  <br><br>
-  Cedula: <input type="text" name="cedula" value="<?php echo $cedula;?>">
-  <span class="error">* <?php echo $cedulaErr;?></span>
-  <br><br>
-  Direccion: <input type="text" name="direccion" value="<?php echo $direccion;?>"><span class="error">* <?php echo $direccionErr;?></span>
-  <br><br>
-  Celular: <input type="text" name="celular" value="<?php echo $celular;?>">
-  <span class="error">* <?php echo $celularErr;?></span>
-  <br><br>
-  Telefono: <input type="text" name="telefono" value="<?php echo $telefono;?>">
-  <span class="error">* <?php echo $telefonoErr;?></span>
-  <br><br>
-  E-mail: <input type="text" name="email" value="<?php echo $email;?>">
-  <span class="error">* <?php echo $emailErr;?></span>
-  <br><br>
-  Sitio web: <input type="text" name="sitioWeb" value="<?php echo $sitioWeb;?>">
-  <span class="error"><?php echo $sitioWebErr;?></span>
-  <br><br>
-  Comentario: <textarea name="comentario" rows="5" cols="40"><?php echo $comentario;?></textarea>
-  <br><br>
-  Genero:
-  <input type="radio" name="genero" <?php if (isset($genero) && $genero=="femenino") echo "checked";?> value="femenino">Femenino
-  <input type="radio" name="genero" <?php if (isset($genero) && $genero=="masculino") echo "checked";?> value="masculino">Masculino
-    <input type="radio" name="genero" <?php if (isset($genero) && $genero=="otro") echo "checked";?> value="otro">Otro 
-  <span class="error">* <?php echo $generoErr;?></span>
-  <br><br>
-  Sexo:
-  <input type="radio" name="sexo" <?php if (isset($sexo) && $sexo=="Hombre") echo "checked";?> value="hombre">Hombre
-  <input type="radio" name="sexo" <?php if (isset($sexo) && $sexo=="Mujer") echo "checked";?> value="Mujer">Mujer
-   <span class="error">* <?php echo $sexoErr;?></span>
-    <br><br>
-  <input type="submit" name="enviar" value="Enviar">  
-</form>
+      <button type="submit" class="btn btn-primary">Imprimir</button>
 
-<?php
-echo "<h2>Su informacion es:</h2>";
-echo "<br>";
-echo "<img src='https://starteq.net/wp-content/uploads/2019/11/mcdonalds-png-logo-picture-3-1024x1001.png' alt='img-formulario' width='150px'>";
-echo "<br>";
-echo  "<table border=1>";
-echo  "<tr>";
-echo  "<td>";
-echo $nombre;
-echo "<br>";
-echo $cedula;
-echo "<br>";
-echo $direccion;
-echo "<br>";
-echo $celular;
-echo "<br>";
-echo $telefono;
-echo "<br>";
-echo $email;
-echo "<br>";
-echo $sitioWeb;
-echo "<br>";
-echo $comentario;
-echo "<br>";
-echo $genero;
-echo "<br>";
-echo $sexo;
-echo"</tr>";//
-echo"</td>";
-echo"</table>";//
-//////////////
-?>
-</body>
+    </div>
+      
+    </form>
+       
+      </div>
+    </div>
+    </div>
+    </div>
+
+    <br>
+    <br>
+    <h3 style="color: white" align="center">Tabla Empleados</h3>
+    <table class="table table-striped">
+    <thead class="thead-dark">
+    <tr>
+    <th>ID</th>
+    <th>cedula</th>
+    <th>nombre</th>
+    <th>Direccion</th>
+    <th>Celular</th>
+    <th>Telefono</th>
+    <th>Email</th>
+    <th>SitioWeb</th>
+    <th>Comentario</th>
+    <th>Genero</th>
+    <th>Sexo</th>
+    <th>Accion</ht>
+    </thead>
+    </tr>
+
+      <?php  ?>
+      <?php 
+       include("conexion.php");
+
+       $query="SELECT idcliente,cedula,nombre,direccion,celular,telefono,email,sitioweb,comentario,genero,sexo,tipo FROM usuario";
+
+       $result = mysqli_query($conexion,$query);
+
+       while ($row=mysqli_fetch_assoc($result)) { ?>
+      <tr style="background-color: #B4CDCC">
+
+      <td><?php echo $row["idcliente"]; ?></td>
+       <td><?php echo $row["cedula"]; ?></td>
+       <td><?php echo $row["nombre"]; ?></td>
+       <td><?php echo  $row["direccion"]; ?></td>
+       <td><?php echo $row["celular"]; ?></td>
+       <td><?php echo $row["telefono"]; ?></td>
+       <td><?php echo $row["email"]; ?></td>
+       <td><?php echo $row["sitioweb"]; ?></td>
+       <td><?php echo $row["comentario"]; ?></td>
+       <td><?php echo $row["genero"]; ?></td>
+       <td><?php echo $row["sexo"]; ?></td>
+       <td>
+        <a href="clientesbd.php?id=<?php echo $row['idcliente']?>&accion=editar" class="btn btn-secondary"><i class="fas fa-marker"></i></a>
+        <a href="clientesbd.php?id=<?php echo $row['idcliente']?>&accion=eliminar" class="btn btn-danger"><i class="far fa-trash-alt"></i></a></td>
+      </tr>
+       <?php } ?>
+      </table>
+      
+      
+    </main>
+  </body>
 </html>

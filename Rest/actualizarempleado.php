@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
@@ -110,59 +110,36 @@
     </div>
     </div>
     </div>
+			Nombre:<input type="" name="nombre" value="<?php echo $nombre;?>">
+			<br><br>
+			Cedula:<input type="" name="cedula" value="<?php echo $cedula;?>">
+			<br><br>
+			Direccion:<input type="" name="direccion" value="<?php echo $direccion;?>">
+			<br><br>
+			Celular:<input type="" name="celular" value="<?php echo $celular;?>">
+			<br><br>
+			Telefono:<input type="" name="telefono" value="<?php echo $telefono;?>">
+			<br><br>
+			E-mail:<input type="" name="email" value="<?php echo $email;?>">
+			<br><br>
+			Sitio Web:<input type="" name="sitioweb" value="<?php echo $sitioweb;?>">
+			<br><br>
+			Comentario:<input type="" name="comentario" value="<?php echo $comentario;?>">
+			<br><br>
+			Genero:
+			<input type="radio" name="genero" <?php if(isset($genero) && $genero=="femenino") echo "checked";?> value="femenino">Femenino
+			<input type="radio" name="genero" <?php if(isset($genero) && $genero=="masculino") echo "checked";?> value="femenino">Masculino
+			<input type="radio" name="genero" <?php if(isset($genero) && $genero=="otro") echo "checked";?> value="femenino">Otro
+			<br><br>
+			Sexo:
+			<input type="radio" name="sexo" <?php if(isset($sexo) && $genero=="hombre") echo "checked";?> value="hombre">Hombre
+			<input type="radio" name="sexo" <?php if(isset($sexo) && $genero=="mujer") echo "checked";?> value="mujer">Mujer
 
-    <br>
-    <br>
-    <h3 style="color: white" align="center">Tabla clientes</h3>
-    <table class="table table-striped">
-    <thead class="thead-dark">
-    <tr>
-    <th>ID</th>
-    <th>cedula</th>
-    <th>nombre</th>
-    <th>Direccion</th>
-    <th>Celular</th>
-    <th>Telefono</th>
-    <th>Email</th>
-    <th>SitioWeb</th>
-    <th>Comentario</th>
-    <th>Genero</th>
-    <th>Sexo</th>
-    <th>Accion</ht>
-    </thead>
-    </tr>
+			<br><br>
+			<input type="submit" name="update" value="Actualizar">
 
-    <?php  ?>
-
-      <?php 
-       include("conexion.php");
-
-       $query="SELECT idcliente,cedula,nombre,direccion,celular,telefono,email,sitioweb,comentario,genero,sexo,tipo FROM usuario";
-
-       $result = mysqli_query($conexion,$query);
-
-       while ($row=mysqli_fetch_assoc($result)) { ?>
-      <tr style="background-color: #B4CDCC">
-
-      <td><?php echo $row["idcliente"]; ?></td>
-       <td><?php echo $row["cedula"]; ?></td>
-       <td><?php echo $row["nombre"]; ?></td>
-       <td><?php echo  $row["direccion"]; ?></td>
-       <td><?php echo $row["celular"]; ?></td>
-       <td><?php echo $row["telefono"]; ?></td>
-       <td><?php echo $row["email"]; ?></td>
-       <td><?php echo $row["sitioweb"]; ?></td>
-       <td><?php echo $row["comentario"]; ?></td>
-       <td><?php echo $row["genero"]; ?></td>
-       <td><?php echo $row["sexo"]; ?></td>
-       <td>
-        <a href="clientesbd.php?id=<?php echo $row['idcliente']?>&accion=editar" class="btn btn-secondary"><i class="fas fa-marker"></i></a>
-        <a href="clientesbd.php?id=<?php echo $row['idcliente']?>&accion=eliminar" class="btn btn-danger"><i class="far fa-trash-alt"></i></a></td>
-      </tr>
-       <?php } ?>
-      </table>
-      
       
     </main>
   </body>
+
 </html>
