@@ -1,6 +1,7 @@
 package ventanas;
 
 import Controlador.CtrlPlanilla;
+import clases.validaciones;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.Font;
@@ -32,11 +33,18 @@ public class FrmConsultasFactura extends javax.swing.JFrame {
     DefaultTableModel modelo;
 
     CtrlPlanilla ctrlPlanilla = new CtrlPlanilla();
+    
+    validaciones vali = new validaciones();
 
     public FrmConsultasFactura() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/AguaIcono.png")).getImage());
         this.setLocationRelativeTo(null);
+        
+        vali.ValidarNumeros(txtBuscar);
+        vali.LimitarCaracteres(txtBuscar, 10);
     }
 
     @SuppressWarnings("unchecked")
@@ -51,7 +59,6 @@ public class FrmConsultasFactura extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tbplanillas = new javax.swing.JTable();
         btnBuscar = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
         btnRegresar = new javax.swing.JButton();
         btnNuevo = new javax.swing.JButton();
         btn_eliminar = new javax.swing.JButton();
@@ -109,11 +116,8 @@ public class FrmConsultasFactura extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/salida.png"))); // NOI18N
-        jButton1.setText("Salir");
-
         btnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logout.png"))); // NOI18N
-        btnRegresar.setText("Regresar");
+        btnRegresar.setText("Volver");
         btnRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegresarActionPerformed(evt);
@@ -144,8 +148,8 @@ public class FrmConsultasFactura extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 32, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addGap(18, 18, 18)
@@ -155,23 +159,17 @@ public class FrmConsultasFactura extends javax.swing.JFrame {
                                 .addGap(30, 30, 30)
                                 .addComponent(btnNuevo)
                                 .addGap(27, 27, 27)
-                                .addComponent(btn_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jButton1)
-                                    .addGap(67, 67, 67)
-                                    .addComponent(btnRegresar)
-                                    .addGap(134, 134, 134))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 804, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(35, 35, 35)))))))
+                                .addComponent(btn_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(btnRegresar)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 804, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel2)
@@ -181,24 +179,20 @@ public class FrmConsultasFactura extends javax.swing.JFrame {
                     .addComponent(btn_eliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnRegresar)
-                    .addComponent(jButton1))
-                .addGap(60, 60, 60))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnRegresar)
+                .addGap(75, 75, 75))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -212,33 +206,29 @@ public class FrmConsultasFactura extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegresarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        btn_eliminar.setEnabled(false);
         if (txtBuscar.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Ingrese el numero de Cedula o Planilla para listar las Facturas");
         } else {
             mostrarPlanillas(txtBuscar.getText());
         }
-
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
-        // MostrarRepCliente();
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.setColumnIdentifiers(new Object[]{"IdPlanilla", "fechaPlanilla", "Cedula", "Nombre", "Apellido", "Direccion", "Nro medidor", "estado", "total"});
         tbplanillas.setModel(modelo);
         txtBuscar.setText("");
-
+        btn_eliminar.setEnabled(false);
     }//GEN-LAST:event_btnNuevoActionPerformed
 
     private void tbplanillasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbplanillasMouseClicked
         btn_eliminar.setEnabled(true);
         int fila = tbplanillas.getSelectedRow();
-
         idPlanilla = Integer.parseInt(tbplanillas.getValueAt(fila, 0).toString());
         cedula = tbplanillas.getValueAt(fila, 3).toString();
         idLectura = Integer.parseInt(tbplanillas.getValueAt(fila, 1).toString());
-
         System.out.println("id: " + idPlanilla + "medidor: " + cedula + "fecha:  " + idLectura);
-
     }//GEN-LAST:event_tbplanillasMouseClicked
 
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
@@ -254,7 +244,6 @@ public class FrmConsultasFactura extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_eliminarActionPerformed
     public void mostrarPlanillas(String parametro) {
-
         ctrlPlanilla = new CtrlPlanilla();
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.setColumnIdentifiers(new Object[]{"IdPlanilla", "IdLectura", "fechaPlanilla", "Cedula", "Nombre", "Apellido", "Direccion", "Nro medidor", "estado", "total"});
@@ -268,7 +257,6 @@ public class FrmConsultasFactura extends javax.swing.JFrame {
     private javax.swing.JButton btnNuevo;
     private javax.swing.JButton btnRegresar;
     private javax.swing.JButton btn_eliminar;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

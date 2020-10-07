@@ -36,10 +36,13 @@ public class FrmIngresoLectura extends javax.swing.JFrame {
 
     public FrmIngresoLectura() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
         txtConsumo.setText("0000");
         txt_valorpago.setText("0.00");
         btn_eliminarlectura.setEnabled(false);
         btn_editarlectura.setEnabled(false);
+        btnGuardarLectura.setEnabled(false);
         rbt_medidor.setSelected(true);
         txtNumMedidor.setEnabled(true);
         txtNumMedidor.setEditable(true);
@@ -506,6 +509,7 @@ public class FrmIngresoLectura extends javax.swing.JFrame {
         txtCedula.setEditable(false);
         txtNumMedidor.setEnabled(true);
         txtNumMedidor.setEditable(true);
+        btnGuardarLectura.setEnabled(false);
     }//GEN-LAST:event_btnNuevoLecActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -535,18 +539,21 @@ public class FrmIngresoLectura extends javax.swing.JFrame {
     }//GEN-LAST:event_formKeyTyped
 
     private void btnGuardarLecturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarLecturaActionPerformed
-        lectura_Actual = Integer.parseInt(txt_lectura.getText());
-        lectura_Anterior = Integer.parseInt(txtLecAnterior.getText());
+        if (txtLecAnterior.getText().equals("")) {
+            lectura_Actual = Integer.parseInt(txt_lectura.getText());
+            lectura_Anterior = 0;
+        } else {
+            lectura_Actual = Integer.parseInt(txt_lectura.getText());
+            lectura_Anterior = Integer.parseInt(txtLecAnterior.getText());
+        }
         if (lectura_Actual < lectura_Anterior) {
             JOptionPane.showMessageDialog(null, "La Lectura Actual no puede ser menor a la Anterior");
         } else {
-            String fechalecturaactual = formato.format(jd_fechalectura.getDate());
-            String fechalecturaacterior = txtFechaAnterior.getText();
-            System.out.println();
-
-            if (txt_lectura.getText().equals("") || fechalecturaactual.equals("")) {
+            if (txt_lectura.getText().equals("") || jd_fechalectura.getDate() == null) {
                 JOptionPane.showMessageDialog(null, "LLene todos los campos");
             } else {
+                String fechalecturaactual = formato.format(jd_fechalectura.getDate());
+                String fechalecturaacterior = txtFechaAnterior.getText();
                 if (validaciones.validarFechaLectura(fechalecturaacterior, fechalecturaactual)) {
                     ctrlLectura = new CtrlLectura();
                     //Llamamos a la funcion para calcular el valor de pago de acuerdo a la lectura
@@ -562,9 +569,14 @@ public class FrmIngresoLectura extends javax.swing.JFrame {
                     valorPago = Double.parseDouble(txt_valorpago.getText());
                     lec.setValorpago(valorPago);
                     lec.setIdCliente(Integer.parseInt(txt_idcliente.getText()));
-                    lec.setFechaLecturaAnterior(txtFechaAnterior.getText());
-                    lec.setLecturaAnterior(Integer.parseInt(txtLecAnterior.getText()));
-                    ctrlLectura.insertarLectura(lec);
+
+                    if (txtFechaAnterior.getText().equals("") || txtLecAnterior.getText().equals("")) {
+                        ctrlLectura.insertarNLectura(lec);
+                    } else {
+                        lec.setFechaLecturaAnterior(txtFechaAnterior.getText());
+                        lec.setLecturaAnterior(Integer.parseInt(txtLecAnterior.getText()));
+                        ctrlLectura.insertarLectura(lec);
+                    }
                     MostrarLecturasCliente(Integer.parseInt(txt_idcliente.getText()));
 
                     txt_lectura.setEditable(false);
@@ -629,12 +641,16 @@ public class FrmIngresoLectura extends javax.swing.JFrame {
         ctrlLectura = new CtrlLectura();
         int fila = tablaLecturas.getSelectedRow();
         if (fila > -1) {
+            if (fila == 0) {
             if (!tablaLecturas.getValueAt(fila, 4).toString().equals("pagado")) {
                 int idlectura = Integer.parseInt(tablaLecturas.getValueAt(fila, 0).toString());
                 ctrlLectura.eliminarLectura(idlectura);
                 BuscarCliente();
             } else {
                 JOptionPane.showMessageDialog(null, "No se puede eliminar una Lectura pagada");
+            }
+            } else {
+                JOptionPane.showMessageDialog(null, "Solo puede eliminar la ultima lectura emitida");
             }
         } else {
             JOptionPane.showMessageDialog(null, "Selecciones por favor una Lectura de la tabla para eliminar");
@@ -644,9 +660,12 @@ public class FrmIngresoLectura extends javax.swing.JFrame {
     private void tablaLecturasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaLecturasMouseClicked
         txt_lectura.setEditable(true);
         jd_fechalectura.setEnabled(true);
+        btnGuardarLectura.setEnabled(false);
         int fila = tablaLecturas.getSelectedRow();
+        System.out.println(fila);
         if (!tablaLecturas.getValueAt(fila, 4).toString().equals("pagado")) {
             btn_editarlectura.setEnabled(true);
+            btn_eliminarlectura.setEnabled(true);
             idlectura = Integer.parseInt(tablaLecturas.getValueAt(fila, 0).toString());
             fechalectura = tablaLecturas.getValueAt(fila, 1).toString();
             lectura = tablaLecturas.getValueAt(fila, 2).toString();
@@ -668,40 +687,40 @@ public class FrmIngresoLectura extends javax.swing.JFrame {
 
     private void btn_editarlecturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editarlecturaActionPerformed
         if (tablaLecturas.getSelectedRow() > -1) {
-            ctrlLectura = new CtrlLectura();
-            String fechalecturaactual = formato.format(jd_fechalectura.getDate());
-            String fechalecturaacterior = txtFechaAnterior.getText();
-
-            if (txt_lectura.getText().equals("") || fechalecturaactual.equals("")) {
-                JOptionPane.showMessageDialog(null, "LLene todos los campos");
-            } else {
-                if (validaciones.validarFechaLectura(fechalecturaacterior, fechalecturaactual)) {
-                    ctrlLectura = new CtrlLectura();
-                    Lecturas lec = new Lecturas();
-
-                    valorPago = calcularValorPago(Integer.parseInt(txtConsumo.getText()));
-                    txt_valorpago.setText(valorPago + "");
-
-                    lec.setLectura(txt_lectura.getText());
-                    lec.setFechalectura(fechalecturaactual);
-                    int consumovalor = Integer.parseInt(txtConsumo.getText());
-                    lec.setConsumo(consumovalor);
-                    lec.setIdlectura(idlectura);
-                    valorPago = Double.parseDouble(txt_valorpago.getText());
-                    lec.setValorpago(valorPago);
-                    lec.setFechaLecturaAnterior(txtFechaAnterior.getText());
-                    lec.setLecturaAnterior(Integer.parseInt(txtLecAnterior.getText()));
-
-                    ctrlLectura.editarLectura(lec);
-                    MostrarLecturasCliente(Integer.parseInt(txt_idcliente.getText()));
-
-                    txt_lectura.setEditable(false);
-                    jd_fechalectura.setEnabled(false);
-                    btn_editarlectura.setEnabled(false);
-                    btn_eliminarlectura.setEnabled(false);
+            if (tablaLecturas.getSelectedRow() == 0) {
+                ctrlLectura = new CtrlLectura();
+                if (txt_lectura.getText().equals("") || jd_fechalectura.getDate() == null) {
+                    JOptionPane.showMessageDialog(null, "LLene todos los campos");
                 } else {
-                    JOptionPane.showMessageDialog(null, "No puede generar dos Lecturas el mismo mes");
+                    String fechalecturaactual = formato.format(jd_fechalectura.getDate());
+                    if (validaciones.validarEditarFechaLectura(fechalectura, fechalecturaactual)) {
+                        ctrlLectura = new CtrlLectura();
+                        Lecturas lec = new Lecturas();
+
+                        valorPago = calcularValorPago(Integer.parseInt(txtConsumo.getText()));
+                        txt_valorpago.setText(valorPago + "");
+
+                        lec.setLectura(txt_lectura.getText());
+                        lec.setFechalectura(fechalecturaactual);
+                        int consumovalor = Integer.parseInt(txtConsumo.getText());
+                        lec.setConsumo(consumovalor);
+                        lec.setIdlectura(idlectura);
+                        valorPago = Double.parseDouble(txt_valorpago.getText());
+                        lec.setValorpago(valorPago);
+
+                        ctrlLectura.editarLectura(lec);
+                        MostrarLecturasCliente(Integer.parseInt(txt_idcliente.getText()));
+
+                        txt_lectura.setEditable(false);
+                        jd_fechalectura.setEnabled(false);
+                        btn_editarlectura.setEnabled(false);
+                        btn_eliminarlectura.setEnabled(false);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "No puede generar dos Lecturas el mismo mes");
+                    }
                 }
+            } else {
+                JOptionPane.showMessageDialog(null, "Solo puede editar la ultima lectura emitida");
             }
         } else {
             JOptionPane.showMessageDialog(null, "Selecciones por favor una Lectura de la tabla para Editar");
@@ -749,23 +768,21 @@ public class FrmIngresoLectura extends javax.swing.JFrame {
     }
 
     public void CalcularConsumo() {
-        if (txt_lectura.getText().length() > 0 && txtLecAnterior.getText().length() >= 0) {
+        System.out.println(txt_lectura.getText().length());
+        System.out.println(txtLecAnterior.getText().length());
+        if (txt_lectura.getText().length() > 0 && txtLecAnterior.getText().length() > 0) {
             lectura_Actual = Integer.parseInt(txt_lectura.getText());
             lectura_Anterior = Integer.parseInt(txtLecAnterior.getText());
-
             total_consumo = lectura_Actual - lectura_Anterior;
-            if (txtLecAnterior.getText().equals("0")) {
-                txt_valorpago.setText("0");
-                txtConsumo.setText("0");
-            } else {
-                txtConsumo.setText(String.valueOf(total_consumo));
-            }
+            txtConsumo.setText(String.valueOf(total_consumo));
         } else {
-            txtConsumo.setText("");
-            caracter = "";
-            lectura_Actual = 0;
-            lectura_Anterior = 0;
-            total_consumo = 0;
+            if (txt_lectura.getText().length() == 0) {
+                lectura_Actual = 0;
+            } else {
+                lectura_Actual = Integer.parseInt(txt_lectura.getText());
+            }
+            total_consumo = lectura_Actual;
+            txtConsumo.setText(String.valueOf(total_consumo));
         }
     }
 
@@ -866,8 +883,8 @@ public class FrmIngresoLectura extends javax.swing.JFrame {
                  */
                 Lecturas lecturas = ctrlLectura.obtenerUltimaLectura(cliente.getIdCliente());
                 if (lecturas.getLectura() == null && lecturas.getFechalectura() == null) {
-                    txtLecAnterior.setText("0");
-                    txtFechaAnterior.setText(cliente.getFechaCreacion());
+                    txtLecAnterior.setText("");
+                    txtFechaAnterior.setText("");
                 } else {
                     txtLecAnterior.setText(lecturas.getLectura());
                     txtFechaAnterior.setText(lecturas.getFechalectura());

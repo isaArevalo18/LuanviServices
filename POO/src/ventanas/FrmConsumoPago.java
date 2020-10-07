@@ -462,14 +462,6 @@ public class FrmConsumoPago extends javax.swing.JDialog {
 
         if (lecturas.isEmpty()) {
             JOptionPane.showMessageDialog(null, "No se puede realizar el pago, el cliente no posee una Lectura Pendiente");
-            /*txtApellido.setText("");
-            txtCedula.setText("");
-            txtCorreo.setText("");
-            txt_telefono.setText("");
-            txt_medidor.setText("");
-            txtDireccion.setText("");
-            txtbuscarcliente.setText("");
-            txtFechaLectura.setText("");*/
         } else {
             /*
               Obtenemos los datos de la ultima lectura que se encuentra almacenada en el ArrayList
@@ -478,6 +470,7 @@ public class FrmConsumoPago extends javax.swing.JDialog {
             txt_lectura_anterior.setText(lecturas.get(0).getLecturaAnterior() + "");
             txt_lectura_actual.setText(lecturas.get(0).getLectura());
             txtConsumo.setText(lecturas.get(0).getConsumo() + "");
+            txtValorxMes.setText(lecturas.get(0).getValorpago() + "");
             //Limpiamos la tabla
             reiniciarModeloTabla();
             DefaultTableModel model = (DefaultTableModel) tabPagos.getModel();

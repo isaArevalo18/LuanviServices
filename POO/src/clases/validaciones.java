@@ -102,18 +102,34 @@ public class validaciones {
     }
 
     public static boolean validarFechaLectura(String fechaanterior, String fechaactual) {
-        String[] fechArrayAnterior = fechaanterior.split("-");
-        int mesAnterior = Integer.valueOf(fechArrayAnterior[1]);
+        if (fechaanterior.equals("")) {
+            return true;
+        } else {
+            String[] fechArrayAnterior = fechaanterior.split("-");
+            int mesAnterior = Integer.valueOf(fechArrayAnterior[1]);
+
+            String[] fechArrayActual = fechaactual.split("-");
+            int mesActual = Integer.valueOf(fechArrayActual[1]);
+            
+            if (mesAnterior == mesActual) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+    }
+
+    public static boolean validarEditarFechaLectura(String fechaingresada, String fechaactual) {
+        String[] fechArrayAnterior = fechaingresada.split("-");
+        int mesingresado = Integer.valueOf(fechArrayAnterior[1]);
 
         String[] fechArrayActual = fechaactual.split("-");
         int mesActual = Integer.valueOf(fechArrayActual[1]);
-        System.out.println("Mes Anterior: " + mesAnterior);
-        System.out.println("Mes Actual: " + mesActual);
-        if (mesAnterior == mesActual) {
-            return false;
-        } else {
+        
+        if (mesingresado == mesActual) {
             return true;
+        } else {
+            return false;
         }
-
     }
 }

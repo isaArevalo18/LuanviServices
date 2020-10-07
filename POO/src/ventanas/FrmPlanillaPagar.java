@@ -42,7 +42,6 @@ public class FrmPlanillaPagar extends javax.swing.JFrame implements Printable {
     private void initComponents() {
 
         Factura = new javax.swing.JPanel();
-        jLabel20 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
@@ -69,8 +68,6 @@ public class FrmPlanillaPagar extends javax.swing.JFrame implements Printable {
         jLabel6 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         lbl_consumoExcesos = new javax.swing.JLabel();
-        jLabel23 = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
         txtTotalPagar = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
@@ -80,10 +77,14 @@ public class FrmPlanillaPagar extends javax.swing.JFrame implements Printable {
         lbl_precionunitario_sinexceso = new javax.swing.JLabel();
         lbl_precionunitario_sinexceso1 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
-        lbl_mes = new javax.swing.JLabel();
         txtRuc = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
         txtFechaPago = new javax.swing.JTextField();
+        lbl_mes = new javax.swing.JLabel();
+        lbl_totalconsumoExcesos = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
         generarFactura = new javax.swing.JButton();
         imprimirFactura = new javax.swing.JButton();
         btnNuevo = new javax.swing.JButton();
@@ -94,49 +95,50 @@ public class FrmPlanillaPagar extends javax.swing.JFrame implements Printable {
         Factura.setBackground(new java.awt.Color(255, 255, 255));
         Factura.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel20.setText("MANTENIMIENTO PARA FUENTES HIDRICAS DE SAJORA");
-        Factura.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 444, -1, -1));
-
         jLabel19.setText("CONSUMO EXECESOS ");
-        Factura.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 399, -1, 27));
+        Factura.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 410, -1, 27));
 
         jLabel18.setText("SERVICIO DE AGUA CONSUMO BASICO");
         Factura.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 365, -1, 24));
 
         jLabel17.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel17.setText("                            Descripcion                                                      l  Cantidad              Consumo M3               l    P.Unitario                   l  Desc.       ");
+        jLabel17.setText("                            Descripcion                                                      l  P.Unitario             | Consumo (m3)               l    Valor a Pagar");
         jLabel17.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         Factura.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 324, 823, 31));
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel13.setText("Lectura Actual:");
-        Factura.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(382, 284, -1, -1));
+        Factura.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 290, -1, -1));
 
         txtLecActual.setEditable(false);
+        txtLecActual.setBackground(new java.awt.Color(255, 255, 255));
         txtLecActual.setBorder(null);
-        Factura.add(txtLecActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(492, 286, 188, -1));
+        Factura.add(txtLecActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 290, 188, -1));
 
         txtLecAnterior.setEditable(false);
+        txtLecAnterior.setBackground(new java.awt.Color(255, 255, 255));
         txtLecAnterior.setBorder(null);
-        Factura.add(txtLecAnterior, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 286, 188, -1));
+        Factura.add(txtLecAnterior, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 290, 188, -1));
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel12.setText("Lectura Anterior:");
-        Factura.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 284, -1, -1));
+        Factura.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, -1, -1));
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel10.setText("Cliente:");
-        Factura.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 246, -1, -1));
+        Factura.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 250, -1, -1));
 
         txtCliente.setEditable(false);
+        txtCliente.setBackground(new java.awt.Color(255, 255, 255));
         txtCliente.setBorder(null);
-        Factura.add(txtCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(106, 248, 188, 14));
+        Factura.add(txtCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, 188, 14));
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel15.setText("Dirección:");
         Factura.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(432, 246, -1, -1));
 
         txtDireccion.setEditable(false);
+        txtDireccion.setBackground(new java.awt.Color(255, 255, 255));
         txtDireccion.setBorder(null);
         Factura.add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(504, 248, 162, -1));
 
@@ -144,25 +146,27 @@ public class FrmPlanillaPagar extends javax.swing.JFrame implements Printable {
         jLabel9.setText("Numero Medidor:");
         Factura.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 217, -1, -1));
 
-        txtNumMedidor.setEditable(false);
         txtNumMedidor.setBorder(null);
-        Factura.add(txtNumMedidor, new org.netbeans.lib.awtextra.AbsoluteConstraints(119, 219, 188, -1));
+        Factura.add(txtNumMedidor, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, 188, -1));
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel14.setText("Telefono:");
         Factura.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(432, 213, 62, -1));
 
         txtTelefono.setEditable(false);
+        txtTelefono.setBackground(new java.awt.Color(255, 255, 255));
         txtTelefono.setBorder(null);
         Factura.add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(504, 215, 162, -1));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel8.setText("Nro. Planilla");
-        Factura.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 177, -1, -1));
+        Factura.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, -1, -1));
 
         txtnumfactura.setEditable(false);
+        txtnumfactura.setBackground(new java.awt.Color(255, 255, 255));
         txtnumfactura.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        Factura.add(txtnumfactura, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 174, 122, -1));
+        txtnumfactura.setBorder(null);
+        Factura.add(txtnumfactura, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, 122, -1));
         Factura.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 122, 911, 11));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -174,37 +178,31 @@ public class FrmPlanillaPagar extends javax.swing.JFrame implements Printable {
         Factura.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 107, -1, -1));
 
         jLabel7.setText("sajora@gmail.com");
-        Factura.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(686, 109, 168, -1));
+        Factura.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 110, 168, -1));
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel5.setText("Mail:");
-        Factura.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(634, 107, 34, -1));
+        Factura.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 110, 30, -1));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel4.setText("Telefono:");
-        Factura.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 100, 59, -1));
+        Factura.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 110, 59, -1));
 
         jLabel6.setText("0985038012");
-        Factura.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(435, 101, 109, 15));
+        Factura.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 110, 109, 15));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Junta Administradora de Agua Potable y Saneamiento San Jóse de Raranga");
         Factura.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(146, 10, 564, 46));
 
         lbl_consumoExcesos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Factura.add(lbl_consumoExcesos, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 390, 83, 24));
-
-        jLabel23.setText("0.0");
-        Factura.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 363, 49, 20));
-
-        jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel24.setText("1.00");
-        Factura.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 440, 70, 20));
+        Factura.add(lbl_consumoExcesos, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 420, 83, 24));
 
         txtTotalPagar.setEditable(false);
+        txtTotalPagar.setBackground(new java.awt.Color(255, 255, 255));
         txtTotalPagar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtTotalPagar.setBorder(null);
-        Factura.add(txtTotalPagar, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 490, 98, 23));
+        Factura.add(txtTotalPagar, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 460, 60, 23));
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel11.setText("Cliente RUC:");
@@ -215,42 +213,58 @@ public class FrmPlanillaPagar extends javax.swing.JFrame implements Printable {
         Factura.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(432, 177, 62, -1));
 
         txtCorreo.setEditable(false);
+        txtCorreo.setBackground(new java.awt.Color(255, 255, 255));
+        txtCorreo.setBorder(null);
         Factura.add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(504, 176, 176, -1));
 
         lbl_consumo.setBackground(new java.awt.Color(255, 255, 255));
         lbl_consumo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Factura.add(lbl_consumo, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 360, 96, 24));
+        Factura.add(lbl_consumo, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 370, 50, 24));
 
         lbl_consumobasico.setBackground(new java.awt.Color(255, 255, 255));
         lbl_consumobasico.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Factura.add(lbl_consumobasico, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 360, 83, 24));
+        Factura.add(lbl_consumobasico, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 380, 60, 24));
 
         lbl_precionunitario_sinexceso.setBackground(new java.awt.Color(255, 255, 255));
         lbl_precionunitario_sinexceso.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_precionunitario_sinexceso.setText("2.50");
-        Factura.add(lbl_precionunitario_sinexceso, new org.netbeans.lib.awtextra.AbsoluteConstraints(572, 360, 100, 24));
+        Factura.add(lbl_precionunitario_sinexceso, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 370, 100, 24));
 
         lbl_precionunitario_sinexceso1.setBackground(new java.awt.Color(255, 255, 255));
         lbl_precionunitario_sinexceso1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_precionunitario_sinexceso1.setText("0-20m3 $1 - 21m3..   $5");
-        Factura.add(lbl_precionunitario_sinexceso1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 400, 143, 24));
+        lbl_precionunitario_sinexceso1.setText("0-20m3 $1  |  21m3..   $5");
+        Factura.add(lbl_precionunitario_sinexceso1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 410, 143, 24));
 
         jLabel21.setText("TOTAL A PAGAR:");
-        Factura.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(507, 499, 110, -1));
-
-        lbl_mes.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lbl_mes.setText(" ");
-        Factura.add(lbl_mes, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 540, 20));
+        Factura.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 460, 100, -1));
 
         txtRuc.setEditable(false);
-        Factura.add(txtRuc, new org.netbeans.lib.awtextra.AbsoluteConstraints(112, 70, 141, -1));
+        txtRuc.setBackground(new java.awt.Color(255, 255, 255));
+        txtRuc.setBorder(null);
+        Factura.add(txtRuc, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, 141, -1));
 
         jLabel16.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         jLabel16.setText("Fecha Pago:");
-        Factura.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 70, 100, 20));
+        Factura.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 70, 70, 20));
 
-        txtFechaPago.setEditable(false);
-        Factura.add(txtFechaPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 70, 150, -1));
+        txtFechaPago.setBorder(null);
+        Factura.add(txtFechaPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 70, 80, -1));
+        Factura.add(lbl_mes, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 150, 510, 20));
+
+        lbl_totalconsumoExcesos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Factura.add(lbl_totalconsumoExcesos, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 420, 60, 24));
+
+        jLabel20.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel20.setText("$");
+        Factura.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 380, 20, -1));
+
+        jLabel22.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel22.setText("$");
+        Factura.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 460, 20, -1));
+
+        jLabel23.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel23.setText("$");
+        Factura.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 420, 20, -1));
 
         generarFactura.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/generar.png"))); // NOI18N
         generarFactura.setText("Genera Factura");
@@ -276,7 +290,7 @@ public class FrmPlanillaPagar extends javax.swing.JFrame implements Printable {
         });
 
         btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/salida.png"))); // NOI18N
-        btnSalir.setText("Regresar");
+        btnSalir.setText("Cancelar");
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalirActionPerformed(evt);
@@ -294,7 +308,7 @@ public class FrmPlanillaPagar extends javax.swing.JFrame implements Printable {
                 .addComponent(imprimirFactura)
                 .addGap(18, 18, 18)
                 .addComponent(btnNuevo)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnSalir)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
@@ -387,10 +401,19 @@ public class FrmPlanillaPagar extends javax.swing.JFrame implements Printable {
             txtLecAnterior.setText(DetallePlanilla.cargarPlanilla.get(0).getLectura_anterior());
             txtLecActual.setText(DetallePlanilla.cargarPlanilla.get(0).getLectura_actual());
             lbl_mes.setText("Planilla de Consumos de " + DetallePlanilla.cargarPlanilla.get(0).getMespago());
-            txtTotalPagar.setText(calcularValorPago() + "");
+            Double totalPagar = calcularValorPago();
+            txtTotalPagar.setText(totalPagar + "");
+            System.out.println(totalconsumoexceso);
+            Double consumo;
+            if (totalconsumoexceso != 0.0){
+                consumo = Double.parseDouble(DetallePlanilla.cargarPlanilla.get(0).getConsumo()) - totalconsumoexceso;
+            } else {
+                consumo = Double.parseDouble(DetallePlanilla.cargarPlanilla.get(0).getConsumo());
+            }
             lbl_consumoExcesos.setText(totalconsumoexceso + "");
             lbl_consumobasico.setText(totalsinexceso + "");
-            lbl_consumo.setText(DetallePlanilla.cargarPlanilla.get(0).getConsumo());
+            lbl_consumo.setText(String.valueOf(consumo));
+            lbl_totalconsumoExcesos.setText(totalPagar - totalsinexceso + "");
         } else {
             JOptionPane.showMessageDialog(null, "Erro al carga los datos de la factura, regrese a la ventana de pago");
         }
@@ -534,8 +557,8 @@ public class FrmPlanillaPagar extends javax.swing.JFrame implements Printable {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -551,6 +574,7 @@ public class FrmPlanillaPagar extends javax.swing.JFrame implements Printable {
     private javax.swing.JLabel lbl_mes;
     private javax.swing.JLabel lbl_precionunitario_sinexceso;
     private javax.swing.JLabel lbl_precionunitario_sinexceso1;
+    private javax.swing.JLabel lbl_totalconsumoExcesos;
     private javax.swing.JTextField txtCliente;
     private javax.swing.JTextField txtCorreo;
     private javax.swing.JTextField txtDireccion;

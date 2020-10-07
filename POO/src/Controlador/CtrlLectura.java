@@ -18,6 +18,14 @@ public class CtrlLectura {
             JOptionPane.showMessageDialog(null, "Lectura No Guardada con Exito");
         }
     }
+    
+    public void insertarNLectura(Lecturas l) {
+        if (lecturaDAO.InsertarN(l) > 0) {
+            JOptionPane.showMessageDialog(null, "Lectura Guardada con Exito");
+        } else {
+            JOptionPane.showMessageDialog(null, "Lectura No Guardada con Exito");
+        }
+    }
 
     /*Este metodo busca a los clientes por cedula o numero de medidor y retorna un objeto de tipo cliente con los datos del mismo*/
     public Cliente buscarDatosCliente(String parametro) {

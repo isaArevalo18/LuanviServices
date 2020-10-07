@@ -40,6 +40,27 @@ public class LecturaDAO extends Conexion {
         }
         return respuesta;
     }
+    
+    public int InsertarN(Lecturas lec) {
+        sql = "INSERT INTO lectura(lectura,fechaLectura,consumo,estado,idcliente,valorpago) "
+                + "VALUES(?,?,?,?,?,?)";
+        try {
+            con = getConexion();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, lec.getLectura());
+            ps.setString(2, lec.getFechalectura());
+            ps.setDouble(3, lec.getConsumo());
+            ps.setString(4, lec.getEstado());
+            ps.setInt(5, lec.getIdCliente());
+            ps.setDouble(6, lec.getValorpago());
+            respuesta = ps.executeUpdate();
+        } catch (Exception e) {
+            System.out.println("Error al insertar Lectura " + e);
+        } finally {
+            CerrarConexion();
+        }
+        return respuesta;
+    }
 
     /*Busca lso datos del cliente por id o nromedidor*/
     public Cliente buscarLecturaCliente(String parametro) {
@@ -150,7 +171,7 @@ public class LecturaDAO extends Conexion {
     }
 
     public int Editar(Lecturas lec) {
-        sql = "UPDATE lectura SET lectura=?,fechaLectura=?,consumo=?,valorpago=?,lecturaanterior=?,fechaLecturaAnterior=? WHERE idlectura=?";
+        sql = "UPDATE lectura SET lectura=?,fechaLectura=?,consumo=?,valorpago=? WHERE idlectura=?";
         try {
             con = getConexion();
             ps = con.prepareStatement(sql);
@@ -158,10 +179,7 @@ public class LecturaDAO extends Conexion {
             ps.setString(2, lec.getFechalectura());
             ps.setInt(3, lec.getConsumo());
             ps.setDouble(4, lec.getValorpago());
-            ps.setInt(5, lec.getLecturaAnterior());
-            ps.setString(6, lec.getFechaLecturaAnterior());
-            ps.setInt(7, lec.getIdlectura());
-
+            ps.setInt(5, lec.getIdlectura());
             respuesta = ps.executeUpdate();
         } catch (Exception e) {
             System.out.println("Error al editar la lectura: " + e);
@@ -196,7 +214,7 @@ public class LecturaDAO extends Conexion {
             if (con != null) {
                 con.close();
             }
-
+            
         } catch (Exception e) {
             System.out.println("Error de conexion" + e);
         }
