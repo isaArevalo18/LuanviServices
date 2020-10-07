@@ -19,7 +19,7 @@
 </style>
 
 
-<body style="background-image: url('empleado.jpeg');width: 100%;
+<body style="background-image: url('img/cliente.jpeg');width: 100%;
   height:100%;
   background-size: cover;">
     <main class="container p-5">
@@ -33,38 +33,38 @@
       <div class="form-row">
           <div class="form-group col-md-6">
             <label for="nombre">Nombre:</label>
-            <input type="nombre" class="form-control" id="nombre" placeholder="Nombre *" attern="^[^0-9]+$" size="30" maxlength="245" required>
+            <input type="nombre" class="form-control" name="nombre" placeholder="Nombre *" attern="^[^0-9]+$" size="30" maxlength="245" required>
           </div>
 
           <div class="form-group">
           <label for="cedula">Cédula:</label>
-          <input type="text" class="form-control" id="cedula" placeholder="Cédula" maxlength="10" required>
+          <input type="text" class="form-control" name="cedula" placeholder="Cédula" maxlength="10" required>
           </div> 
          
         <div class="form-group col-md-6">
           <label for="direccion">Dirección:</label>
-          <input type="text" class="form-control" id="direccion" placeholder="Direccién *" required>
+          <input type="text" class="form-control" name="direccion" placeholder="Direccién *" required>
         </div>
         
            <div class="form-group col-md-2">
           <label for="celular">Celular:</label>
-          <input type="text" class="form-control" id="celular" placeholder="Celular" maxlength="10">
+          <input type="text" class="form-control" name="celular" placeholder="Celular" maxlength="10">
           </div>
 
          <div class="form-group">
           <label for="telefono">Teléfono:</label>
-          <input type="text" class="form-control" id="telefono" placeholder="Teléfono" maxlength="10">
+          <input type="text" class="form-control" name="telefono" placeholder="Teléfono" maxlength="10">
           </div>
       
       </div>
       <div class="form-row">
              <div class="form-group col-md-6">
               <label for="email">Email:</label>
-              <input type="email" class="form-control" id="email" pattern=".+\.com" title="Ingrese un correo valido"placeholder="Email *" required>
+              <input type="email" class="form-control" name="email" pattern=".+\.com" title="Ingrese un correo valido"placeholder="Email *" required>
             </div>
             <div class="form-group col-md-6">
               <label for="sitioweb">Sitio Web:</label>
-              <input type="text" class="form-control" id="sitioweb" placeholder="Sitio Web">
+              <input type="text" class="form-control" name="sitioweb" placeholder="Sitio Web">
             </div>
 
             <div class="form-group col-md-6">
@@ -94,7 +94,7 @@
 
            <div class="form-group col-md-6">
               <label for="comentario">Comentario</label>
-              <textarea class="form-control" id="comentario" rows="3"></textarea>
+              <textarea class="form-control" name="comentario" rows="3"></textarea>
             </div>
       </div>
      
@@ -118,8 +118,8 @@
     <thead class="thead-dark">
     <tr>
     <th>ID</th>
-    <th>cedula</th>
-    <th>nombre</th>
+    <th>Cedula</th>
+    <th>Nombre</th>
     <th>Direccion</th>
     <th>Celular</th>
     <th>Telefono</th>

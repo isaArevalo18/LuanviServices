@@ -19,7 +19,7 @@
 </style>
 
 
-<body style="background-image: url('empleado.jpeg');width: 100%;
+<body style="background-image: url('img/empleado.jpeg');width: 100%;
   height:100%;
   background-size: cover;">
     <main class="container p-5">

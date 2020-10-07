@@ -19,7 +19,7 @@
   }
 </style>
 
-<body style="background-image: url('empleados.jpg');width: 100%;
+<body style="background-image: url('img/empleados.jpg');width: 100%;
   height:100%;
   background-size: cover;">
     <main class="container p-5">
@@ -115,21 +115,21 @@
     <br>
     <h3 style="color: white" align="center">Tabla Empleados</h3>
     <table class="table table-striped">
-    <thead class="thead-dark">
-    <tr>
-    <th>ID</th>
-    <th>cedula</th>
-    <th>nombre</th>
-    <th>Direccion</th>
-    <th>Celular</th>
-    <th>Telefono</th>
-    <th>Email</th>
-    <th>SitioWeb</th>
-    <th>Comentario</th>
-    <th>Genero</th>
-    <th>Sexo</th>
-    <th>Accion</ht>
-    </thead>
+      <thead class="thead-dark">
+        <tr>
+        <th>ID</th>
+        <th>Cedula</th>
+        <th>Nombre</th>
+        <th>Direccion</th>
+        <th>Celular</th>
+        <th>Telefono</th>
+        <th>Email</th>
+        <th>SitioWeb</th>
+        <th>Comentario</th>
+        <th>Genero</th>
+        <th>Sexo</th>
+        <th>Accion</ht>
+      </thead>
     </tr>
 
       <?php  ?>
@@ -160,7 +160,6 @@
       </tr>
        <?php } ?>
       </table>
-      
       
     </main>
   </body>
