@@ -1,10 +1,10 @@
+<?php  include("conexion.php"); ?>
 <!doctype html>
 <html>
 <head>
 <meta charset="utf-8">
 <title>Formulario Productos</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 </head>
 
@@ -14,17 +14,22 @@
 		<main class="container p-5">
        <div class="row">
         <div class="col-md-10">
+        <?php if (isset($_SESSION["mensaje"])) { ?>
+          <div class="alert alert-<?php echo $_SESSION["mensajetipo"]; ?> alert-dismissible fade show" role="alert">
+               <?php echo $_SESSION["mensaje"]; ?>
+               <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+               <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <?php session_unset(); } ?>
           <div class="card">
       <h5 class="card-header bg bg-dark" style="color: white;">Formulario Productos</h5>
       <div class="card-body" style="background-color:#B4CDCC">
-          <form>
+      
+   <form action="productobd/insertarproducto.php" method="POST">
 
       <div class="form-row">
-          <div class="form-group col-md-2">
-            <label for="idproducto">Id Producto:</label>
-            <input type="text" class="form-control" name="idproducto" placeholder="ID Producto *" required>
-          </div>
-
+      
           <div class="form-group col-md-6">
           <label for="nombre">Nombre Producto:</label>
           <input type="text" class="form-control" name="nombre" placeholder="Nombre Producto"  required>
@@ -78,9 +83,8 @@
     <?php  ?>
 
       <?php 
-       include("conexion.php");
 
-       $query="SELECT idproducto, nombre, precio, nroexistencias, categoria FROM producto";
+       $query="SELECT * FROM producto";
 
        $result = mysqli_query($conexion,$query);
 
@@ -93,11 +97,14 @@
        <td><?php echo $row["nroexistencias"]; ?></td>
        <td><?php echo $row["categoria"]; ?></td>
        <td>
-        <a href="productosbd.php?id=<?php echo $row['idproducto']?>&accion=editar" class="btn btn-secondary"><i class="fas fa-marker"></i></a>
-        <a href="productosbd.php?id=<?php echo $row['idproducto']?>&accion=eliminar" class="btn btn-danger"><i class="far fa-trash-alt"></i></a></td>
+        <a href="productobd/actualizarproducto.php?id=<?php echo $row['idproducto']?>&accion=editar" class="btn btn-secondary"><i class="fas fa-marker"></i></a>
+        <a href="productobd/eliminarproducto.php?id=<?php echo $row['idproducto']?>&accion=eliminar" class="btn btn-danger"><i class="far fa-trash-alt"></i></a></td>
       </tr>
        <?php } ?>
       </table>      
     </main>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>
