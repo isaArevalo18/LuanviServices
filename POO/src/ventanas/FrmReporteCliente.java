@@ -35,7 +35,7 @@ public class FrmReporteCliente extends javax.swing.JFrame {
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.setColumnIdentifiers(new Object[]{"Id", "Cedula", "Nombre", "Apellido", "FechAa Nacimiento", "FechaCreacion", "Direccion", "Telefono", "Correo", "Num medidor"});
         tbReporteCliente.setModel(modelo);
-        setIconImage(new ImageIcon(getClass().getResource("/Imagenes/AguaIcono.png")).getImage());
+        setIconImage(new ImageIcon(getClass().getResource("/Imagenes/gotitas.png")).getImage());
         this.setLocationRelativeTo(null);
 
     }
@@ -76,17 +76,19 @@ public class FrmReporteCliente extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(33, 45, 62));
 
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Reporte de Clientes");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(214, 214, 214)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(301, 301, 301))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

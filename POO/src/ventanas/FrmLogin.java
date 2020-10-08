@@ -13,7 +13,7 @@ public class FrmLogin extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-        setIconImage(new ImageIcon(getClass().getResource("/Imagenes/AguaIcono.png")).getImage());
+       setIconImage(new ImageIcon(getClass().getResource("/Imagenes/gotitas.png")).getImage());
     }
 
     /**

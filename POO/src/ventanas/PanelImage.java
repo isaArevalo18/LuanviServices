@@ -1,5 +1,4 @@
-package Loginci ;
-
+package ventanas;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -14,7 +13,7 @@ public class PanelImage extends javax.swing.JPanel {
     @Override
     public void paint(Graphics g) {
         Dimension dimension=this.getSize();
-        ImageIcon icon=new ImageIcon(getClass().getResource("/imagenes/FondoImagen2.jpg"));
+        ImageIcon icon=new ImageIcon(getClass().getResource("/imagenes/gotitas.png"));
         g.drawImage(icon.getImage(), 0, 0, dimension.width, dimension.height, null);
         this.setOpaque(false);
         super.paintChildren(g);

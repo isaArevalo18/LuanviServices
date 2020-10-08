@@ -46,7 +46,7 @@ public class FrmIngresoLectura extends javax.swing.JFrame {
         rbt_medidor.setSelected(true);
         txtNumMedidor.setEnabled(true);
         txtNumMedidor.setEditable(true);
-        setIconImage(new ImageIcon(getClass().getResource("/Imagenes/AguaIcono.png")).getImage());
+         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/gotitas.png")).getImage());
         val.ValidarNumeros(txt_lectura);
         val.LimitarCaracteres(txt_lectura, 4);
         this.setLocationRelativeTo(null);

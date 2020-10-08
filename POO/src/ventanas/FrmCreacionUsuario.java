@@ -40,9 +40,9 @@ public class FrmCreacionUsuario extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+        setIconImage(new ImageIcon(getClass().getResource("/Imagenes/gotitas.png")).getImage());
         lbl_id.setVisible(false);
         txt_id.setVisible(false);
-        setIconImage(new ImageIcon(getClass().getResource("/Imagenes/AguaIcono.png")).getImage());
         holders();
         MostrarCliente();
         bloquear();
@@ -141,19 +141,19 @@ public class FrmCreacionUsuario extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(153, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(129, 202, 225));
         jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("MS Reference Sans Serif", 1, 12)); // NOI18N
         jLabel2.setText("Cedula:");
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("MS Reference Sans Serif", 1, 12)); // NOI18N
         jLabel3.setText("Nombre:");
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("MS Reference Sans Serif", 1, 12)); // NOI18N
         jLabel4.setText("Direccion:");
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("MS Reference Sans Serif", 1, 12)); // NOI18N
         jLabel5.setText("Correo:");
 
         txtCedula.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -181,16 +181,16 @@ public class FrmCreacionUsuario extends javax.swing.JFrame {
             }
         });
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("MS Reference Sans Serif", 1, 12)); // NOI18N
         jLabel7.setText("Numero Medidor:");
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("MS Reference Sans Serif", 1, 12)); // NOI18N
         jLabel8.setText("Apellido:");
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("MS Reference Sans Serif", 1, 12)); // NOI18N
         jLabel9.setText("Telefono:");
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("MS Reference Sans Serif", 1, 12)); // NOI18N
         jLabel10.setText("Fecha de Nacimiento:");
 
         txtNumMedidor.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -277,7 +277,7 @@ public class FrmCreacionUsuario extends javax.swing.JFrame {
         });
 
         btnTerminarEdicion.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnTerminarEdicion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/consulta.png"))); // NOI18N
+        btnTerminarEdicion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/marcado.png"))); // NOI18N
         btnTerminarEdicion.setText("Terminar Edicion");
         btnTerminarEdicion.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnTerminarEdicion.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -344,7 +344,7 @@ public class FrmCreacionUsuario extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tabClientes);
 
-        lbl_id.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lbl_id.setFont(new java.awt.Font("MS Reference Sans Serif", 1, 12)); // NOI18N
         lbl_id.setText("IdCliente:");
 
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -360,33 +360,31 @@ public class FrmCreacionUsuario extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(0, 153, 153));
 
         jLabel1.setBackground(new java.awt.Color(204, 204, 204));
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 24)); // NOI18N
         jLabel1.setText("Crear Nuevo Usuario");
 
         javax.swing.GroupLayout panelImage1Layout = new javax.swing.GroupLayout(panelImage1);
         panelImage1.setLayout(panelImage1Layout);
         panelImage1Layout.setHorizontalGroup(
             panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelImage1Layout.createSequentialGroup()
-                .addGap(301, 301, 301)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(382, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelImage1Layout.createSequentialGroup()
+                .addContainerGap(385, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(285, 285, 285))
         );
         panelImage1Layout.setVerticalGroup(
             panelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelImage1Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelImage1Layout.createSequentialGroup()
+                .addContainerGap(38, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addGap(27, 27, 27))
         );
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addComponent(panelImage1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(panelImage1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -401,7 +399,7 @@ public class FrmCreacionUsuario extends javax.swing.JFrame {
             }
         });
 
-        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("MS Reference Sans Serif", 1, 12)); // NOI18N
         jLabel13.setText("Fecha de creacion de Usuario: ");
 
         txt_id.setEnabled(false);
@@ -432,7 +430,7 @@ public class FrmCreacionUsuario extends javax.swing.JFrame {
                                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                                     .addComponent(jLabel4)
                                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                    .addComponent(txtDireccion, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE))
+                                                    .addComponent(txtDireccion, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE))
                                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                         .addComponent(jLabel3)
@@ -531,191 +529,6 @@ public class FrmCreacionUsuario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tabClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabClientesMouseClicked
-        btnEliminar.setEnabled(true);
-        int s = tabClientes.getSelectedRow();
-        id = Integer.parseInt(tabClientes.getValueAt(s, 0).toString());
-        cedula = tabClientes.getValueAt(s, 1).toString();
-        nombre = tabClientes.getValueAt(s, 2).toString();
-        apellido = tabClientes.getValueAt(s, 3).toString();
-        fecha_nac = tabClientes.getValueAt(s, 4).toString();
-        fecha_creacion = tabClientes.getValueAt(s, 5).toString();
-        direccion = tabClientes.getValueAt(s, 6).toString();
-        telefono = tabClientes.getValueAt(s, 7).toString();
-        correo = tabClientes.getValueAt(s, 8).toString();
-        num_medidor = tabClientes.getValueAt(s, 9).toString();
-    }//GEN-LAST:event_tabClientesMouseClicked
-
-    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        ctrlcliente = new CtrlUsuarioCliente();
-        Cliente cliente = new Cliente();
-        CalcularPrecio calculo = new CalcularPrecio();
-        Lecturas lect = new Lecturas();
-        boolean correcto = true;
-        boolean registrar = true;
-        boolean cedCorr = true;
-        correcto = false;
-
-        boolean registrar1 = validaciones.validarCedula(txtCedula.getText());//validacion de cedula
-        if (registrar1 == false) {
-            registrar = false;
-            txtCedula.setText("");
-        }
-        //**********************************************************************
-        if (txtNombre.getText().isEmpty()) {
-            registrar = false;
-        } else {
-            String NOMBRE = txtNombre.getText();
-            if (correcto != NOMBRE.matches("^[ a-zA-Z]")) { //validar nombre
-                registrar = false;
-                txtNombre.setText("");
-            }
-        }
-        //**********************************************************************
-        String APELLIDO = txtApellido.getText();
-        if (correcto != APELLIDO.matches("[ a-zA-Z]")) { //validar Apellido
-            registrar = false;
-            txtApellido.setText("");
-        }
-        
-        String DIRECCION = txtDireccion.getText();
-        if (correcto != DIRECCION.matches("[ a-zA-Z]")) { //validar Direccion
-            registrar = false;
-            txtApellido.setText("");
-        }
-
-        double TELEFONO = Double.parseDouble(txtTelefono.getText()); //validar telefono
-        if (TELEFONO < 1 || TELEFONO > 565616142) {
-            registrar = false;
-            txtTelefono.setText("");
-        }
-
-        boolean registrar2 = validaciones.validarCorreo(txtCorreo.getText());//validacion de correo
-        if (registrar2 == false) {
-            registrar = false;
-            txtCorreo.setText("");
-        }
-
-        /*  int LECT_ACTUAL = Integer.parseInt(txtLec_Actual.getText()); //validar LECT_ACTUAL
-        if (LECT_ACTUAL < 0 || LECT_ACTUAL > 100000000) {
-            registrar = false;
-            txtLec_Actual.setText("");
-        }*/
- /*    int LECT_ANTERIOR = Integer.parseInt(txtLect_Anterior.getText());// validar LECT_ANTERIOR
-        if (LECT_ACTUAL < 0 || LECT_ACTUAL > 100000000) {
-            registrar = false;
-            txtLec_Actual.setText("");
-        }*/
-        if (txtNumMedidor.getText().isEmpty()) {
-            registrar = false;
-        } else {
-            int NUM_MEDIDOR = Integer.parseInt(txtNumMedidor.getText());// validar LECT_ANTERIOR
-            if (NUM_MEDIDOR < 1 || NUM_MEDIDOR > 1000000000) {
-                registrar = false;
-                txtNumMedidor.setText("");
-            }
-        }
-
-        for (int i = 0; i < ListaCliente.size(); i++) {
-            if (ListaCliente.get(i).getNum_medidor().equals(txtNumMedidor.getText())) {
-                registrar = false;
-                txtNumMedidor.setText("");
-                JOptionPane.showMessageDialog(null, "!!Numero de medidor Existente");
-            }
-        }
-
-        if (cFecha.getDate() == null) {
-            registrar = false;
-        }
-
-        if (registrar == true) {
-            int ax = JOptionPane.showConfirmDialog(null, "Desea guardar el cliente?");
-            if (ax == JOptionPane.YES_OPTION) {
-                //Insertamos los datos personales del cliente en la tabla usuario
-                cliente.setCedula(txtCedula.getText());
-                cliente.setNombre(txtNombre.getText());
-                cliente.setApellido(txtApellido.getText());
-                String fecha = formato.format(cFecha.getDate());
-                cliente.setFechaNacimiento(fecha);
-                cliente.setDireccion(txtDireccion.getText());
-                cliente.setTelefono(txtTelefono.getText());
-                cliente.setCorreo(txtCorreo.getText());
-                System.out.println(cliente);
-                //Insertamos los datos del Cliente en la tabla cliente
-                cliente.setFechaCreacion(txt_fechacreacion_usuario.getText());
-                cliente.setNum_medidor(txtNumMedidor.getText());
-                ctrlcliente.guardarUsuarioCliente(cliente);
-                MostrarCliente();
-                limpiar();
-                btnGuardar.setEnabled(false);
-            } else if (ax == JOptionPane.NO_OPTION) {
-                JOptionPane.showMessageDialog(null, "Cliente no guardado");
-            }
-
-        } else {
-            JOptionPane.showMessageDialog(null, "Algun dato fue incorrecto vuelva a ingresar ");
-        }
-        MostrarCliente();
-    }//GEN-LAST:event_btnGuardarActionPerformed
-
-    private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
-        desbloquear();
-        obtenerFechaActual();
-        bloquearTerminareditar();
-        limpiar();
-    }//GEN-LAST:event_btnNuevoActionPerformed
-
-    private void txtCedulaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCedulaKeyReleased
-        habilitarBGuardar();
-    }//GEN-LAST:event_txtCedulaKeyReleased
-
-    private void txtNumMedidorKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumMedidorKeyReleased
-        habilitarBGuardar();
-    }//GEN-LAST:event_txtNumMedidorKeyReleased
-
-    private void txtNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyReleased
-        habilitarBGuardar();
-    }//GEN-LAST:event_txtNombreKeyReleased
-
-    private void txtApellidoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidoKeyReleased
-        habilitarBGuardar();
-    }//GEN-LAST:event_txtApellidoKeyReleased
-
-    private void txtDireccionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDireccionKeyReleased
-        habilitarBGuardar();
-    }//GEN-LAST:event_txtDireccionKeyReleased
-
-    private void txtTelefonoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoKeyReleased
-        habilitarBGuardar();
-    }//GEN-LAST:event_txtTelefonoKeyReleased
-
-    private void txtCorreoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCorreoKeyReleased
-        habilitarBGuardar();
-    }//GEN-LAST:event_txtCorreoKeyReleased
-
-    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        if (tabClientes.getSelectedRow() != -1) {
-            id = Integer.parseInt(tabClientes.getValueAt(tabClientes.getSelectedRow(), 0).toString());
-            ctrlcliente = new CtrlUsuarioCliente();
-            ctrlcliente.eliminarUsuarioCliente(id);
-            MostrarCliente();
-        } else {
-            JOptionPane.showMessageDialog(null, "Seleccione un registro de la tabla para Eliminar");
-        }
-        btnEliminar.setEnabled(false);
-
-    }//GEN-LAST:event_btnEliminarActionPerformed
-
-    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        desbloquear();
-        btnGuardar.setEnabled(false);
-        //******************Trae los datos de ta tabla a los txt*******************
-        if (ObtenerRegistro()){
-            btnEliminar.setEnabled(false);
-            btnTerminarEdicion.setEnabled(true);
-        }
-    }//GEN-LAST:event_btnEditarActionPerformed
-
     private void btnTerminarEdicionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTerminarEdicionActionPerformed
         ctrlcliente = new CtrlUsuarioCliente();
         boolean correcto = true;
@@ -799,35 +612,219 @@ public class FrmCreacionUsuario extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnTerminarEdicionActionPerformed
 
+    private void btnTerminarEdicionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTerminarEdicionMouseEntered
+        btnTerminarEdicion.setToolTipText("Terminar la edicion del cliente");
+    }//GEN-LAST:event_btnTerminarEdicionMouseEntered
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        desbloquear();
+        btnGuardar.setEnabled(false);
+        //******************Trae los datos de ta tabla a los txt*******************
+        if (ObtenerRegistro()){
+            btnEliminar.setEnabled(false);
+            btnTerminarEdicion.setEnabled(true);
+        }
+    }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void btnEditarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarMouseEntered
+        btnEditar.setToolTipText("Editar al cliente seleccionado");
+    }//GEN-LAST:event_btnEditarMouseEntered
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        if (tabClientes.getSelectedRow() != -1) {
+            id = Integer.parseInt(tabClientes.getValueAt(tabClientes.getSelectedRow(), 0).toString());
+            ctrlcliente = new CtrlUsuarioCliente();
+            ctrlcliente.eliminarUsuarioCliente(id);
+            MostrarCliente();
+        } else {
+            JOptionPane.showMessageDialog(null, "Seleccione un registro de la tabla para Eliminar");
+        }
+        btnEliminar.setEnabled(false);
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnEliminarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseEntered
+        btnEliminar.setToolTipText("Eliminar al cliente seleccionado");
+    }//GEN-LAST:event_btnEliminarMouseEntered
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        ctrlcliente = new CtrlUsuarioCliente();
+        Cliente cliente = new Cliente();
+        CalcularPrecio calculo = new CalcularPrecio();
+        Lecturas lect = new Lecturas();
+        boolean correcto = true;
+        boolean registrar = true;
+        boolean cedCorr = true;
+        correcto = false;
+
+        boolean registrar1 = validaciones.validarCedula(txtCedula.getText());//validacion de cedula
+        if (registrar1 == false) {
+            registrar = false;
+            txtCedula.setText("");
+        }
+        //**********************************************************************
+        if (txtNombre.getText().isEmpty()) {
+            registrar = false;
+        } else {
+            String NOMBRE = txtNombre.getText();
+            if (correcto != NOMBRE.matches("^[ a-zA-Z]")) { //validar nombre
+                registrar = false;
+                txtNombre.setText("");
+            }
+        }
+        //**********************************************************************
+        String APELLIDO = txtApellido.getText();
+        if (correcto != APELLIDO.matches("[ a-zA-Z]")) { //validar Apellido
+            registrar = false;
+            txtApellido.setText("");
+        }
+
+        String DIRECCION = txtDireccion.getText();
+        if (correcto != DIRECCION.matches("[ a-zA-Z]")) { //validar Direccion
+            registrar = false;
+            txtApellido.setText("");
+        }
+
+        double TELEFONO = Double.parseDouble(txtTelefono.getText()); //validar telefono
+        if (TELEFONO < 1 || TELEFONO > 565616142) {
+            registrar = false;
+            txtTelefono.setText("");
+        }
+
+        boolean registrar2 = validaciones.validarCorreo(txtCorreo.getText());//validacion de correo
+        if (registrar2 == false) {
+            registrar = false;
+            txtCorreo.setText("");
+        }
+
+        /*  int LECT_ACTUAL = Integer.parseInt(txtLec_Actual.getText()); //validar LECT_ACTUAL
+        if (LECT_ACTUAL < 0 || LECT_ACTUAL > 100000000) {
+            registrar = false;
+            txtLec_Actual.setText("");
+        }*/
+        /*    int LECT_ANTERIOR = Integer.parseInt(txtLect_Anterior.getText());// validar LECT_ANTERIOR
+        if (LECT_ACTUAL < 0 || LECT_ACTUAL > 100000000) {
+            registrar = false;
+            txtLec_Actual.setText("");
+        }*/
+        if (txtNumMedidor.getText().isEmpty()) {
+            registrar = false;
+        } else {
+            int NUM_MEDIDOR = Integer.parseInt(txtNumMedidor.getText());// validar LECT_ANTERIOR
+            if (NUM_MEDIDOR < 1 || NUM_MEDIDOR > 1000000000) {
+                registrar = false;
+                txtNumMedidor.setText("");
+            }
+        }
+
+        for (int i = 0; i < ListaCliente.size(); i++) {
+            if (ListaCliente.get(i).getNum_medidor().equals(txtNumMedidor.getText())) {
+                registrar = false;
+                txtNumMedidor.setText("");
+                JOptionPane.showMessageDialog(null, "!!Numero de medidor Existente");
+            }
+        }
+
+        if (cFecha.getDate() == null) {
+            registrar = false;
+        }
+
+        if (registrar == true) {
+            int ax = JOptionPane.showConfirmDialog(null, "Desea guardar el cliente?");
+            if (ax == JOptionPane.YES_OPTION) {
+                //Insertamos los datos personales del cliente en la tabla usuario
+                cliente.setCedula(txtCedula.getText());
+                cliente.setNombre(txtNombre.getText());
+                cliente.setApellido(txtApellido.getText());
+                String fecha = formato.format(cFecha.getDate());
+                cliente.setFechaNacimiento(fecha);
+                cliente.setDireccion(txtDireccion.getText());
+                cliente.setTelefono(txtTelefono.getText());
+                cliente.setCorreo(txtCorreo.getText());
+                System.out.println(cliente);
+                //Insertamos los datos del Cliente en la tabla cliente
+                cliente.setFechaCreacion(txt_fechacreacion_usuario.getText());
+                cliente.setNum_medidor(txtNumMedidor.getText());
+                ctrlcliente.guardarUsuarioCliente(cliente);
+                MostrarCliente();
+                limpiar();
+                btnGuardar.setEnabled(false);
+            } else if (ax == JOptionPane.NO_OPTION) {
+                JOptionPane.showMessageDialog(null, "Cliente no guardado");
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Algun dato fue incorrecto vuelva a ingresar ");
+        }
+        MostrarCliente();
+    }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void btnGuardarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarMouseEntered
+        btnGuardar.setToolTipText("Guardar nuevo Cliente");
+    }//GEN-LAST:event_btnGuardarMouseEntered
+
+    private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
+        desbloquear();
+        obtenerFechaActual();
+        bloquearTerminareditar();
+        limpiar();
+    }//GEN-LAST:event_btnNuevoActionPerformed
+
+    private void btnNuevoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNuevoMouseEntered
+        btnNuevo.setToolTipText("Registrar un nuevo Cliente");
+    }//GEN-LAST:event_btnNuevoMouseEntered
+
+    private void cFechaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cFechaKeyReleased
+        habilitarBGuardar();
+    }//GEN-LAST:event_cFechaKeyReleased
+
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         FrmMenuPrincipal men = new FrmMenuPrincipal();
         men.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void btnNuevoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNuevoMouseEntered
-        btnNuevo.setToolTipText("Registrar un nuevo Cliente");
-    }//GEN-LAST:event_btnNuevoMouseEntered
+    private void tabClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabClientesMouseClicked
+        btnEliminar.setEnabled(true);
+        int s = tabClientes.getSelectedRow();
+        id = Integer.parseInt(tabClientes.getValueAt(s, 0).toString());
+        cedula = tabClientes.getValueAt(s, 1).toString();
+        nombre = tabClientes.getValueAt(s, 2).toString();
+        apellido = tabClientes.getValueAt(s, 3).toString();
+        fecha_nac = tabClientes.getValueAt(s, 4).toString();
+        fecha_creacion = tabClientes.getValueAt(s, 5).toString();
+        direccion = tabClientes.getValueAt(s, 6).toString();
+        telefono = tabClientes.getValueAt(s, 7).toString();
+        correo = tabClientes.getValueAt(s, 8).toString();
+        num_medidor = tabClientes.getValueAt(s, 9).toString();
+    }//GEN-LAST:event_tabClientesMouseClicked
 
-    private void btnGuardarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarMouseEntered
-        btnGuardar.setToolTipText("Guardar nuevo Cliente");
-    }//GEN-LAST:event_btnGuardarMouseEntered
-
-    private void btnEliminarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseEntered
-        btnEliminar.setToolTipText("Eliminar al cliente seleccionado");
-    }//GEN-LAST:event_btnEliminarMouseEntered
-
-    private void btnEditarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarMouseEntered
-        btnEditar.setToolTipText("Editar al cliente seleccionado");
-    }//GEN-LAST:event_btnEditarMouseEntered
-
-    private void btnTerminarEdicionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTerminarEdicionMouseEntered
-        btnTerminarEdicion.setToolTipText("Terminar la edicion del cliente");
-    }//GEN-LAST:event_btnTerminarEdicionMouseEntered
-
-    private void cFechaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cFechaKeyReleased
+    private void txtTelefonoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoKeyReleased
         habilitarBGuardar();
-    }//GEN-LAST:event_cFechaKeyReleased
+    }//GEN-LAST:event_txtTelefonoKeyReleased
+
+    private void txtApellidoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidoKeyReleased
+        habilitarBGuardar();
+    }//GEN-LAST:event_txtApellidoKeyReleased
+
+    private void txtNumMedidorKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumMedidorKeyReleased
+        habilitarBGuardar();
+    }//GEN-LAST:event_txtNumMedidorKeyReleased
+
+    private void txtCorreoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCorreoKeyReleased
+        habilitarBGuardar();
+    }//GEN-LAST:event_txtCorreoKeyReleased
+
+    private void txtDireccionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDireccionKeyReleased
+        habilitarBGuardar();
+    }//GEN-LAST:event_txtDireccionKeyReleased
+
+    private void txtNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyReleased
+        habilitarBGuardar();
+    }//GEN-LAST:event_txtNombreKeyReleased
+
+    private void txtCedulaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCedulaKeyReleased
+        habilitarBGuardar();
+    }//GEN-LAST:event_txtCedulaKeyReleased
 
     public void bloquear() {
         //*********************Bloque todos los campos************************* 
@@ -954,10 +951,10 @@ public class FrmCreacionUsuario extends javax.swing.JFrame {
     private ventanas.PanelImage1 panelImage1;
     private javax.swing.JTable tabClientes;
     private javax.swing.JTextField txtApellido;
-    public javax.swing.JTextField txtCedula;
-    public javax.swing.JTextField txtCorreo;
-    public javax.swing.JTextField txtDireccion;
-    public javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtCedula;
+    private javax.swing.JTextField txtCorreo;
+    private javax.swing.JTextField txtDireccion;
+    private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtNumMedidor;
     private javax.swing.JTextField txtTelefono;
     private javax.swing.JTextField txt_fechacreacion_usuario;

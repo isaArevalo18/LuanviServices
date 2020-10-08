@@ -5,6 +5,7 @@ import clases.validaciones;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import modelo.Empleado;
 
@@ -22,6 +23,7 @@ public class FrmLoginRegistrarEmpleado extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         obtenerFechaActual();
+         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/gotitas.png")).getImage());
         //Validaciones de los campos
         vali.ValidarNumeros(txtCedulaEmpleado);
         vali.LimitarCaracteres(txtCedulaEmpleado, 10);
