@@ -40,9 +40,9 @@ public class FrmConsultasFactura extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-        
+        setIconImage(new ImageIcon(getClass().getResource("/Imagenes/AguaIcono.png")).getImage());
         this.setLocationRelativeTo(null);
-         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/gotitas.png")).getImage());
+        
         vali.ValidarNumeros(txtBuscar);
         vali.LimitarCaracteres(txtBuscar, 10);
     }
@@ -65,16 +65,14 @@ public class FrmConsultasFactura extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(51, 153, 255));
+        jPanel1.setBackground(new java.awt.Color(204, 204, 255));
 
-        txtBuscar.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
-
-        jLabel2.setFont(new java.awt.Font("MS Reference Sans Serif", 1, 12)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setText("Cedula:");
 
         jPanel2.setBackground(new java.awt.Color(33, 45, 62));
 
-        jLabel1.setFont(new java.awt.Font("Copperplate Gothic Light", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Consulta Planillas");
 
@@ -95,7 +93,6 @@ public class FrmConsultasFactura extends javax.swing.JFrame {
                 .addContainerGap(25, Short.MAX_VALUE))
         );
 
-        tbplanillas.setFont(new java.awt.Font("Lucida Sans", 1, 12)); // NOI18N
         tbplanillas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -111,7 +108,6 @@ public class FrmConsultasFactura extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tbplanillas);
 
-        btnBuscar.setFont(new java.awt.Font("MS Reference Sans Serif", 1, 12)); // NOI18N
         btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/buscar.png"))); // NOI18N
         btnBuscar.setText("Buscar");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -120,7 +116,6 @@ public class FrmConsultasFactura extends javax.swing.JFrame {
             }
         });
 
-        btnRegresar.setFont(new java.awt.Font("MS Reference Sans Serif", 1, 12)); // NOI18N
         btnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logout.png"))); // NOI18N
         btnRegresar.setText("Volver");
         btnRegresar.addActionListener(new java.awt.event.ActionListener() {
@@ -129,7 +124,6 @@ public class FrmConsultasFactura extends javax.swing.JFrame {
             }
         });
 
-        btnNuevo.setFont(new java.awt.Font("MS Reference Sans Serif", 1, 12)); // NOI18N
         btnNuevo.setText("Nuevo");
         btnNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -137,7 +131,6 @@ public class FrmConsultasFactura extends javax.swing.JFrame {
             }
         });
 
-        btn_eliminar.setFont(new java.awt.Font("MS Reference Sans Serif", 1, 12)); // NOI18N
         btn_eliminar.setText("Anular Planilla");
         btn_eliminar.setEnabled(false);
         btn_eliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -150,16 +143,16 @@ public class FrmConsultasFactura extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(8, 8, 8)
                                 .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGap(18, 18, 18)
                                 .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(93, 93, 93)
                                 .addComponent(btnBuscar)
@@ -167,11 +160,10 @@ public class FrmConsultasFactura extends javax.swing.JFrame {
                                 .addComponent(btnNuevo)
                                 .addGap(27, 27, 27)
                                 .addComponent(btn_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 804, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnRegresar)
-                        .addGap(36, 36, 36))))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(btnRegresar)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 804, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

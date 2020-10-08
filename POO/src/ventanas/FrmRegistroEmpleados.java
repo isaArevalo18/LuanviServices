@@ -25,7 +25,7 @@ public class FrmRegistroEmpleados extends javax.swing.JFrame {
     SimpleDateFormat formato = new SimpleDateFormat("YYYY/MM/dd");
     DateFormat df = DateFormat.getDateInstance();
     CtrlUsuarioEmpleado ctrlUsuarioEmpleado;
-    
+
     int idEmpleado;
     String cedula;
     String nombre;
@@ -43,7 +43,7 @@ public class FrmRegistroEmpleados extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/gotitas.png")).getImage());
+        setIconImage(new ImageIcon(getClass().getResource("/Imagenes/AguaIcono.png")).getImage());
         obtenerFechaActual();
         bloquear();
         MostrarEmpleado();
@@ -118,7 +118,7 @@ public class FrmRegistroEmpleados extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(78, 150, 150));
+        jPanel1.setBackground(new java.awt.Color(153, 255, 255));
         jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N

@@ -13,7 +13,7 @@ public class PanelImage1 extends javax.swing.JPanel {
 
     public void paint(Graphics g) {
         Dimension dimension=this.getSize();
-        ImageIcon icon=new ImageIcon(getClass().getResource("/Imagenes/gotitas.jpg"));
+        ImageIcon icon=new ImageIcon(getClass().getResource("/Imagenes/pantalla.jpg"));
         g.drawImage(icon.getImage(), 0, 0, dimension.width, dimension.height, null);
         this.setOpaque(false);
         super.paintChildren(g);

@@ -7,7 +7,6 @@ import java.awt.Graphics2D;
 import java.awt.print.*;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import modelo.Cliente;
@@ -35,7 +34,7 @@ public class FrmPlanillaPagar extends javax.swing.JFrame implements Printable {
         obtenerFechaActual();
         txtnumfactura.setText(ctrlPlanilla.obtenerNumeroPlanilla());
         this.setLocationRelativeTo(null);
-         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/gotitas.png")).getImage());
+
     }
 
     @SuppressWarnings("unchecked")
