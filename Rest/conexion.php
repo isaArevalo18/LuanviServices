@@ -1,6 +1,6 @@
 <?php 
 //CONEXION A LA BASE DE DATOS
-
+session_start();
 $user = "root";//nombre de usuario
 $contrasena = "";  //contraseña
 $servidor = "localhost";//nombre del host o direccion Ip

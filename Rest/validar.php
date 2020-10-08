@@ -1,11 +1,11 @@
 <?php 
+		//CONEXION A LA BASE DE DATOS
+		include("conexion.php");
 	$usuario=$_POST['usuario'];// datos ingresados por teclado de usuario
 	$clave=$_POST['clave'];//datos ingresados por teclado contraseña
-	session_start();//creamos un inicio de sesion
 	$_SESSION['usuario']=$usuario;//iniciamos 
 
-	//CONEXION A LA BASE DE DATOS
-	include("conexion.php");
+
 	
 	//llamamos a la base de datos en una consulta
 	$consulta="SELECT*FROM login where usuario='$usuario' and clave='$clave'";

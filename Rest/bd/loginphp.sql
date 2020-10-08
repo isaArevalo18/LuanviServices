@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-10-2020 a las 08:26:59
--- Versión del servidor: 10.4.14-MariaDB
--- Versión de PHP: 7.3.22
+-- Tiempo de generación: 07-10-2020 a las 20:36:06
+-- Versión del servidor: 10.3.16-MariaDB
+-- Versión de PHP: 7.1.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -59,7 +60,8 @@ CREATE TABLE `producto` (
 --
 
 INSERT INTO `producto` (`idproducto`, `nombre`, `precio`, `nroexistencias`, `categoria`) VALUES
-(1, 'cafe', 5, 3, 'bebidas');
+(1, 'Desodorante Axe Ultra', 5.5, 20, 'Colonias'),
+(5, 'Computadora', 5.25, 6, 'Tecnologia');
 
 -- --------------------------------------------------------
 
@@ -68,7 +70,7 @@ INSERT INTO `producto` (`idproducto`, `nombre`, `precio`, `nroexistencias`, `cat
 --
 
 CREATE TABLE `usuario` (
-  `idcliente` int(7) NOT NULL,
+  `id` int(7) NOT NULL,
   `cedula` varchar(15) NOT NULL,
   `nombre` varchar(100) NOT NULL,
   `direccion` varchar(200) NOT NULL,
@@ -86,9 +88,10 @@ CREATE TABLE `usuario` (
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`idcliente`, `cedula`, `nombre`, `direccion`, `celular`, `telefono`, `email`, `sitioweb`, `comentario`, `genero`, `sexo`, `tipo`) VALUES
-(1, '0107355521', 'Luis Siguencia', 'Ricaurte', '555655', '6666', 'luissiguencia-15@hotmail.com', 'luanvi.com', 'dadasddads', 'masculino', 'hombre', 'cliente'),
-(2, '666666', 'Paco', 'Cuenca', '111111', '666666', 'paco@mail.com', 'paquito.com', 'S/N', 'masculino', 'hombre', 'empleado');
+INSERT INTO `usuario` (`id`, `cedula`, `nombre`, `direccion`, `celular`, `telefono`, `email`, `sitioweb`, `comentario`, `genero`, `sexo`, `tipo`) VALUES
+(17, '12345', 'Ana', 'Parque', '0985551123', '12345678', 'isa@outlook.com', 'webdesigner.com', 'Soy una  especialista del diseÃ±o porcino', 'Femenino', 'Mujer', 'cliente'),
+(21, '1111111111', 'Maria', 'Control', '0000000000', '6666666666', 'mari@hotmail.com', 'maritutos.com', 'si como estas', 'Femenino', 'Mujer', 'cliente'),
+(24, '999', 'Ariana Mendoza', 'Racar', '777', '888', 'ari@gmail.com', 'wikipedia.com', 'no aplica', 'Femenino', 'Mujer', 'empleado');
 
 --
 -- Índices para tablas volcadas
@@ -110,7 +113,7 @@ ALTER TABLE `producto`
 -- Indices de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`idcliente`);
+  ADD PRIMARY KEY (`id`) USING BTREE;
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -120,13 +123,13 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `idproducto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idproducto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `idcliente` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
