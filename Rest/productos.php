@@ -13,7 +13,7 @@
   background-size: cover;">
 		<main class="container p-5">
        <div class="row">
-        <div class="col-md-10">
+        <div class="col-md-12 col-md-offset-5">
         <?php if (isset($_SESSION["mensaje"])) { ?>
           <div class="alert alert-<?php echo $_SESSION["mensajetipo"]; ?> alert-dismissible fade show" role="alert">
                <?php echo $_SESSION["mensaje"]; ?>
