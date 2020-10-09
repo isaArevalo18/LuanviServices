@@ -87,7 +87,6 @@ public class FrmPlanillaPagar extends javax.swing.JFrame implements Printable {
         jLabel23 = new javax.swing.JLabel();
         generarFactura = new javax.swing.JButton();
         imprimirFactura = new javax.swing.JButton();
-        btnNuevo = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -266,14 +265,15 @@ public class FrmPlanillaPagar extends javax.swing.JFrame implements Printable {
         jLabel23.setText("$");
         Factura.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 420, 20, -1));
 
-        generarFactura.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/generar.png"))); // NOI18N
-        generarFactura.setText("Genera Factura");
+        generarFactura.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/recibo.png"))); // NOI18N
+        generarFactura.setText("Generar Factura");
         generarFactura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 generarFacturaActionPerformed(evt);
             }
         });
 
+        imprimirFactura.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/impresora.png"))); // NOI18N
         imprimirFactura.setText("Imprimir Factura");
         imprimirFactura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -281,15 +281,7 @@ public class FrmPlanillaPagar extends javax.swing.JFrame implements Printable {
             }
         });
 
-        btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/asistencia.png"))); // NOI18N
-        btnNuevo.setText("Nuevo");
-        btnNuevo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNuevoActionPerformed(evt);
-            }
-        });
-
-        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/salida.png"))); // NOI18N
+        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cancelar.png"))); // NOI18N
         btnSalir.setText("Cancelar");
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -307,23 +299,18 @@ public class FrmPlanillaPagar extends javax.swing.JFrame implements Printable {
                 .addGap(18, 18, 18)
                 .addComponent(imprimirFactura)
                 .addGap(18, 18, 18)
-                .addComponent(btnNuevo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnSalir)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(Factura, javax.swing.GroupLayout.PREFERRED_SIZE, 829, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(Factura, javax.swing.GroupLayout.PREFERRED_SIZE, 829, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(Factura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Factura, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(generarFactura)
                     .addComponent(imprimirFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalir))
                 .addContainerGap())
         );
@@ -354,18 +341,6 @@ public class FrmPlanillaPagar extends javax.swing.JFrame implements Printable {
 
 
     }//GEN-LAST:event_generarFacturaActionPerformed
-
-    private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
-        txtNumMedidor.setText("");
-        txtnumfactura.setText("");
-        txtCliente.setText("");
-        txtLecAnterior.setText("");
-        txtLecActual.setText("");
-        txtTelefono.setText("");
-        txtDireccion.setText("");
-
-
-    }//GEN-LAST:event_btnNuevoActionPerformed
 
     private void imprimirFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imprimirFacturaActionPerformed
         try {
@@ -539,7 +514,6 @@ public class FrmPlanillaPagar extends javax.swing.JFrame implements Printable {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Factura;
-    private javax.swing.JButton btnNuevo;
     private javax.swing.JButton btnSalir;
     private javax.swing.JButton generarFactura;
     private javax.swing.JButton imprimirFactura;

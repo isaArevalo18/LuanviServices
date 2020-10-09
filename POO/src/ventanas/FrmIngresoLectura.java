@@ -87,21 +87,38 @@ public class FrmIngresoLectura extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         buttonGroup1 = new javax.swing.ButtonGroup();
+        jPanel4 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         lbNum = new javax.swing.JLabel();
+        panelImage11 = new ventanas.PanelImage1();
         jLabel1 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        txtFechaAnterior = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        txtCedula = new javax.swing.JTextField();
         txtNumMedidor = new javax.swing.JTextField();
         txtNombre = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        txtConsumo = new javax.swing.JTextField();
         txtLecAnterior = new javax.swing.JTextField();
+        rbt_medidor = new javax.swing.JRadioButton();
         jLabel5 = new javax.swing.JLabel();
+        rbt_cedula = new javax.swing.JRadioButton();
         txtApellido = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        txt_idcliente = new javax.swing.JTextField();
         txt_lectura = new javax.swing.JTextField();
+        jd_fechalectura = new com.toedter.calendar.JDateChooser();
         jLabel7 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaLecturas = new javax.swing.JTable();
+        jLabel13 = new javax.swing.JLabel();
+        txt_valorpago = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         btnBuscar = new javax.swing.JButton();
@@ -109,21 +126,6 @@ public class FrmIngresoLectura extends javax.swing.JFrame {
         btnGuardarLectura = new javax.swing.JButton();
         btn_eliminarlectura = new javax.swing.JButton();
         btn_editarlectura = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        txtFechaAnterior = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        txtCedula = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        txtConsumo = new javax.swing.JTextField();
-        rbt_medidor = new javax.swing.JRadioButton();
-        rbt_cedula = new javax.swing.JRadioButton();
-        jLabel11 = new javax.swing.JLabel();
-        txt_idcliente = new javax.swing.JTextField();
-        jd_fechalectura = new com.toedter.calendar.JDateChooser();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        txt_valorpago = new javax.swing.JTextField();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -144,6 +146,9 @@ public class FrmIngresoLectura extends javax.swing.JFrame {
             }
         });
 
+        jPanel4.setBackground(new java.awt.Color(102, 204, 255));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         jPanel2.setBackground(new java.awt.Color(33, 45, 62));
 
         lbNum.setForeground(new java.awt.Color(33, 45, 62));
@@ -151,8 +156,24 @@ public class FrmIngresoLectura extends javax.swing.JFrame {
 
         jLabel1.setBackground(new java.awt.Color(33, 45, 62));
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Ingresar Lecturas");
+
+        javax.swing.GroupLayout panelImage11Layout = new javax.swing.GroupLayout(panelImage11);
+        panelImage11.setLayout(panelImage11Layout);
+        panelImage11Layout.setHorizontalGroup(
+            panelImage11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelImage11Layout.createSequentialGroup()
+                .addContainerGap(366, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(350, 350, 350))
+        );
+        panelImage11Layout.setVerticalGroup(
+            panelImage11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelImage11Layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(jLabel1)
+                .addContainerGap(45, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -161,23 +182,54 @@ public class FrmIngresoLectura extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addComponent(lbNum)
-                .addGap(243, 243, 243)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(panelImage11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(21, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(lbNum))
-                .addGap(19, 19, 19))
+                .addComponent(panelImage11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lbNum)
+                .addGap(106, 106, 106))
         );
 
+        jPanel4.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-5, 0, 850, 90));
+
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logout.png"))); // NOI18N
+        jButton2.setText("Volver");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 550, -1, -1));
+
+        txtFechaAnterior.setEditable(false);
+        jPanel4.add(txtFechaAnterior, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 280, 146, -1));
+
+        jLabel9.setText("Fecha lectura Anterior:");
+        jPanel4.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, -1, -1));
+
         jLabel2.setText("Num. Medidor:");
+        jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, -1, -1));
+
+        jLabel4.setText("Cedula");
+        jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 150, -1, -1));
 
         jLabel3.setText("Nombre:");
+        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, -1, -1));
+
+        txtCedula.setEditable(false);
+        txtCedula.setEnabled(false);
+        txtCedula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCedulaActionPerformed(evt);
+            }
+        });
+        jPanel4.add(txtCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 150, 201, -1));
 
         txtNumMedidor.setEditable(false);
         txtNumMedidor.setEnabled(false);
@@ -186,24 +238,80 @@ public class FrmIngresoLectura extends javax.swing.JFrame {
                 txtNumMedidorKeyReleased(evt);
             }
         });
+        jPanel4.add(txtNumMedidor, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, 146, -1));
 
         txtNombre.setEditable(false);
+        jPanel4.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 180, 146, -1));
+
+        jLabel10.setText("Cosumo M3");
+        jPanel4.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, -1, -1));
+
+        txtConsumo.setEditable(false);
+        txtConsumo.setToolTipText("");
+        txtConsumo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtConsumoKeyReleased(evt);
+            }
+        });
+        jPanel4.add(txtConsumo, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 320, 146, -1));
 
         txtLecAnterior.setEditable(false);
+        jPanel4.add(txtLecAnterior, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, 146, -1));
+
+        buttonGroup1.add(rbt_medidor);
+        rbt_medidor.setText("NroMedidor");
+        rbt_medidor.setContentAreaFilled(false);
+        rbt_medidor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbt_medidorActionPerformed(evt);
+            }
+        });
+        jPanel4.add(rbt_medidor, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 105, -1));
 
         jLabel5.setText("Apellido:");
+        jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 190, -1, -1));
+
+        buttonGroup1.add(rbt_cedula);
+        rbt_cedula.setText("Cedula");
+        rbt_cedula.setContentAreaFilled(false);
+        rbt_cedula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbt_cedulaActionPerformed(evt);
+            }
+        });
+        jPanel4.add(rbt_cedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 110, 71, -1));
 
         txtApellido.setEditable(false);
+        jPanel4.add(txtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 180, 201, -1));
+
+        jLabel11.setText("Buscar por:");
+        jPanel4.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 83, -1));
 
         jLabel6.setText("Lec.Anterior");
+        jPanel4.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, -1, -1));
+
+        txt_idcliente.setEditable(false);
+        jPanel4.add(txt_idcliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 110, 60, -1));
 
         txt_lectura.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txt_lecturaKeyReleased(evt);
             }
         });
+        jPanel4.add(txt_lectura, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 230, 201, -1));
+
+        jd_fechalectura.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jd_fechalecturaKeyReleased(evt);
+            }
+        });
+        jPanel4.add(jd_fechalectura, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 280, 201, -1));
 
         jLabel7.setText("Lectura:");
+        jPanel4.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 240, -1, -1));
+
+        jLabel12.setText("IdCliente:");
+        jPanel4.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 110, -1, -1));
 
         tablaLecturas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -228,12 +336,21 @@ public class FrmIngresoLectura extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tablaLecturas);
 
-        jLabel8.setText("Fecha:");
+        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 390, 825, 153));
 
-        jPanel3.setBackground(new java.awt.Color(204, 204, 255));
+        jLabel13.setText("ValorPago:");
+        jPanel4.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 330, 60, -1));
+
+        txt_valorpago.setEditable(false);
+        jPanel4.add(txt_valorpago, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 320, 91, -1));
+
+        jLabel8.setText("Fecha:");
+        jPanel4.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 290, -1, -1));
+
+        jPanel3.setBackground(new java.awt.Color(124, 186, 247));
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/buscar.png"))); // NOI18N
+        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lecturabuscar.png"))); // NOI18N
         btnBuscar.setText("Buscar");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -241,7 +358,7 @@ public class FrmIngresoLectura extends javax.swing.JFrame {
             }
         });
 
-        btnNuevoLec.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/generar.png"))); // NOI18N
+        btnNuevoLec.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lecturaanadir.png"))); // NOI18N
         btnNuevoLec.setText("Nueva Lectura");
         btnNuevoLec.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -249,7 +366,7 @@ public class FrmIngresoLectura extends javax.swing.JFrame {
             }
         });
 
-        btnGuardarLectura.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ingreso de lecturas.png"))); // NOI18N
+        btnGuardarLectura.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lecturaguardar.png"))); // NOI18N
         btnGuardarLectura.setText("guardar lectura");
         btnGuardarLectura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -257,6 +374,7 @@ public class FrmIngresoLectura extends javax.swing.JFrame {
             }
         });
 
+        btn_eliminarlectura.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lecturaeliminar.png"))); // NOI18N
         btn_eliminarlectura.setText("eliminar");
         btn_eliminarlectura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -264,6 +382,7 @@ public class FrmIngresoLectura extends javax.swing.JFrame {
             }
         });
 
+        btn_editarlectura.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lecturaeditar.png"))); // NOI18N
         btn_editarlectura.setText("editar lectura");
         btn_editarlectura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -288,203 +407,30 @@ public class FrmIngresoLectura extends javax.swing.JFrame {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(24, Short.MAX_VALUE)
+                .addGap(19, 19, 19)
                 .addComponent(btnBuscar)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnNuevoLec, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnGuardarLectura)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(btn_eliminarlectura)
                 .addGap(18, 18, 18)
                 .addComponent(btn_editarlectura)
-                .addContainerGap())
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logout.png"))); // NOI18N
-        jButton2.setText("Volver");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
-        txtFechaAnterior.setEditable(false);
-
-        jLabel9.setText("Fecha lectura Anterior:");
-
-        jLabel4.setText("Cedula");
-
-        txtCedula.setEditable(false);
-        txtCedula.setEnabled(false);
-        txtCedula.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCedulaActionPerformed(evt);
-            }
-        });
-
-        jLabel10.setText("Cosumo M3");
-
-        txtConsumo.setEditable(false);
-        txtConsumo.setToolTipText("");
-        txtConsumo.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtConsumoKeyReleased(evt);
-            }
-        });
-
-        buttonGroup1.add(rbt_medidor);
-        rbt_medidor.setText("NroMedidor");
-        rbt_medidor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbt_medidorActionPerformed(evt);
-            }
-        });
-
-        buttonGroup1.add(rbt_cedula);
-        rbt_cedula.setText("Cedula");
-        rbt_cedula.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbt_cedulaActionPerformed(evt);
-            }
-        });
-
-        jLabel11.setText("Buscar por:");
-
-        txt_idcliente.setEditable(false);
-
-        jd_fechalectura.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jd_fechalecturaKeyReleased(evt);
-            }
-        });
-
-        jLabel12.setText("IdCliente:");
-
-        jLabel13.setText("ValorPago:");
-
-        txt_valorpago.setEditable(false);
+        jPanel4.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 100, -1, 270));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1)
-                .addContainerGap())
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel10))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtFechaAnterior, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
-                            .addComponent(txtLecAnterior)
-                            .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
-                            .addComponent(txtConsumo)
-                            .addComponent(txtNumMedidor)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(rbt_medidor, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(rbt_cedula, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel12))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt_lectura, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
-                            .addComponent(txtCedula)
-                            .addComponent(txtApellido)
-                            .addComponent(jd_fechalectura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(txt_idcliente, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txt_valorpago, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addContainerGap())
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel11)
-                            .addComponent(rbt_medidor)
-                            .addComponent(rbt_cedula)
-                            .addComponent(txt_idcliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel12))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(txtNumMedidor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4)
-                            .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5)
-                            .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3))
-                        .addGap(30, 30, 30)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtLecAnterior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6)
-                            .addComponent(txt_lectura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(30, 30, 30)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(txtFechaAnterior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel9)
-                                    .addComponent(jLabel8)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(28, 28, 28)
-                                .addComponent(jd_fechalectura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtConsumo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel10)
-                            .addComponent(jLabel13)
-                            .addComponent(txt_valorpago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(21, 21, 21))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton2)
-                .addGap(19, 19, 19))
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 606, Short.MAX_VALUE)
         );
 
         pack();
@@ -933,9 +879,11 @@ public class FrmIngresoLectura extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private com.toedter.calendar.JDateChooser jd_fechalectura;
     private javax.swing.JLabel lbNum;
+    private ventanas.PanelImage1 panelImage11;
     private javax.swing.JRadioButton rbt_cedula;
     private javax.swing.JRadioButton rbt_medidor;
     private javax.swing.JTable tablaLecturas;

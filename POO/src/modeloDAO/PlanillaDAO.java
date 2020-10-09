@@ -106,7 +106,7 @@ public class PlanillaDAO extends Conexion {
       * En realizar la actualizacion de las lecturas en estado pendiende a pagado y a asignarle una fecha de pago
       * a la lectura
      */
-    public int pagoLectura(int consumo, String fecha, String estado) {
+    public int pagoLectura(Double consumo, String fecha, String estado) {
         sql = "UPDATE lectura SET estado=?,fechapago=? WHERE consumo=?";
         try {
             con = getConexion();
@@ -115,12 +115,13 @@ public class PlanillaDAO extends Conexion {
             ps.setString(2, fecha);
             ps.setDouble(3, consumo);
             respuesta = ps.executeUpdate();
-            CerrarConexion();
         } catch (Exception e) {
             System.out.println("Error al realizar el pago de la lectura,pago cancelado " + e);
             if (eliminarUltimaPlanilla() > 0) {
                 JOptionPane.showMessageDialog(null, "Emision Planilla Cancelada");
             }
+        }finally{
+            CerrarConexion();
         }
         return respuesta;
     }

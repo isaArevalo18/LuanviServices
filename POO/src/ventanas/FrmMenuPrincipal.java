@@ -37,22 +37,23 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
                 switch (contador) {
                     case 0:
                         contador = 1;
-                        icono = new ImageIcon(getClass().getResource("/Imagenes/agua1.png"));
+                        icono = new ImageIcon(getClass().getResource("/Imagenes/imagen1.jpeg"));
                         lbImagenes.setIcon(icono);
 
                         break;
                     case 1:
                         contador = 2;
-                        icono = new ImageIcon(getClass().getResource("/Imagenes/agua2.png"));
+                        icono = new ImageIcon(getClass().getResource("/Imagenes/imagen2.jpeg"));
                         lbImagenes.setIcon(icono);
 
                         break;
                     case 2:
                         contador = 0;
-                        icono = new ImageIcon(getClass().getResource("/Imagenes/agua3.png"));
+                        icono = new ImageIcon(getClass().getResource("/Imagenes/imagen3.jpeg"));
                         lbImagenes.setIcon(icono);
 
                         break;
+                        
                 }
             }
         };
@@ -139,10 +140,10 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 204, 204));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel5.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel5.setBackground(new java.awt.Color(102, 204, 255));
 
-        itmNuevoUsuario.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 12)); // NOI18N
-        itmNuevoUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/businessman_add.png"))); // NOI18N
+        itmNuevoUsuario.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 14)); // NOI18N
+        itmNuevoUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/grupo.png"))); // NOI18N
         itmNuevoUsuario.setText("Nuevo Cliente");
         itmNuevoUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -155,8 +156,8 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
             }
         });
 
-        itmNuevoEmpleado.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 12)); // NOI18N
-        itmNuevoEmpleado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/businessman_add.png"))); // NOI18N
+        itmNuevoEmpleado.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 14)); // NOI18N
+        itmNuevoEmpleado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconempledo.png"))); // NOI18N
         itmNuevoEmpleado.setText("Nuevo Empleado");
         itmNuevoEmpleado.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -169,8 +170,8 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
             }
         });
 
-        itmPagoConsumo.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 12)); // NOI18N
-        itmPagoConsumo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pago.png"))); // NOI18N
+        itmPagoConsumo.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 14)); // NOI18N
+        itmPagoConsumo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pago-por-clic.png"))); // NOI18N
         itmPagoConsumo.setText("Pago Consumo");
         itmPagoConsumo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -183,8 +184,8 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
             }
         });
 
-        miIngresoLect.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 12)); // NOI18N
-        miIngresoLect.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ingreso de lecturas.png"))); // NOI18N
+        miIngresoLect.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 14)); // NOI18N
+        miIngresoLect.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/informacion.png"))); // NOI18N
         miIngresoLect.setText("Ingreso Lecturas");
         miIngresoLect.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -197,8 +198,8 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
             }
         });
 
-        MiUsuarios.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 12)); // NOI18N
-        MiUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Cosulta Usuario.png"))); // NOI18N
+        MiUsuarios.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 14)); // NOI18N
+        MiUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/usuarioagua.png"))); // NOI18N
         MiUsuarios.setText("Usuarios");
         MiUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -211,8 +212,8 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
             }
         });
 
-        MiConsultaGeneral.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 12)); // NOI18N
-        MiConsultaGeneral.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Consulta general.png"))); // NOI18N
+        MiConsultaGeneral.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 14)); // NOI18N
+        MiConsultaGeneral.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/consplanillas.png"))); // NOI18N
         MiConsultaGeneral.setText("Consulta Planillas");
         MiConsultaGeneral.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -225,22 +226,26 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 12)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 14)); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icouser1.png"))); // NOI18N
         jLabel2.setText("USUARIO");
 
-        jLabel3.setFont(new java.awt.Font("Microsoft JhengHei", 0, 12)); // NOI18N
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/generar.png"))); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 14)); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ingresos.png"))); // NOI18N
         jLabel3.setText("PAGO");
 
-        intemLecturas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/talento humano.png"))); // NOI18N
+        intemLecturas.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 14)); // NOI18N
+        intemLecturas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/directorio.png"))); // NOI18N
         intemLecturas.setText("LECTURAS");
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/consulta.png"))); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 14)); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/libro-de-lectura.png"))); // NOI18N
         jLabel5.setText("CONSULTAS");
 
-        miSalir.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 12)); // NOI18N
-        miSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logout.png"))); // NOI18N
+        miSalir.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 14)); // NOI18N
+        miSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cerrar-sesion.png"))); // NOI18N
         miSalir.setText("Salir");
+        miSalir.setContentAreaFilled(false);
         miSalir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 miSalirMouseEntered(evt);
@@ -259,57 +264,54 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
             .addComponent(jSeparator2)
             .addComponent(jSeparator3)
             .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jSeparator4, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addComponent(miSalir))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(104, 104, 104)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(itmNuevoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(itmNuevoEmpleado)))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(MiUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(MiConsultaGeneral))))
+                .addContainerGap(35, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(85, 85, 85))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(75, 75, 75))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addComponent(itmPagoConsumo, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(38, 38, 38))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                         .addComponent(intemLecturas)
-                        .addGap(79, 79, 79))
+                        .addGap(91, 91, 91))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addComponent(miIngresoLect, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(38, 38, 38))
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(60, 60, 60))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addComponent(MiConsultaGeneral)
-                        .addGap(48, 48, 48))))
-            .addComponent(jSeparator4, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(itmNuevoEmpleado)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGap(64, 64, 64)
-                                .addComponent(itmNuevoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(jPanel5Layout.createSequentialGroup()
-                                    .addContainerGap()
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createSequentialGroup()
-                                    .addGap(77, 77, 77)
-                                    .addComponent(MiUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(79, 79, 79)
-                        .addComponent(miSalir)))
-                .addContainerGap(37, Short.MAX_VALUE))
+                        .addComponent(itmPagoConsumo, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(37, 37, 37))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addComponent(miIngresoLect)
+                        .addGap(46, 46, 46))))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(4, 4, 4)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(1, 1, 1)
                 .addComponent(itmNuevoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(itmNuevoEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(itmNuevoEmpleado)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 8, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -326,27 +328,28 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 5, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(14, 14, 14)
                 .addComponent(MiUsuarios)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(MiConsultaGeneral)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(MiConsultaGeneral)
                 .addGap(18, 18, 18)
-                .addComponent(miSalir)
-                .addGap(206, 206, 206))
+                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(miSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(186, 186, 186))
         );
 
-        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 270, 570));
+        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 270, 560));
 
-        jPanel4.setBackground(new java.awt.Color(0, 153, 255));
+        jPanel4.setBackground(new java.awt.Color(0, 102, 204));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 24)); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/boton-de-menu-de-tres-lineas-horizontales.png"))); // NOI18N
         jLabel1.setText("MENU");
-        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 140, 40));
+        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 0, 140, 40));
 
-        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 930, 40));
+        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 890, 50));
 
         lbImagenes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/agua1.png"))); // NOI18N
         lbImagenes.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));

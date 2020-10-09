@@ -29,26 +29,20 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="imprimirFactura" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="btnNuevo" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="btnSalir" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <Component id="Factura" min="-2" pref="829" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-          </Group>
+          <Component id="Factura" alignment="0" pref="829" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Component id="Factura" min="-2" max="-2" attributes="0"/>
+              <Component id="Factura" min="-2" pref="539" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="generarFactura" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="imprimirFactura" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
-                  <Component id="btnNuevo" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
                   <Component id="btnSalir" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -637,9 +631,9 @@
     <Component class="javax.swing.JButton" name="generarFactura">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/Imagenes/generar.png"/>
+          <Image iconType="3" name="/Imagenes/recibo.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Genera Factura"/>
+        <Property name="text" type="java.lang.String" value="Generar Factura"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="generarFacturaActionPerformed"/>
@@ -647,27 +641,19 @@
     </Component>
     <Component class="javax.swing.JButton" name="imprimirFactura">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/Imagenes/impresora.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Imprimir Factura"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="imprimirFacturaActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnNuevo">
-      <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/Imagenes/asistencia.png"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Nuevo"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNuevoActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JButton" name="btnSalir">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/Imagenes/salida.png"/>
+          <Image iconType="3" name="/Imagenes/cancelar.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Cancelar"/>
       </Properties>
