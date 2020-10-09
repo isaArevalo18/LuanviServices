@@ -90,7 +90,6 @@ include("../conexion.php");
       </div>
      
       <button type="submit"name="update" value="Actualizar" class="btn btn-warning">Actualizar</button>
-
     </div>
       
     </form>

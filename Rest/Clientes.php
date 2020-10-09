@@ -122,6 +122,7 @@
 
     <br>
     <br>
+    <div class="table-responsive">
     <h3 style="color: white" align="center">Tabla clientes</h3>
     <table class="table table-striped">
     <thead class="thead-dark">
@@ -168,7 +169,8 @@
       </tr>
        <?php } ?>
       </table>
-      
+    </div>
+       <a href="home.php"><input type="submit" class="btn btn-primary" value="Regresar"></a>
       
     </main>
   </body>

@@ -123,6 +123,7 @@
     <br>
     <br>
     <h3 style="color: white" align="center">Tabla Empleados</h3>
+    <div class="table-responsive">
     <table class="table table-striped">
     <thead class="thead-dark">
     <tr>
@@ -168,7 +169,8 @@
       </tr>
        <?php } ?>
       </table>
-      
+    </div>
+      <a href="home.php"><input type="submit" class="btn btn-primary" value="Regresar"></a>
       
     </main>
   </body>

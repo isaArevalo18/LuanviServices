@@ -67,41 +67,46 @@
 
     <br>
     <br>
-    <h3 style="color: black" align="center">Tabla Productos</h3>
-    <table class="table table-striped">
-	    <thead class="thead-dark">
-	    <tr>
-		    <th>IdProducto</th>
-		    <th>Nombre</th>
-		    <th>Precio</th>
-		    <th>Nro existencias</th>
-		    <th>Categoria</th>
-		    <th>Acciones</th>
-		</thead>
-    	</tr>
 
-    <?php  ?>
+    <div class="table-responsive">
+      <h3 style="color: black" align="center">Tabla Productos</h3>
+      <table class="table table-striped">
+  	    <thead class="thead-dark">
+    	    <tr>
+    		    <th>IdProducto</th>
+    		    <th>Nombre</th>
+    		    <th>Precio</th>
+    		    <th>Nro existencias</th>
+    		    <th>Categoria</th>
+    		    <th>Acciones</th>
+          </tr>
+  		</thead>
+      	
 
-      <?php 
+      <?php  ?>
 
-       $query="SELECT * FROM producto";
+        <?php 
 
-       $result = mysqli_query($conexion,$query);
+         $query="SELECT * FROM producto";
 
-       while ($row=mysqli_fetch_assoc($result)) { ?>
-      <tr style="background-color: #B4CDCC">
+         $result = mysqli_query($conexion,$query);
 
-      <td><?php echo $row["idproducto"]; ?></td>
-       <td><?php echo $row["nombre"]; ?></td>
-       <td><?php echo  $row["precio"]; ?></td>
-       <td><?php echo $row["nroexistencias"]; ?></td>
-       <td><?php echo $row["categoria"]; ?></td>
-       <td>
-        <a href="productobd/actualizarproducto.php?id=<?php echo $row['idproducto']?>&accion=editar" class="btn btn-secondary"><i class="fas fa-marker"></i></a>
-        <a href="productobd/eliminarproducto.php?id=<?php echo $row['idproducto']?>&accion=eliminar" class="btn btn-danger"><i class="far fa-trash-alt"></i></a></td>
-      </tr>
-       <?php } ?>
-      </table>      
+         while ($row=mysqli_fetch_assoc($result)) { ?>
+        <tr style="background-color: #B4CDCC">
+
+          <td><?php echo $row["idproducto"]; ?></td>
+           <td><?php echo $row["nombre"]; ?></td>
+           <td><?php echo  $row["precio"]; ?></td>
+           <td><?php echo $row["nroexistencias"]; ?></td>
+           <td><?php echo $row["categoria"]; ?></td>
+           <td>
+            <a href="productobd/actualizarproducto.php?id=<?php echo $row['idproducto']?>&accion=editar" class="btn btn-secondary"><i class="fas fa-marker"></i></a>
+            <a href="productobd/eliminarproducto.php?id=<?php echo $row['idproducto']?>&accion=eliminar" class="btn btn-danger"><i class="far fa-trash-alt"></i></a></td>
+        </tr>
+         <?php } ?>
+        </table>  
+      </div>
+       <a href="home.php"><input type="submit" class="btn btn-primary" value="Regresar"></a>   
     </main>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
