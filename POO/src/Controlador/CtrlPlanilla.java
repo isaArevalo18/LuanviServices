@@ -16,7 +16,7 @@ public class CtrlPlanilla {
     /*Este metodo guarda la planilla en la base de datos y modifica el estado de las lecturas a pagado*/
     public void emitirPlanilla(DetallePlanilla p) {
         if (planillaDAO.insertar(p) > 0) {
-            if (planillaDAO.pagoLectura(Double.parseDouble(p.getConsumo()), p.getFechaPlanilla(), "pagado") > 0) {
+            if (planillaDAO.pagoLectura(p.getIdlectura(), p.getFechaPlanilla(), "pagado") > 0) {
                 JOptionPane.showMessageDialog(null, "Planilla Emitida con Exito");
             } else {
                 JOptionPane.showMessageDialog(null, "Planilla no Generada con Exito");

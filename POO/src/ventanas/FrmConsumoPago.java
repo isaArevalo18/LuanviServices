@@ -32,7 +32,7 @@ public class FrmConsumoPago extends javax.swing.JDialog {
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/AguaIcono.png")).getImage());
         this.setLocationRelativeTo(null);
-         setResizable(false);
+        setResizable(false);
         jButton2.setEnabled(false);
         vali.ValidarNumeros(txtbuscarcliente);
         vali.LimitarCaracteres(txtbuscarcliente, 10);

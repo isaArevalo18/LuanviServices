@@ -106,14 +106,14 @@ public class PlanillaDAO extends Conexion {
       * En realizar la actualizacion de las lecturas en estado pendiende a pagado y a asignarle una fecha de pago
       * a la lectura
      */
-    public int pagoLectura(Double consumo, String fecha, String estado) {
-        sql = "UPDATE lectura SET estado=?,fechapago=? WHERE consumo=?";
+    public int pagoLectura(Integer idlectura, String fecha, String estado) {
+        sql = "UPDATE lectura SET estado=?,fechapago=? WHERE idlectura=?";
         try {
             con = getConexion();
             ps = con.prepareStatement(sql);
             ps.setString(1, estado);
             ps.setString(2, fecha);
-            ps.setDouble(3, consumo);
+            ps.setDouble(3, idlectura);
             respuesta = ps.executeUpdate();
         } catch (Exception e) {
             System.out.println("Error al realizar el pago de la lectura,pago cancelado " + e);

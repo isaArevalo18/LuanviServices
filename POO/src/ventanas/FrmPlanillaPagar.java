@@ -85,6 +85,8 @@ public class FrmPlanillaPagar extends javax.swing.JFrame implements Printable {
         jLabel20 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
         generarFactura = new javax.swing.JButton();
         imprimirFactura = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
@@ -195,7 +197,8 @@ public class FrmPlanillaPagar extends javax.swing.JFrame implements Printable {
         Factura.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(146, 10, 564, 46));
 
         lbl_consumoExcesos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Factura.add(lbl_consumoExcesos, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 420, 83, 24));
+        lbl_consumoExcesos.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        Factura.add(lbl_consumoExcesos, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 420, 50, 24));
 
         txtTotalPagar.setEditable(false);
         txtTotalPagar.setBackground(new java.awt.Color(255, 255, 255));
@@ -218,6 +221,7 @@ public class FrmPlanillaPagar extends javax.swing.JFrame implements Printable {
 
         lbl_consumo.setBackground(new java.awt.Color(255, 255, 255));
         lbl_consumo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_consumo.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         Factura.add(lbl_consumo, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 370, 50, 24));
 
         lbl_consumobasico.setBackground(new java.awt.Color(255, 255, 255));
@@ -226,13 +230,13 @@ public class FrmPlanillaPagar extends javax.swing.JFrame implements Printable {
 
         lbl_precionunitario_sinexceso.setBackground(new java.awt.Color(255, 255, 255));
         lbl_precionunitario_sinexceso.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_precionunitario_sinexceso.setText("2.50");
+        lbl_precionunitario_sinexceso.setText("2.00");
         Factura.add(lbl_precionunitario_sinexceso, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 370, 100, 24));
 
         lbl_precionunitario_sinexceso1.setBackground(new java.awt.Color(255, 255, 255));
         lbl_precionunitario_sinexceso1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_precionunitario_sinexceso1.setText("0-20m3 $1  |  21m3..   $5");
-        Factura.add(lbl_precionunitario_sinexceso1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 410, 143, 24));
+        lbl_precionunitario_sinexceso1.setText("0-10m3 ... $1  | > 10 m3 ... $5");
+        Factura.add(lbl_precionunitario_sinexceso1, new org.netbeans.lib.awtextra.AbsoluteConstraints(363, 410, 160, 24));
 
         jLabel21.setText("TOTAL A PAGAR:");
         Factura.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 460, 100, -1));
@@ -264,6 +268,12 @@ public class FrmPlanillaPagar extends javax.swing.JFrame implements Printable {
         jLabel23.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel23.setText("$");
         Factura.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 420, 20, -1));
+
+        jLabel24.setText("m3");
+        Factura.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 420, -1, -1));
+
+        jLabel26.setText("m3");
+        Factura.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 370, -1, -1));
 
         generarFactura.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/recibo.png"))); // NOI18N
         generarFactura.setText("Generar Factura");
@@ -378,16 +388,18 @@ public class FrmPlanillaPagar extends javax.swing.JFrame implements Printable {
             lbl_mes.setText("Planilla de Consumos de " + DetallePlanilla.cargarPlanilla.get(0).getMespago());
             Double totalPagar = calcularValorPago();
             txtTotalPagar.setText(totalPagar + "");
-            System.out.println(totalconsumoexceso);
-            Double consumo;
-            if (totalconsumoexceso != 0.0){
-                consumo = Double.parseDouble(DetallePlanilla.cargarPlanilla.get(0).getConsumo()) - totalconsumoexceso;
+            Double totalconsumo_m3 = 0.0, consumobasico_m3 = 0.0, consumoexceso_m3 = 0.0;
+            totalconsumo_m3 = Double.parseDouble(DetallePlanilla.cargarPlanilla.get(0).getConsumo());
+            if (totalconsumo_m3 > 10.0){
+                consumobasico_m3 = 10.0;
+                consumoexceso_m3 = totalconsumo_m3 - consumobasico_m3;
             } else {
-                consumo = Double.parseDouble(DetallePlanilla.cargarPlanilla.get(0).getConsumo());
+                consumobasico_m3 = totalconsumo_m3;
+                consumoexceso_m3 = 0.0;
             }
-            lbl_consumoExcesos.setText(totalconsumoexceso + "");
+            lbl_consumoExcesos.setText(consumoexceso_m3 + "");
             lbl_consumobasico.setText(totalsinexceso + "");
-            lbl_consumo.setText(String.valueOf(consumo));
+            lbl_consumo.setText(String.valueOf(consumobasico_m3 + ""));
             lbl_totalconsumoExcesos.setText(totalPagar - totalsinexceso + "");
         } else {
             JOptionPane.showMessageDialog(null, "Erro al carga los datos de la factura, regrese a la ventana de pago");
@@ -412,13 +424,13 @@ public class FrmPlanillaPagar extends javax.swing.JFrame implements Printable {
 
             /*Si el consumo es menor a 10*/
             if (consumo <= 10) {
-                totalsinexceso = consumo * 2.50;
+                totalsinexceso = 2;
                 // System.out.println("Rango de 10");
                 return totalsinexceso;
             } else {
                 /*Si el consumo esta entre mayor a 10 e inferior 20*/
                 if (consumo > 10 && consumo < 20) {
-                    totalsinexceso = 10 * 2.50;
+                    totalsinexceso = 2;
                     if (consumo == 20) {
                         // System.out.println("Rango de 20");
                         totalconsumoexceso = 20 * 1;
@@ -450,7 +462,7 @@ public class FrmPlanillaPagar extends javax.swing.JFrame implements Printable {
                         /*Si es igual a da representamos el totalcosumo sin exceso y multiplicamos por 2.50*/
                         if (incremento == 10) {
 
-                            totalsinexceso = incremento * 2.50;
+                            totalsinexceso = 2;
                             //  System.out.println(totalsinexceso);
                         }
                         /*Si el incremento es 20 significa que el consumo exceso sera a $1 por m3*/
@@ -477,7 +489,7 @@ public class FrmPlanillaPagar extends javax.swing.JFrame implements Printable {
 
         }
         /*Finalmente retornamos el valor total a pagar de los cosumos sin excesos y con excesos */
-        return totalsinexceso + totalconsumoexceso + residuototalexceso + 1;
+        return totalsinexceso + totalconsumoexceso + residuototalexceso;
     }
 
     /*
@@ -533,7 +545,9 @@ public class FrmPlanillaPagar extends javax.swing.JFrame implements Printable {
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

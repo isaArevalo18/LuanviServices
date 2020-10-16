@@ -59,28 +59,6 @@ public class FrmIngresoLectura extends javax.swing.JFrame {
         vali.LimitarCaracteres(txtNumMedidor, 7);
     }
 
-    // -------------------------------------------------------------------------
-    private void agregarDatosTabla() {
-
-        /*modeloTabla.setRowCount(0);
-
-        int numRegistros = listaLectura.size();
-
-        for (int i = 0; i < numRegistros; i++) {
-
-            modeloTabla.addRow(new Object[]{
-                listaLectura.get(i).getNumMedidor(),
-                listaLectura.get(i).getLecturaAnter(),
-                listaLectura.get(i).getFecha_lecturaAnter(),
-                listaLectura.get(i).getLecturaAct(),
-                listaLectura.get(i).getFecha_lecturaAct(),
-                listaLectura.get(i).getConsumo(),
-                listaLectura.get(i).isEstado()
-
-            });
-        }*/
-    }
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -512,7 +490,7 @@ public class FrmIngresoLectura extends javax.swing.JFrame {
                     lec.setEstado("pendiente");
                     int consumoval = Integer.parseInt(txtConsumo.getText());
                     lec.setConsumo(consumoval);
-                    valorPago = Double.parseDouble(txt_valorpago.getText());
+                    //valorPago = Double.parseDouble(txt_valorpago.getText());
                     lec.setValorpago(valorPago);
                     lec.setIdCliente(Integer.parseInt(txt_idcliente.getText()));
 
@@ -745,14 +723,13 @@ public class FrmIngresoLectura extends javax.swing.JFrame {
 
         System.out.println("residuo" + residuototalexceso);
         if (consumo > 0) {
-
             if (consumo <= 10) {
-                totalsinexceso = consumo * 2.50;
+                totalsinexceso = 2;
                 System.out.println("Rango de 10");
                 return totalsinexceso;
             } else {
                 if (consumo > 10 && consumo < 20) {
-                    totalsinexceso = 10 * 2.50;
+                    totalsinexceso = 2;
                     if (consumo == 20) {
                         System.out.println("Rango de 20");
                         totalconsumoexceso = 20 * 1;
@@ -762,32 +739,22 @@ public class FrmIngresoLectura extends javax.swing.JFrame {
                         totalconsumoexceso = consumo % 10 * 1;
                         return totalconsumoexceso + totalsinexceso;
                     }
-
                 } else {
                     System.out.println("Rango mayor que 20");
-                    //System.out.println(totalconsumoexceso=residuototalexceso);
                     int consumovalor = consumo - consumo % 10;
                     System.out.println("Consumo valor " + consumovalor);
                     int incremento = 0;
                     while (incremento < consumovalor) {
-
-                        //System.out.println(incremento);
                         incremento = incremento + 10;
                         if (incremento == 10) {
-
-                            totalsinexceso = incremento * 2.50;
-                            //  System.out.println(totalsinexceso);
+                            totalsinexceso = 2;
                         }
                         if (incremento == 20) {
                             totalconsumoexceso = totalconsumoexceso + 10 * 1;
-                            // System.out.println(totalconsumoexceso);
                         } else {
-
                             if (incremento == consumovalor) {
-                                //System.out.println("Residuo"+residuototalexceso);
                                 totalconsumoexceso = totalconsumoexceso + (incremento - 20) * 5;
                             }
-                            // System.out.println(totalconsumoexceso);
                         }
                     };
                 }
