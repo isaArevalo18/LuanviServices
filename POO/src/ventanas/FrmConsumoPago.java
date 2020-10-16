@@ -12,6 +12,7 @@ import modelo.Cliente;
 import modelo.DetallePlanilla;
 import modelo.Lecturas;
 
+
 public class FrmConsumoPago extends javax.swing.JDialog {
 
     double subTotal;
