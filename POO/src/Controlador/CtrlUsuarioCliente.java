@@ -27,6 +27,15 @@ public class CtrlUsuarioCliente {
         }
     }
 
+    public boolean listarUsuarioExistente(String cedula, String medidor) {
+        boolean existente = false;
+        if (usuarioClienteDAO.vali_nuevo_cliente(cedula, medidor)) {
+            JOptionPane.showMessageDialog(null, "Usuario con cedula o medidor existente");
+            existente = true;
+        }
+        return existente;
+    }
+
     public void listarUsuarioCliente(DefaultTableModel model) {
         LimpiarTabla(model);
         List<Cliente> listaclientes = usuarioClienteDAO.Listar();

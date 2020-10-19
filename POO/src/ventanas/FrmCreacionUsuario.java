@@ -581,16 +581,6 @@ public class FrmCreacionUsuario extends javax.swing.JFrame {
             txtCorreo.setText("");
         }
 
-        /*  int LECT_ACTUAL = Integer.parseInt(txtLec_Actual.getText()); //validar LECT_ACTUAL
-        if (LECT_ACTUAL < 0 || LECT_ACTUAL > 100000000) {
-            registrar = false;
-            txtLec_Actual.setText("");
-        }*/
- /*    int LECT_ANTERIOR = Integer.parseInt(txtLect_Anterior.getText());// validar LECT_ANTERIOR
-        if (LECT_ACTUAL < 0 || LECT_ACTUAL > 100000000) {
-            registrar = false;
-            txtLec_Actual.setText("");
-        }*/
         if (txtNumMedidor.getText().isEmpty()) {
             registrar = false;
         } else {
@@ -600,13 +590,9 @@ public class FrmCreacionUsuario extends javax.swing.JFrame {
                 txtNumMedidor.setText("");
             }
         }
-
-        for (int i = 0; i < ListaCliente.size(); i++) {
-            if (ListaCliente.get(i).getNum_medidor().equals(txtNumMedidor.getText())) {
-                registrar = false;
-                txtNumMedidor.setText("");
-                JOptionPane.showMessageDialog(null, "!!Numero de medidor Existente");
-            }
+        
+        if (ctrlcliente.listarUsuarioExistente(txtCedula.getText(),txtNumMedidor.getText())){
+            registrar = false;
         }
 
         if (cFecha.getDate() == null) {

@@ -139,6 +139,28 @@ public class UsuarioClienteDAO extends Conexion {
         }
         return id;
     }
+    
+    public boolean vali_nuevo_cliente(String cedula, String medidor) {
+        boolean exist = false;
+        sql = "SELECT c.idUsuario,cedula,nombre,apellido,fechaNacimiento,fechacreacion,direccion,telefono,correo,numeromedidor"
+                + " FROM usuario u INNER JOIN  cliente c ON u.idusuario=c.idUsuario WHERE cedula=? OR numeromedidor=?";
+        List<Cliente> clientes = new ArrayList<>();
+        try {
+            con = getConexion();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, cedula);
+            ps.setString(2, medidor);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                exist = true;
+            }
+        } catch (Exception e) {
+            System.out.println("Error al buscar cliente existente " + e);
+        } finally {
+            CerrarConexion();
+        }
+        return exist;
+    }
 
     public List<Cliente> Buscar(String cedula) {
         sql = "SELECT c.idUsuario,cedula,nombre,apellido,fechaNacimiento,fechacreacion,direccion,telefono,correo,numeromedidor"
