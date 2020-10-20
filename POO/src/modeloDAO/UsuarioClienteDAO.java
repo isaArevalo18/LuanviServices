@@ -46,8 +46,6 @@ public class UsuarioClienteDAO extends Conexion {
             respuesta = ps.executeUpdate();
         } catch (Exception e) {
             System.out.println("Error al insertar cliente" + e);
-        } finally {
-            CerrarConexion();
         }
         return respuesta;
     }
@@ -76,8 +74,6 @@ public class UsuarioClienteDAO extends Conexion {
             }
         } catch (Exception e) {
             System.out.println("Error al listar " + e);
-        } finally {
-            CerrarConexion();
         }
         return clientes;
     }
@@ -102,8 +98,6 @@ public class UsuarioClienteDAO extends Conexion {
             respuesta = ps.executeUpdate();
         } catch (Exception e) {
             System.out.println("Error de actualizacion" + e);
-        } finally {
-            CerrarConexion();
         }
         return respuesta;
     }
@@ -117,8 +111,6 @@ public class UsuarioClienteDAO extends Conexion {
 
         } catch (Exception e) {
             System.out.println("Error de Eliminacion" + e);
-        } finally {
-            CerrarConexion();
         }
         return respuesta;
     }
@@ -144,7 +136,6 @@ public class UsuarioClienteDAO extends Conexion {
         boolean exist = false;
         sql = "SELECT c.idUsuario,cedula,nombre,apellido,fechaNacimiento,fechacreacion,direccion,telefono,correo,numeromedidor"
                 + " FROM usuario u INNER JOIN  cliente c ON u.idusuario=c.idUsuario WHERE cedula=? OR numeromedidor=?";
-        List<Cliente> clientes = new ArrayList<>();
         try {
             con = getConexion();
             ps = con.prepareStatement(sql);
@@ -156,8 +147,6 @@ public class UsuarioClienteDAO extends Conexion {
             }
         } catch (Exception e) {
             System.out.println("Error al buscar cliente existente " + e);
-        } finally {
-            CerrarConexion();
         }
         return exist;
     }
@@ -186,8 +175,6 @@ public class UsuarioClienteDAO extends Conexion {
             }
         } catch (Exception e) {
             System.out.println("Error al buscar cliente " + e);
-        } finally {
-            CerrarConexion();
         }
         return clientes;
     }
@@ -203,7 +190,6 @@ public class UsuarioClienteDAO extends Conexion {
             if (con != null) {
                 con.close();
             }
-
         } catch (Exception e) {
             System.out.println("Error de conexion" + e);
         }
