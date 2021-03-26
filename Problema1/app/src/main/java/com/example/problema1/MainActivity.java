@@ -28,44 +28,58 @@ public class MainActivity extends AppCompatActivity {
         etnombre=(EditText)findViewById(R.id.txt_nombre);
         etcontenido=(EditText)findViewById(R.id.txt_contenido);
     }
-    public void Guardar(View view) throws IOException {
+    public void Guardar(View view) {
         String nombre = etnombre.getText().toString();
         String contenido = etcontenido.getText().toString();
-        //Guarda de manera temporal la ruta de la tarjeta
-        File tarjeta = Environment.getExternalStorageDirectory();// recuperamos la ruta
-        //nos muestra donde se guarda el archivo
-        Toast.makeText(this, tarjeta.getPath(),Toast.LENGTH_SHORT).show();
-        //Ruta archivo
-        File rutafile= new File(tarjeta.getPath(),nombre);
-        //Crear
-        OutputStreamWriter crearFile= new OutputStreamWriter(openFileOutput(nombre, Activity.MODE_PRIVATE));
-       //Escribir el contenido
-        crearFile.write(contenido);
-        //limpiar
-        crearFile.flush();
-        //cerrar el archivo
-        crearFile.close();
-        Toast.makeText(this,"Guardado Correctamente", Toast.LENGTH_SHORT).show();
-        etnombre.setText("");
-        etcontenido.setText("");
+
+        try{
+            //Guarda de manera temporal la ruta de la tarjeta
+            File tarjeta = Environment.getExternalStorageDirectory();// recuperamos la ruta
+            //nos muestra donde se guarda el archivo
+            Toast.makeText(this, tarjeta.getPath(),Toast.LENGTH_SHORT).show();
+            //Ruta archivo
+            File rutafile= new File(tarjeta.getPath(),nombre);
+            //Crear
+            OutputStreamWriter crearFile= new OutputStreamWriter(openFileOutput(nombre, Activity.MODE_PRIVATE));
+            //Escribir el contenido
+            crearFile.write(contenido);
+            //limpiar
+            crearFile.flush();
+            //cerrar el archivo
+            crearFile.close();
+            Toast.makeText(this,"Guardado Correctamente", Toast.LENGTH_SHORT).show();
+            etnombre.setText("");
+            etcontenido.setText("");
+        }catch (Exception e){
+            Toast.makeText(this,"No se pudo Guardar", Toast.LENGTH_SHORT).show();
+
+        }
+
     }
-    public void  consultar(View view) throws IOException {
+    public void  consultar(View view) {
         //Variable para recuperar el nombre
         String nombre=etnombre.getText().toString();
-        File tarjeta=Environment.getExternalStorageDirectory();
-        File rutaFile= new File(tarjeta.getPath(),nombre);
-        //leer el archivo
-        InputStreamReader abrirfile= new InputStreamReader(openFileInput(nombre));
-        BufferedReader leerFile=new BufferedReader(abrirfile);
-        //Leer linea por linea el archivo
-        String linea=leerFile.readLine();
+        try{
+            File tarjeta=Environment.getExternalStorageDirectory();
+            File rutaFile= new File(tarjeta.getPath(),nombre);
+            //leer el archivo
+            InputStreamReader abrirfile= new InputStreamReader(openFileInput(nombre));
+
+            BufferedReader leerFile=new BufferedReader(abrirfile);
+            //Leer linea por linea el archivo
+            String linea=leerFile.readLine();
             String completo="";
             while (linea!=null){
-                completo = completo+linea + "\n";
+                completo = completo + linea + "\n";
                 linea = leerFile.readLine();
             }
             leerFile.close();
             abrirfile.close();
             etcontenido.setText(completo);
+        }catch (Exception e){
+            Toast.makeText(this,"Error al leer Archivo", Toast.LENGTH_SHORT).show();
+
+        }
+
     }
 }

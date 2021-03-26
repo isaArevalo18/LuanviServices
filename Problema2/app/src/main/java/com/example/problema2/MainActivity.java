@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         }catch (Exception e){
             Toast.makeText(this,"Error"+e,Toast.LENGTH_LONG).show();
         }
-        finish();
+        
     };
 
     public boolean validarArchivo(String archivos[],String buscar){
