@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Problema2</string>
+    <string name="txtitutlo">Almacenamiento de notas</string>
+    <string name="txt_nota">Ingrese la nota:"</string>
+    <string name="btnalmacenar">Guardar</string>
+    <string name="btnvisualizar">Visualizar</string>
+</resources>
