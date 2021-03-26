@@ -59,11 +59,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void registrarVenta(View view){
+        //Validacion para que se llenen todos los campos de la venta
         if(fecha.getText().toString().equals("") || vendedor.getText().toString().equals("")
                 || cantidad.getText().toString().equals("") || precio.getText().toString().equals("")){
             
             Toast.makeText(this,"LLene todos los campos,Por Favor",Toast.LENGTH_LONG).show();
         }else{
+            //Si los datos estan completos se procede a enviar los datos a la base
             fecha_venta=fecha.getText().toString();
             vendedor_venta=vendedor.getText().toString();
             codigo_venta=codigo.getText().toString();
@@ -72,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
 
             SQLiteDatabase db=obtenerBD("ventas",1);
             ContentValues registro=new ContentValues();
-
+            //Inserccion de datos
             registro.put("fecha",fecha_venta);
             registro.put("vendedor",vendedor_venta);
             registro.put("codigo",codigo_venta);

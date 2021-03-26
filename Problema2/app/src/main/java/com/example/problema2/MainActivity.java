@@ -23,21 +23,26 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         notas=(EditText)findViewById(R.id.txt_nota);
-
+        // creamos un array para almacenar los datos
         String [] lts_archivos=fileList();
-
+    // validamos que se encuentre el archivo
         if(validarArchivo(lts_archivos,"notas.txt")){
             try{
+                //Creamos un flujo de caracteres
                 InputStreamReader arch=new InputStreamReader(openFileInput("notas.txt"));
+                //almacenará la entrada del archivo especificado
                 BufferedReader br=new BufferedReader(arch);
+                //Leemos linea por lina
                 String lineaTexto=br.readLine();
                 String textoCompleto="";
+                //si es diferente de nullo entonces leemos el archivo
                 while (lineaTexto!=null){
                     textoCompleto=textoCompleto+lineaTexto+"\n";
                     lineaTexto=br.readLine();
                 }
                 br.close();
                 arch.close();
+                //mandamos a mostrar lo que contiene el archivo
                 notas.setText(textoCompleto);
             }catch (Exception e){
                 Toast.makeText(this,"Error"+e,Toast.LENGTH_SHORT).show();
@@ -47,10 +52,15 @@ public class MainActivity extends AppCompatActivity {
 
     public void grabarDatos(View view){
         try {
+            //Ingresamos los datos dentro del archivo notas
             OutputStreamWriter arh=new OutputStreamWriter(openFileOutput("notas.txt",Activity.MODE_PRIVATE));
+            //Nos permite escribir
             arh.write(notas.getText().toString());
+            //limpiar
             arh.flush();
+            //cerrar
             arh.close();
+            //Mensaje emergente
             Toast.makeText(this,"Datos Grabados Correctamente",Toast.LENGTH_LONG).show();
         }catch (Exception e){
             Toast.makeText(this,"Error"+e,Toast.LENGTH_LONG).show();
@@ -59,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
     };
 
     public boolean validarArchivo(String archivos[],String buscar){
+        //validamos que el archivo se encuentre
         for (int i = 0; i < archivos.length; i++) {
             resultado=(buscar.equals(archivos[i]))?true:false;
         }

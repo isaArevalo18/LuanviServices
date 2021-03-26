@@ -8,10 +8,10 @@ public class Venta {
     private double precioUnitario;
     private double iva;
     private double total;
-
+//Constructor
     public Venta() {
     }
-
+    //Obtencion de datos
     public String getFecha() {
         return fecha;
     }

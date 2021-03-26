@@ -44,12 +44,14 @@ public class VentasRealizadas extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
+    //Metodo para listar las Ventas realizadas
     public ArrayList<String> listarVentas(){
+        //Creamos un array tipo string
         ArrayList<String> list_ventas=new ArrayList<>();
+        //Sacamos las ventas realizando una consulta en la base de datos
         SQLiteDatabase db=obtenerBD("ventas",1);
         Cursor filas=db.rawQuery("SELECT * FROM ventas",null);
-
+        // Mandamos a mostrar los datos en cada columna
         if (!filas.moveToFirst()) return list_ventas;
         do {
             Venta venta=new Venta();
@@ -62,7 +64,9 @@ public class VentasRealizadas extends AppCompatActivity {
             venta.setTotal(filas.getDouble(5));
             list_ventas.add(venta.toString());
         }while (filas.moveToNext());
+        //Cerramos
         filas.close();
+        //Retorna la lista de ventas realizadas
         return list_ventas;
     }
 
