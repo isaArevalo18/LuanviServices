@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Problema3</string>
+    <string name="titulo">Registro de Ventas</string>
+    <string name="registro">Registro</string>
+    <string name="ventas">Ventas</string>
+    <string name="fecha">Fecha:</string>
+    <string name="vendedor">Vendedor:</string>
+    <string name="codigo">Codigo:</string>
+    <string name="cantidad">Cantidad:</string>
+    <string name="precio">Precio Unitario:</string>
+    <string name="limpiar">Limpiar</string>
+    <string name="guardar">Guardar</string>
+    <string name="titulo2">Ventas Realizadas</string>
+    <string name="total">Total</string>
+    <string name="iva">Iva</string>
+
+    <string name="item1">Registrar Producto</string>
+    <string name="item2">Listar Ventas</string>
+</resources>
